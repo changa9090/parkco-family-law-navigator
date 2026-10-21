@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-10-21T23:31:35Z",
+  "sources": [
+    {
+      "id": "fcfcoa-family-law-fees",
+      "category": "FCFCOA Official Court Fee Schedule",
+      "title_en": "Federal Circuit and Family Court of Australia (FCFCOA) — Family Law Filing Fees (Divorce $1,170 / Reduced $390 · Consent Orders $215 · Initiating App $455/$740)",
+      "title_ko": "연방순회가족법원(FCFCOA) — 가족법 사건 법정 접수 수수료 (이혼 신청 $1,170 / 감면 $390 · 합의명령 $215 · 소송개시 $455/$740 · 조정 $510)",
+      "citation": "Family Law (Fees) Regulation 2022 (FY2026–27 Indexed Schedule)",
+      "url": "https://www.fcfcoa.gov.au/fl/fees/fl-fees",
+      "status": "verified_ok",
+      "http_status": 200,
+      "bytes": 89557,
+      "method": "https-direct-live",
+      "last_checked": "2026-10-21T23:31:35Z",
+      "sha256": "ca05d60230aea06104d0d26905b5bf32f0c5537dc2aa5f10a6da72104bf69be3",
+      "sha256_prefix": "ca05d60230aea061",
+      "extracted_figures": [
+        "Live Extracted: $1,170, $390, $215, $1,660, $550",
+        "Divorce: $1,170 (Reduced $390)",
+        "Consent Orders: $215"
+      ]
+    },
+    {
+      "id": "fla-1975-property-2025",
+      "category": "Primary Legislation (Cth)",
+      "title_en": "Family Law Act 1975 (Cth) Part VIII & Part VIIIAB — Property Settlement (ss 79, 75(2), 71B, 90SM) & Family Law Amendment Act 2024 (eff. 10 June 2025)",
+      "title_ko": "호주 가족법(Family Law Act 1975) 재산분할(ss 79, 90SM) · 2025.6.10 발효 개정법(가정폭력·경제적 통제 반영 s 79(4)(ca)/s 79(5), 전 세계 자산 공개 의무 s 71B, 반려동물 s 79(6))",
+      "citation": "Family Law Act 1975 (Cth) ss 44, 71B, 75(2), 79, 90SM",
+      "url": "https://www.legislation.gov.au/C2004A00275/latest/text",
+      "status": "verified_ok",
+      "http_status": 200,
+      "bytes": 1393036,
+      "method": "frl-legis-store-c101-C2025C00341",
+      "last_checked": "2026-10-21T23:31:35Z",
+      "sha256": "3a170b5cde2cbb91404dfa9bdbb483f63def8754d43a2b9be9cbc905a59f7973",
+      "sha256_prefix": "3a170b5cde2cbb91",
+      "extracted_figures": [
+        "Divorce Separation: 12 Months (s 48)",
+        "Property Limit: 12m (s 44(3)) / 2y De Facto (s 44(5))",
+        "Worldwide Disclosure: Mandatory (s 71B)"
+      ]
+    },
+    {
+      "id": "fla-1975-parenting-2024",
+      "category": "Primary Legislation (Cth)",
+      "title_en": "Family Law Act 1975 (Cth) Part VII — Parenting Orders (ss 60CA, 60CC, 61CA, 65DAAA, 65Y, 65Z) & Family Law Amendment Act 2023 (eff. 6 May 2024)",
+      "title_ko": "호주 가족법 Part VII 양육권 — 2024.5.6 발효 개정법(균등 공동친권 추정 폐지, 아동 최선의 이익 6대 기준 s 60CC, 무단 국외이주 금지 ss 65Y/65Z)",
+      "citation": "Family Law Act 1975 (Cth) ss 60CA, 60CC, 61CA, 65Y, 65Z",
+      "url": "https://www.legislation.gov.au/C2023A00087/latest/text",
+      "status": "verified_ok",
+      "http_status": 200,
+      "bytes": 93985,
+      "method": "https-direct-live",
+      "last_checked": "2026-10-21T23:31:35Z",
+      "sha256": "4836bdc9a5c297097fcfb9571889f946660f5abcc8cada3971c6153aa06a1552",
+      "sha256_prefix": "4836bdc9a5c29709",
+      "extracted_figures": [
+        "Paramount Factor: Child & Carer Safety (s 60CC(2)(a))",
+        "Unilateral Removal Penalty: 3 yrs imprisonment (s 65Y)"
+      ]
+    },
+    {
+      "id": "fla-s114q-ascr-36",
+      "category": "Ethical & Statutory Publication Rules",
+      "title_en": "Family Law Act 1975 (Cth) Part XIVB s 114Q(2) (Court Pseudonym Publication) & Australian Solicitors Conduct Rules 2023 (Qld) r 36.1",
+      "title_ko": "호주 가족법 제114Q조 제2항(법원 부여 가명 판결문 공개 승인) 및 퀸즐랜드 변호사 윤리규칙(ASCR r 36.1 오인·기만 방지 기준)",
+      "citation": "Family Law Act 1975 (Cth) s 114Q(2); ASCR 2023 (Qld) r 36.1",
+      "url": "https://www.legislation.gov.au/C2004A00275/latest/text",
+      "status": "verified_ok",
+      "http_status": 200,
+      "bytes": 1393036,
+      "method": "frl-legis-store-c101-C2025C00341",
+      "last_checked": "2026-10-21T23:31:35Z",
+      "sha256": "3a170b5cde2cbb91404dfa9bdbb483f63def8754d43a2b9be9cbc905a59f7973",
+      "sha256_prefix": "3a170b5cde2cbb91",
+      "extracted_figures": [
+        "s 114Q(2) Approved Court Pseudonyms Only",
+        "ASCR r 36.1 Non-Predictive Empirical Disclosure"
+      ]
+    },
+    {
+      "id": "mig-regs-partner-fv",
+      "category": "Crossover Legislation (Cth)",
+      "title_en": "Migration Regulations 1994 (Cth) Div 1.5 & Sch 2 cl 820.221(3) / cl 100.221(4) — Partner Visa Relationship Breakdown Exceptions (Family Violence & Shared Child Custody)",
+      "title_ko": "이민법 시행령 파트너 비자(820/801·309/100) 별거·파탄 시 단독 영주권 취득 특례 (가정폭력 피해 Div 1.5 및 공동 자녀 양육권 예외)",
+      "citation": "Migration Regulations 1994 (Cth) Div 1.5, cl 820.221(3)",
+      "url": "https://www.legislation.gov.au/F1996B03551/latest/text",
+      "status": "verified_ok",
+      "http_status": 200,
+      "bytes": 3580174,
+      "method": "frl-legis-store-c289-F2026C01017",
+      "last_checked": "2026-10-21T23:31:35Z",
+      "sha256": "a964fbdacae4f71afde15126af821182da08eba3befb4e9fc1e504d631b9224e",
+      "sha256_prefix": "a964fbdacae4f71a",
+      "extracted_figures": [
+        "Div 1.5 Judicial / Non-Judicial FV Evidence",
+        "cl 820.221(3)(b)(ii) Shared Child Custody Exception"
+      ]
+    },
+    {
+      "id": "family-kdb-fcfcoa-2026",
+      "category": "Case Law KDB (Park & Co Live)",
+      "title_en": "Park & Co Family Law KDB Verified FCFCOA Div 1 & Div 2 Judgments (3,704 Cases, 12,348 Principles)",
+      "title_ko": "박앤코 가족법 KDB 실시간 검증 재산분할·양육권 판례 (3,704건 판례 · 최신 [2026] FedCFamC1A 186)",
+      "citation": "[2026] FedCFamC1A 186; [2026] FedCFamC1A 164; [2026] FedCFamC1A 159; [2026] FedCFamC1A 145",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdb/au/cases/cth/FedCFamC1A/",
+      "status": "verified_ok",
+      "http_status": 200,
+      "bytes": 293061,
+      "method": "parkco-family-kdb-live-api",
+      "last_checked": "2026-10-21T23:31:35Z",
+      "sha256": "3edadadbf0fc65d57620a2dc98ad9a4ec1ea7e80d4ab180dbbdb72943e742697",
+      "sha256_prefix": "3edadadbf0fc65d5",
+      "extracted_figures": [
+        "Total Indexed: 3,704 FCFCOA Cases",
+        "Latest Decision: [2026] FedCFamC1A 186",
+        "12 Empirical Property Split Precedents Sampled"
+      ]
+    }
+  ]
+}
