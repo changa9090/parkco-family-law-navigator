@@ -1,56 +1,297 @@
 /* Park & Co Lawyers · Australian Family Law, Property Precedent Matcher & Visa Crossover Navigator
-   Embedded ParkCoDates Canonical Australian Date & Public Holiday Utility (2026–2027) */
+   Embedded ParkCoDates Canonical Australian Date & Public Holiday Utility (2026–2030+) */
 (function (root) {
   "use strict";
 
   /* ==========================================================================
-     1. CANONICAL AUSTRALIAN STATUTORY DATE & PUBLIC HOLIDAY UTILITY
+     1. CANONICAL AUSTRALIAN STATUTORY DATE & PUBLIC HOLIDAY UTILITY (2026–2030)
      ========================================================================== */
   var NATIONAL_HOLIDAYS = {
+    // 2026
     "2026-01-01": "New Year's Day",
     "2026-01-26": "Australia Day",
     "2026-04-03": "Good Friday",
     "2026-04-06": "Easter Monday",
     "2026-12-25": "Christmas Day",
     "2026-12-28": "Boxing Day (Additional Day)",
+    // 2027
     "2027-01-01": "New Year's Day",
     "2027-01-26": "Australia Day",
     "2027-03-26": "Good Friday",
     "2027-03-29": "Easter Monday",
-    "2027-04-26": "Anzac Day (Observed)",
+    "2027-12-25": "Christmas Day",
     "2027-12-27": "Christmas Day (Additional Day)",
-    "2027-12-28": "Boxing Day (Additional Day)"
+    "2027-12-28": "Boxing Day (Additional Day)",
+    // 2028
+    "2028-01-01": "New Year's Day",
+    "2028-01-03": "New Year's Day (Additional Day)",
+    "2028-01-26": "Australia Day",
+    "2028-04-14": "Good Friday",
+    "2028-04-17": "Easter Monday",
+    "2028-04-25": "Anzac Day",
+    "2028-12-25": "Christmas Day",
+    "2028-12-26": "Boxing Day",
+    // 2029
+    "2029-01-01": "New Year's Day",
+    "2029-01-26": "Australia Day",
+    "2029-03-30": "Good Friday",
+    "2029-04-02": "Easter Monday",
+    "2029-04-25": "Anzac Day",
+    "2029-12-25": "Christmas Day",
+    "2029-12-26": "Boxing Day",
+    // 2030
+    "2030-01-01": "New Year's Day",
+    "2030-01-26": "Australia Day",
+    "2030-01-28": "Australia Day (Additional Day)",
+    "2030-04-19": "Good Friday",
+    "2030-04-22": "Easter Monday",
+    "2030-04-25": "Anzac Day",
+    "2030-12-25": "Christmas Day",
+    "2030-12-26": "Boxing Day"
   };
 
   var STATE_HOLIDAYS = {
     QLD: {
       "2026-04-04": "Easter Saturday",
+      "2026-04-05": "Easter Sunday",
       "2026-04-25": "Anzac Day",
       "2026-05-04": "Labour Day (QLD)",
+      "2026-08-12": "Royal Queensland Show (Brisbane)",
       "2026-10-05": "King's Birthday (QLD)",
+      "2027-03-27": "Easter Saturday",
+      "2027-03-28": "Easter Sunday",
+      "2027-04-25": "Anzac Day",
+      "2027-04-26": "Anzac Day (Observed QLD)",
       "2027-05-03": "Labour Day (QLD)",
-      "2027-10-04": "King's Birthday (QLD)"
+      "2027-08-11": "Royal Queensland Show (Brisbane)",
+      "2027-10-04": "King's Birthday (QLD)",
+      "2028-04-15": "Easter Saturday",
+      "2028-04-16": "Easter Sunday",
+      "2028-05-01": "Labour Day (QLD)",
+      "2028-08-16": "Royal Queensland Show (Brisbane)",
+      "2028-10-02": "King's Birthday (QLD)",
+      "2029-03-31": "Easter Saturday",
+      "2029-04-01": "Easter Sunday",
+      "2029-05-07": "Labour Day (QLD)",
+      "2029-08-15": "Royal Queensland Show (Brisbane)",
+      "2029-10-01": "King's Birthday (QLD)",
+      "2030-04-20": "Easter Saturday",
+      "2030-04-21": "Easter Sunday",
+      "2030-05-06": "Labour Day (QLD)",
+      "2030-08-14": "Royal Queensland Show (Brisbane)",
+      "2030-10-07": "King's Birthday (QLD)"
     },
     NSW: {
+      "2026-04-04": "Easter Saturday",
+      "2026-04-05": "Easter Sunday",
       "2026-04-25": "Anzac Day",
       "2026-06-08": "King's Birthday (NSW)",
       "2026-10-05": "Labour Day (NSW)",
+      "2027-03-27": "Easter Saturday",
+      "2027-03-28": "Easter Sunday",
+      "2027-04-25": "Anzac Day",
       "2027-06-14": "King's Birthday (NSW)",
-      "2027-10-04": "Labour Day (NSW)"
+      "2027-10-04": "Labour Day (NSW)",
+      "2028-04-15": "Easter Saturday",
+      "2028-04-16": "Easter Sunday",
+      "2028-06-12": "King's Birthday (NSW)",
+      "2028-10-02": "Labour Day (NSW)",
+      "2029-03-31": "Easter Saturday",
+      "2029-04-01": "Easter Sunday",
+      "2029-06-11": "King's Birthday (NSW)",
+      "2029-10-01": "Labour Day (NSW)",
+      "2030-04-20": "Easter Saturday",
+      "2030-04-21": "Easter Sunday",
+      "2030-06-10": "King's Birthday (NSW)",
+      "2030-10-07": "Labour Day (NSW)"
     },
     VIC: {
       "2026-03-09": "Labour Day (VIC)",
+      "2026-04-04": "Easter Saturday",
+      "2026-04-05": "Easter Sunday",
       "2026-04-25": "Anzac Day",
       "2026-06-08": "King's Birthday (VIC)",
+      "2026-09-25": "Friday before AFL Grand Final (VIC)",
       "2026-11-03": "Melbourne Cup Day (VIC)",
       "2027-03-08": "Labour Day (VIC)",
+      "2027-03-27": "Easter Saturday",
+      "2027-03-28": "Easter Sunday",
+      "2027-04-25": "Anzac Day",
       "2027-06-14": "King's Birthday (VIC)",
-      "2027-11-02": "Melbourne Cup Day (VIC)"
+      "2027-09-24": "Friday before AFL Grand Final (VIC)",
+      "2027-11-02": "Melbourne Cup Day (VIC)",
+      "2028-03-13": "Labour Day (VIC)",
+      "2028-04-15": "Easter Saturday",
+      "2028-04-16": "Easter Sunday",
+      "2028-06-12": "King's Birthday (VIC)",
+      "2028-09-29": "Friday before AFL Grand Final (VIC)",
+      "2028-11-07": "Melbourne Cup Day (VIC)",
+      "2029-03-12": "Labour Day (VIC)",
+      "2029-03-31": "Easter Saturday",
+      "2029-04-01": "Easter Sunday",
+      "2029-06-11": "King's Birthday (VIC)",
+      "2029-09-28": "Friday before AFL Grand Final (VIC)",
+      "2029-11-06": "Melbourne Cup Day (VIC)",
+      "2030-03-11": "Labour Day (VIC)",
+      "2030-04-20": "Easter Saturday",
+      "2030-04-21": "Easter Sunday",
+      "2030-06-10": "King's Birthday (VIC)",
+      "2030-09-27": "Friday before AFL Grand Final (VIC)",
+      "2030-11-05": "Melbourne Cup Day (VIC)"
+    },
+    WA: {
+      "2026-03-02": "Labour Day (WA)",
+      "2026-04-05": "Easter Sunday",
+      "2026-04-25": "Anzac Day",
+      "2026-04-27": "Anzac Day (Observed WA)",
+      "2026-06-01": "Western Australia Day",
+      "2026-09-28": "King's Birthday (WA)",
+      "2027-03-01": "Labour Day (WA)",
+      "2027-03-28": "Easter Sunday",
+      "2027-04-25": "Anzac Day",
+      "2027-04-26": "Anzac Day (Observed WA)",
+      "2027-06-07": "Western Australia Day",
+      "2027-09-27": "King's Birthday (WA)",
+      "2028-03-06": "Labour Day (WA)",
+      "2028-04-16": "Easter Sunday",
+      "2028-06-05": "Western Australia Day",
+      "2028-09-25": "King's Birthday (WA)",
+      "2029-03-05": "Labour Day (WA)",
+      "2029-04-01": "Easter Sunday",
+      "2029-06-04": "Western Australia Day",
+      "2029-09-24": "King's Birthday (WA)",
+      "2030-03-04": "Labour Day (WA)",
+      "2030-04-21": "Easter Sunday",
+      "2030-06-03": "Western Australia Day",
+      "2030-09-30": "King's Birthday (WA)"
+    },
+    SA: {
+      "2026-03-09": "Adelaide Cup Day (SA)",
+      "2026-04-04": "Easter Saturday",
+      "2026-04-25": "Anzac Day",
+      "2026-06-08": "King's Birthday (SA)",
+      "2026-10-05": "Labour Day (SA)",
+      "2027-03-08": "Adelaide Cup Day (SA)",
+      "2027-03-27": "Easter Saturday",
+      "2027-04-26": "Anzac Day (Observed SA)",
+      "2027-06-14": "King's Birthday (SA)",
+      "2027-10-04": "Labour Day (SA)",
+      "2028-03-13": "Adelaide Cup Day (SA)",
+      "2028-04-15": "Easter Saturday",
+      "2028-06-12": "King's Birthday (SA)",
+      "2028-10-02": "Labour Day (SA)",
+      "2029-03-12": "Adelaide Cup Day (SA)",
+      "2029-03-31": "Easter Saturday",
+      "2029-06-11": "King's Birthday (SA)",
+      "2029-10-01": "Labour Day (SA)",
+      "2030-03-11": "Adelaide Cup Day (SA)",
+      "2030-04-20": "Easter Saturday",
+      "2030-06-10": "King's Birthday (SA)",
+      "2030-10-07": "Labour Day (SA)"
+    },
+    TAS: {
+      "2026-03-09": "Eight Hours Day (TAS)",
+      "2026-04-07": "Easter Tuesday (TAS Public Service)",
+      "2026-04-25": "Anzac Day",
+      "2026-06-08": "King's Birthday (TAS)",
+      "2027-03-08": "Eight Hours Day (TAS)",
+      "2027-03-30": "Easter Tuesday (TAS Public Service)",
+      "2027-04-25": "Anzac Day",
+      "2027-06-14": "King's Birthday (TAS)",
+      "2028-03-13": "Eight Hours Day (TAS)",
+      "2028-04-18": "Easter Tuesday (TAS Public Service)",
+      "2028-06-12": "King's Birthday (TAS)",
+      "2029-03-12": "Eight Hours Day (TAS)",
+      "2029-04-03": "Easter Tuesday (TAS Public Service)",
+      "2029-06-11": "King's Birthday (TAS)",
+      "2030-03-11": "Eight Hours Day (TAS)",
+      "2030-04-23": "Easter Tuesday (TAS Public Service)",
+      "2030-06-10": "King's Birthday (TAS)"
+    },
+    ACT: {
+      "2026-03-09": "Canberra Day (ACT)",
+      "2026-04-04": "Easter Saturday",
+      "2026-04-05": "Easter Sunday",
+      "2026-04-25": "Anzac Day",
+      "2026-04-27": "Anzac Day (Observed ACT)",
+      "2026-06-01": "Reconciliation Day (ACT)",
+      "2026-06-08": "King's Birthday (ACT)",
+      "2026-10-05": "Labour Day (ACT)",
+      "2027-03-08": "Canberra Day (ACT)",
+      "2027-03-27": "Easter Saturday",
+      "2027-03-28": "Easter Sunday",
+      "2027-04-25": "Anzac Day",
+      "2027-04-26": "Anzac Day (Observed ACT)",
+      "2027-05-31": "Reconciliation Day (ACT)",
+      "2027-06-14": "King's Birthday (ACT)",
+      "2027-10-04": "Labour Day (ACT)",
+      "2028-03-13": "Canberra Day (ACT)",
+      "2028-04-15": "Easter Saturday",
+      "2028-04-16": "Easter Sunday",
+      "2028-05-29": "Reconciliation Day (ACT)",
+      "2028-06-12": "King's Birthday (ACT)",
+      "2028-10-02": "Labour Day (ACT)",
+      "2029-03-12": "Canberra Day (ACT)",
+      "2029-03-31": "Easter Saturday",
+      "2029-04-01": "Easter Sunday",
+      "2029-05-28": "Reconciliation Day (ACT)",
+      "2029-06-11": "King's Birthday (ACT)",
+      "2029-10-01": "Labour Day (ACT)",
+      "2030-03-11": "Canberra Day (ACT)",
+      "2030-04-20": "Easter Saturday",
+      "2030-04-21": "Easter Sunday",
+      "2030-05-27": "Reconciliation Day (ACT)",
+      "2030-06-10": "King's Birthday (ACT)",
+      "2030-10-07": "Labour Day (ACT)"
+    },
+    NT: {
+      "2026-04-04": "Easter Saturday",
+      "2026-04-25": "Anzac Day",
+      "2026-05-04": "May Day (NT)",
+      "2026-06-08": "King's Birthday (NT)",
+      "2026-08-03": "Picnic Day (NT)",
+      "2027-03-27": "Easter Saturday",
+      "2027-04-26": "Anzac Day (Observed NT)",
+      "2027-05-03": "May Day (NT)",
+      "2027-06-14": "King's Birthday (NT)",
+      "2027-08-02": "Picnic Day (NT)",
+      "2028-04-15": "Easter Saturday",
+      "2028-05-01": "May Day (NT)",
+      "2028-06-12": "King's Birthday (NT)",
+      "2028-08-07": "Picnic Day (NT)",
+      "2029-03-31": "Easter Saturday",
+      "2029-05-07": "May Day (NT)",
+      "2029-06-11": "King's Birthday (NT)",
+      "2029-08-06": "Picnic Day (NT)",
+      "2030-04-20": "Easter Saturday",
+      "2030-05-06": "May Day (NT)",
+      "2030-06-10": "King's Birthday (NT)",
+      "2030-08-05": "Picnic Day (NT)"
     }
   };
 
+  var VALID_STATES = ["QLD", "NSW", "VIC", "WA", "SA", "TAS", "ACT", "NT"];
+
   function pad2(n) {
     return n < 10 ? "0" + n : String(n);
+  }
+
+  function easterSundayIso(year) {
+    var a = year % 19;
+    var b = Math.floor(year / 100);
+    var c = year % 100;
+    var d = Math.floor(b / 4);
+    var e = b % 4;
+    var f = Math.floor((b + 8) / 25);
+    var g = Math.floor((b - f + 1) / 3);
+    var h = (19 * a + b - d - g + 15) % 30;
+    var i = Math.floor(c / 4);
+    var k = c % 4;
+    var l = (32 + 2 * e + 2 * i - h - k) % 7;
+    var m = Math.floor((a + 11 * h + 22 * l) / 451);
+    var month = Math.floor((h + l - 7 * m + 114) / 31);
+    var day = ((h + l - 7 * m + 114) % 31) + 1;
+    return year + "-" + pad2(month) + "-" + pad2(day);
   }
 
   function parseIsoLocal(isoStr) {
@@ -70,6 +311,10 @@
     return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
   }
 
+  function addCalendarDays(d, days) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() + days, 12, 0, 0, 0);
+  }
+
   function todayBrisbaneIso() {
     try {
       var parts = new Intl.DateTimeFormat("en-CA", {
@@ -85,21 +330,41 @@
     return formatIsoLocal(new Date());
   }
 
+  function getDynamicFallbackHoliday(isoStr) {
+    var d = parseIsoLocal(isoStr);
+    if (!d) return null;
+    var y = d.getFullYear();
+    if (y <= 2030) return null;
+    var md = isoStr.slice(5);
+    if (md === "01-01") return "New Year's Day";
+    if (md === "01-26") return "Australia Day";
+    if (md === "04-25") return "Anzac Day";
+    if (md === "12-25") return "Christmas Day";
+    if (md === "12-26") return "Boxing Day";
+    var es = parseIsoLocal(easterSundayIso(y));
+    if (es) {
+      if (formatIsoLocal(addCalendarDays(es, -2)) === isoStr) return "Good Friday";
+      if (formatIsoLocal(addCalendarDays(es, 1)) === isoStr) return "Easter Monday";
+    }
+    return null;
+  }
+
+  function normalizeStateCode(stateCode) {
+    var st = (stateCode || "QLD").toUpperCase().trim();
+    return VALID_STATES.indexOf(st) !== -1 ? st : "QLD";
+  }
+
   function getHolidayName(isoStr, stateCode) {
-    var st = (stateCode || "QLD").toUpperCase();
+    var st = normalizeStateCode(stateCode);
     if (NATIONAL_HOLIDAYS[isoStr]) return NATIONAL_HOLIDAYS[isoStr];
     if (STATE_HOLIDAYS[st] && STATE_HOLIDAYS[st][isoStr]) return STATE_HOLIDAYS[st][isoStr];
-    return null;
+    return getDynamicFallbackHoliday(isoStr);
   }
 
   function isBusinessDay(d, stateCode) {
     var dow = d.getDay();
     if (dow === 0 || dow === 6) return false;
     return !getHolidayName(formatIsoLocal(d), stateCode);
-  }
-
-  function addCalendarDays(d, days) {
-    return new Date(d.getFullYear(), d.getMonth(), d.getDate() + days, 12, 0, 0, 0);
   }
 
   function addYearsMonthsClamped(isoStr, years, months, extraDays) {
@@ -116,12 +381,38 @@
     return base;
   }
 
-  function computeSafePriorBusinessIso(statutoryIso, daysBefore, stateCode) {
+  function rollForwardBusinessDay(rawDateObj, stateCode) {
+    var st = normalizeStateCode(stateCode);
+    var finalDate = new Date(rawDateObj.getTime());
+    var reasons = [];
+    var guard = 0;
+    while (!isBusinessDay(finalDate, st) && guard < 14) {
+      var iso = formatIsoLocal(finalDate);
+      var hName = getHolidayName(iso, st);
+      var dow = finalDate.getDay();
+      if (hName) reasons.push(hName);
+      else if (dow === 6) reasons.push("Saturday");
+      else if (dow === 0) reasons.push("Sunday");
+      finalDate = addCalendarDays(finalDate, 1);
+      guard += 1;
+    }
+    return {
+      rawDate: formatIsoLocal(rawDateObj),
+      statutoryDate: formatIsoLocal(finalDate),
+      finalDateObj: finalDate,
+      rolledReason: reasons.length > 0 ? reasons.join(" / ") : null,
+      state: st
+    };
+  }
+
+  function computeSafePriorBusinessIso(statutoryIso, daysBefore, stateCode, startFloorIso) {
     var stat = parseIsoLocal(statutoryIso);
     if (!stat) return "-";
+    var st = normalizeStateCode(stateCode);
+    var floorObj = startFloorIso ? parseIsoLocal(startFloorIso) : null;
     var safe = addCalendarDays(stat, -(daysBefore || 30));
     var guard = 0;
-    while (!isBusinessDay(safe, stateCode || "QLD") && guard < 10) {
+    while ((!floorObj || safe > floorObj) && !isBusinessDay(safe, st) && guard < 15) {
       safe = addCalendarDays(safe, -1);
       guard += 1;
     }
@@ -136,6 +427,12 @@
   }
 
   var ParkCoDates = {
+    NATIONAL_HOLIDAYS: NATIONAL_HOLIDAYS,
+    STATE_HOLIDAYS: STATE_HOLIDAYS,
+    VALID_STATES: VALID_STATES,
+    easterSundayIso: easterSundayIso,
+    getDynamicFallbackHoliday: getDynamicFallbackHoliday,
+    normalizeStateCode: normalizeStateCode,
     parseIsoLocal: parseIsoLocal,
     formatIsoLocal: formatIsoLocal,
     todayBrisbaneIso: todayBrisbaneIso,
@@ -143,6 +440,7 @@
     isBusinessDay: isBusinessDay,
     addCalendarDays: addCalendarDays,
     addYearsMonthsClamped: addYearsMonthsClamped,
+    rollForwardBusinessDay: rollForwardBusinessDay,
     computeSafePriorBusinessIso: computeSafePriorBusinessIso,
     diffDaysBetweenIso: diffDaysBetweenIso,
     diffDaysFromTodayBrisbane: function (targetIso) {
@@ -155,7 +453,15 @@
      2. PUBLISHED FCFCOA PRECEDENT DATASET (s 114Q(2) Approved Pseudonyms)
      ========================================================================== */
   var currentLang = "ko";
-  var KRW_PER_AUD = 910;
+  var DEFAULT_KRW_PER_AUD = 900;
+  var TITLE_KO = "호주 가족법 · 한·호 재산분할 판례 매칭 · 양육권 내비게이터 | 법무법인 박앤코 (Park & Co Lawyers)";
+  var TITLE_EN = "Australian Family Law, Property Precedent Matcher & Parenting Navigator | Park & Co Lawyers";
+
+  var liveFeeMetrics = {
+    divorceFee: "$1,170 (Reduced $390)",
+    consentOrdersFee: "$215",
+    initiatingFee: "$455 / $740"
+  };
 
   var toolActive = {
     m1: false,
@@ -542,11 +848,20 @@
     btnSampleAll: "예시 데이터 불러오기",
     btnResetAll: "초기화",
     m1Title: "1. 이혼 12개월 별거 & 재산분할 제척기간 계산기",
-    m1Desc: "재산분할은 별거 직후 바로 시작할 수 있으나 이혼 확정 후 12개월(법률혼 s 44(3)) 또는 별거 후 2년(사실혼 s 44(5)) 안에 신청해야 합니다.",
-    m1FormHeading: "관계 유형 · 별거일 · 이혼 확정일 입력",
+    m1Desc: "재산분할은 별거 직후 바로 시작할 수 있으나 이혼 확정 후 12개월(법률혼 s 44(3)) 또는 별거 후 2년(사실혼 s 44(5) · 주말·공휴일 도래 시 s 36(2) 익영업일 연장) 안에 신청해야 합니다.",
+    m1FormHeading: "관할 주 · 관계 유형 · 별거일 · 이혼 확정일 입력",
+    lblFamState: "거주·관할 주/준주 (s 36(2) 공휴일 연장 및 서호주 관할 판정)",
+    optStateQLD: "퀸즐랜드 (QLD · 브리즈번 / 골드코스트)",
+    optStateNSW: "뉴사우스웨일스 (NSW · 시드니 / 파라마타)",
+    optStateVIC: "빅토리아 (VIC · 멜버른)",
+    optStateWA: "서호주 (WA · 퍼스 · Family Court of WA 관할)",
+    optStateSA: "남호주 (SA · 애들레이드)",
+    optStateTAS: "태즈메이니아 (TAS · 호바트)",
+    optStateACT: "호주수도특별구 (ACT · 캔버라)",
+    optStateNT: "북부준주 (NT · 다윈)",
     lblRelType: "혼인 / 사실혼(De Facto) 구분",
     optRelMarried: "법률혼 부부 (s 79 재산분할 · 이혼 확정 후 12개월 기한)",
-    optRelDefacto: "사실혼 커플 (s 90SM 재산분할 · 별거 후 2년 기한)",
+    optRelDefacto: "사실혼 커플 (s 90SM / WA Part 5A · 별거 후 2년 기한)",
     lblSepDate: "최종 별거 시작일 (Date of Final Separation)",
     lblOneRoof: "한집 별거 (Separation Under One Roof, s 49(2)) 포함 여부",
     optRoofNo: "별도 거주로 완전 분리 별거",
@@ -554,13 +869,16 @@
     lblDivorceDate: "이혼 명령 확정일 (이미 이혼이 확정된 법률혼인 경우만 입력)",
     m1ResultHeading: "이혼 신청 가능일 & 재산분할 법정 제척기간 판정",
     m2Title: "2. 한·호 전 세계 자산 풀(s 71B) & 법원 재산분할 판례 매칭",
-    m2Desc: "호주·한국 자산을 합산해 유사 조건에서 연방순회·가족법원(FCFCOA)이 실제로 선고한 공개 판결 비율을 비교합니다.",
+    m2Desc: "호주·한국 자산·부채를 실시간 환율로 합산해 s 71B 1페이지 재산공개 명세서를 생성하고 연방순회·가족법원(FCFCOA) 공개 판결 비율을 비교합니다.",
     ethicsBannerBody: "<strong>법률·윤리 고지 (ASCR r 36.1 & FLA s 114Q(2)):</strong> 호주 가족법 재산분할은 정해진 수학 공식이 아니라 재판부의 종합 재량 판단(<code>Stanford (2012)</code>)에 따릅니다. 이 도구는 특정 비율을 보장하지 않으며 법원 승인 가명(<code>s 114Q(2)</code>)으로 공개된 실제 선고 판례만 비교 참고용으로 제시합니다.",
     ethicsCheckboxLabel: "위 고지사항(재산분할은 법원의 재량 판단이며 아래는 실제 선고된 유사 판례 샘플임)을 확인합니다.",
-    m2FormHeading: "한·호 자산 내역 및 사건 조건 선택",
-    lblAusNet: "호주 내 비연금 순자산 합계 (주택 지분 + 예금 + 사업체 - 대출, AUD $)",
+    m2FormHeading: "한·호 자산·부채 내역 · 환율 및 사건 조건 선택",
+    lblAusNet: "호주 내 비연금 자산 (부동산·예금·사업체·차량, AUD $)",
+    lblAusDebt: "호주 내 부채 공제액 (주택담보대출·개인대출·세금 미납액, 선택 입력 AUD $)",
     lblAusSuper: "호주 부부 합산 슈퍼애뉴에이션 (Combined Superannuation, AUD $)",
-    lblKorKrw: "한국 내 순자산 합계 (아파트·전세보증금·예금·연금, 만원 단위 · 예: 45000 = 4.5억원)",
+    lblKorKrw: "한국 내 자산 합계 (부동산·전세보증금·예금·퇴직연금, 만원 단위)",
+    lblKorDebtKrw: "한국 내 부채 공제액 (주담대·전세반환채무·신용대출, 선택 만원 단위)",
+    lblKrwRate: "적용 환율 (1 AUD당 원화 KRW ₩ · 실시간 수정 가능)",
     lblMatchDuration: "동거 및 혼인 합산 기간",
     optDurAll: "전체 기간 판례 보기",
     optDurShort: "단기 혼인·동거 (5년 미만 · 초기 자금 기여도 비중이 큰 구간)",
@@ -670,11 +988,20 @@
     btnSampleAll: "Load Sample Data",
     btnResetAll: "Reset",
     m1Title: "1. 12-Month Separation & Property Limitation Calculator",
-    m1Desc: "Property settlement can begin immediately upon separation, subject to strict deadlines: 12 months after divorce (s 44(3)) or 2 years after de facto separation (s 44(5)).",
-    m1FormHeading: "Relationship Type, Separation Date & Divorce Order Date",
+    m1Desc: "Property settlement can begin immediately upon separation, subject to strict deadlines: 12 months after divorce (s 44(3)) or 2 years after de facto separation (s 44(5), extended to next business day under s 36(2)).",
+    m1FormHeading: "State/Territory, Relationship Type, Separation & Divorce Date",
+    lblFamState: "State / Territory Registry (s 36(2) Public Holiday Rollover & WA Jurisdiction)",
+    optStateQLD: "Queensland (QLD · Brisbane / Gold Coast)",
+    optStateNSW: "New South Wales (NSW · Sydney / Parramatta)",
+    optStateVIC: "Victoria (VIC · Melbourne)",
+    optStateWA: "Western Australia (WA · Perth · Family Court of WA)",
+    optStateSA: "South Australia (SA · Adelaide)",
+    optStateTAS: "Tasmania (TAS · Hobart)",
+    optStateACT: "Australian Capital Territory (ACT · Canberra)",
+    optStateNT: "Northern Territory (NT · Darwin)",
     lblRelType: "Relationship Type (Married vs De Facto)",
     optRelMarried: "Married Couple (s 79 Property Division · 12-month post-divorce limit)",
-    optRelDefacto: "De Facto Couple (s 90SM Property Division · 2-year post-separation limit)",
+    optRelDefacto: "De Facto Couple (s 90SM / WA Part 5A · 2-year post-separation limit)",
     lblSepDate: "Date of Final Separation",
     lblOneRoof: "Separation Under One Roof (s 49(2)) Involved?",
     optRoofNo: "Physical separation in separate residences",
@@ -682,13 +1009,16 @@
     lblDivorceDate: "Divorce Order Effective Date (Optional · only if already divorced)",
     m1ResultHeading: "Divorce Eligibility Date & Dual Statutory Limitation Deadlines",
     m2Title: "2. AUS+KOR Asset Pool (s 71B) & FCFCOA Property Precedent Matcher",
-    m2Desc: "Combine Australian and South Korean assets (s 71B) and review actual FCFCOA division splits in published judgments matching your profile.",
+    m2Desc: "Convert South Korean and Australian assets/liabilities at a live KRW/AUD rate, generate a 1-page s 71B disclosure summary, and review published FCFCOA division splits.",
     ethicsBannerBody: "<strong>Legal & Ethical Notice (ASCR r 36.1 & FLA s 114Q(2)):</strong> Australian property division is a holistic discretionary synthesis (<code>Stanford (2012)</code>), not a fixed formula. This tool does not predict or guarantee a specific split; it displays anonymized published Court judgments (<code>s 114Q(2)</code>) for reference only.",
     ethicsCheckboxLabel: "I acknowledge that property division is discretionary and the cases below are published precedent samples only.",
-    m2FormHeading: "Enter AUS/KOR Asset Pool & Precedent Filters",
-    lblAusNet: "Australian Net Non-Super Assets (Property Equity + Cash + Business - Debt, AUD $)",
+    m2FormHeading: "Enter AUS/KOR Assets, Liabilities, KRW Rate & Precedent Filters",
+    lblAusNet: "Australian Non-Super Assets (Property, Cash, Business, Vehicles, AUD $)",
+    lblAusDebt: "Australian Liabilities to Deduct (Mortgages, Loans, Tax Debt, Optional AUD $)",
     lblAusSuper: "Combined Australian Superannuation Pool (AUD $)",
-    lblKorKrw: "South Korean Net Assets (Real Estate + Jeonse + Savings/Pension, in 10,000 KRW units)",
+    lblKorKrw: "South Korean Assets (Real Estate, Jeonse, Savings, Pension, in 10,000 KRW units)",
+    lblKorDebtKrw: "South Korean Liabilities to Deduct (Mortgages, Jeonse Return, Loans, Optional 10,000 KRW)",
+    lblKrwRate: "KRW / AUD Exchange Rate (KRW ₩ per 1 AUD · Editable in real time)",
     lblMatchDuration: "Relationship Duration Band",
     optDurAll: "All Relationship Durations",
     optDurShort: "Short Relationship (<5 years · Initial capital heavily weighted)",
@@ -787,22 +1117,162 @@
   /* ==========================================================================
      5. PURE CALCULATION & DYNAMIC MATCHING ENGINE (Testable in Node VM)
      ========================================================================== */
+  function buildWaDefactoAlertHtml(lang) {
+    if (lang === "en") {
+      return (
+        '<div class="wa-jurisdiction-alert" data-wa-defacto-notice="true">' +
+          '<strong>Western Australia De Facto Jurisdiction Notice (Family Court of WA · Part VIIIC):</strong><br/>' +
+          '• <strong>Separate State Court Jurisdiction:</strong> Western Australia did not refer de facto financial matters to the Commonwealth. Proceedings are governed by the <strong>Family Court of Western Australia (<code>Family Court Act 1997 (WA)</code>, Part 5A · s 205ZB 2-year limitation)</strong> rather than FCFCOA (<code>s 90SM</code>).<br/>' +
+          '• <strong>WA De Facto Superannuation Splitting (Part VIIIC):</strong> Historically WA de facto couples faced strict superannuation splitting bars. Following the <code>Family Law Amendment (Western Australia De Facto Superannuation Splitting and Other Measures) Act 2020 (Cth)</code>, superannuation splitting is governed by <strong><code>Part VIIIC</code> of the <code>Family Law Act 1975 (Cth)</code></strong> and requires dedicated FCWA / Part VIIIC procedural forms (not standard FCFCOA Application for Consent Orders).' +
+        '</div>'
+      );
+    }
+    return (
+      '<div class="wa-jurisdiction-alert" data-wa-defacto-notice="true">' +
+        '<strong>서호주(WA) 사실혼(De Facto) 특별 관할 주의 (Family Court of WA · Part VIIIC):</strong><br/>' +
+        '• <strong>서호주 독자 법원 관할:</strong> 서호주(WA)는 사실혼 재산분할 입법 권한을 연방에 위임하지 않았으므로 연방순회·가족법원(FCFCOA · <code>s 90SM</code>)이 아닌 <strong>서호주 가족법원(Family Court of Western Australia · <code>Family Court Act 1997 (WA)</code> Part 5A · 제205ZB조 별거 후 2년 제척기간)</strong>이 전속 관할합니다.<br/>' +
+        '• <strong>서호주 사실혼 슈퍼애뉴에이션 분할 (Part VIIIC):</strong> 과거 서호주 사실혼 커플은 퇴직연금(Superannuation) 분할이 제한되었으나 <code>Family Law Amendment (Western Australia De Facto Superannuation Splitting and Other Measures) Act 2020 (Cth)</code> 시행으로 연방 <code>Family Law Act 1975 (Cth)</code> <strong><code>Part VIIIC</code></strong>에 따라 연금 분할이 가능해졌습니다. 반드시 FCFCOA 일반 서식이 아닌 <strong>FCWA · Part VIIIC 전용 절차 서식</strong>을 사용해야 합니다.' +
+      '</div>'
+    );
+  }
+
+  function buildS71bDisclosureSummary(params, lang) {
+    var p = params || {};
+    var isEn = lang === "en";
+    var stateCode = ParkCoDates.normalizeStateCode(p.stateCode || "QLD");
+    var relType = p.relType === "defacto" ? "defacto" : "married";
+    var isWaDefacto = stateCode === "WA" && relType === "defacto";
+    var ausAssets = Math.max(0, Number(p.ausAssets) || 0);
+    var ausDebt = Math.max(0, Number(p.ausDebt) || 0);
+    var ausNet = Math.max(0, ausAssets - ausDebt);
+    var ausSuper = Math.max(0, Number(p.ausSuper) || 0);
+    var korAssetsManwon = Math.max(0, Number(p.korAssetsManwon) || 0);
+    var korDebtManwon = Math.max(0, Number(p.korDebtManwon) || 0);
+    var korNetManwon = Math.max(0, korAssetsManwon - korDebtManwon);
+    var krwRate = Math.max(1, Number(p.krwRate) || DEFAULT_KRW_PER_AUD);
+
+    var korAssetsKrw = Math.round(korAssetsManwon * 10000);
+    var korDebtKrw = Math.round(korDebtManwon * 10000);
+    var korNetKrw = Math.max(0, korAssetsKrw - korDebtKrw);
+    var korAssetsAud = Math.round(korAssetsKrw / krwRate);
+    var korDebtAud = Math.round(korDebtKrw / krwRate);
+    var korNetAud = Math.round(korNetKrw / krwRate);
+
+    var totalGrossAud = Math.round(ausAssets + ausSuper + korAssetsAud);
+    var totalDebtAud = Math.round(ausDebt + korDebtAud);
+    var totalPoolAud = Math.round(ausNet + ausSuper + korNetAud);
+    var dateIso = p.dateIso || ParkCoDates.todayBrisbaneIso();
+
+    if (isEn) {
+      var linesEn = [
+        "====================================================================",
+        "1-PAGE KR–AU COMBINED FINANCIAL DISCLOSURE SUMMARY (FLA s 71B)",
+        "Park & Co Lawyers · FCFCOA / Family Law Duty of Full & Frank Disclosure",
+        "====================================================================",
+        "• Date Prepared: " + dateIso + " | Registry / State: " + stateCode + " (" + REL_LABELS[relType].en + ")",
+        "• Applied Exchange Rate: 1 AUD = ₩" + krwRate.toLocaleString("en-AU") + " KRW (User-editable real-time rate)",
+        "--------------------------------------------------------------------",
+        "[A] AUSTRALIAN ASSETS, SUPERANNUATION & LIABILITIES (AUD $)",
+        "  1. Australian Non-Super Assets (Real Property, Bank, Business): $" + Math.round(ausAssets).toLocaleString("en-AU") + " AUD",
+        "  2. Less Australian Liabilities (Mortgages, Loans, Tax):        -$" + Math.round(ausDebt).toLocaleString("en-AU") + " AUD",
+        "  3. Australian Net Non-Super Pool:                               $" + Math.round(ausNet).toLocaleString("en-AU") + " AUD",
+        "  4. Combined Australian Superannuation Pool:                     $" + Math.round(ausSuper).toLocaleString("en-AU") + " AUD",
+        "--------------------------------------------------------------------",
+        "[B] SOUTH KOREAN ASSETS & LIABILITIES (Mandatory Worldwide Pool · s 71B)",
+        "  5. Korean Gross Assets (Real Estate, Jeonse, Deposits, Pension): ₩" + korAssetsKrw.toLocaleString("en-AU") + " (≈ $" + korAssetsAud.toLocaleString("en-AU") + " AUD)",
+        "  6. Less Korean Liabilities (Mortgage, Jeonse Return, Loans):    -₩" + korDebtKrw.toLocaleString("en-AU") + " (≈ -$" + korDebtAud.toLocaleString("en-AU") + " AUD)",
+        "  7. South Korean Net Asset Pool (Converted):                      ₩" + korNetKrw.toLocaleString("en-AU") + " (≈ $" + korNetAud.toLocaleString("en-AU") + " AUD)",
+        "--------------------------------------------------------------------",
+        "[C] COMBINED WORLDWIDE ASSET POOL SUMMARY (AUS + KOR)",
+        "  • Combined Gross Assets + Super: $" + totalGrossAud.toLocaleString("en-AU") + " AUD",
+        "  • Combined Total Liabilities:   -$" + totalDebtAud.toLocaleString("en-AU") + " AUD",
+        "  • NET WORLDWIDE DIVISIBLE POOL:  $" + totalPoolAud.toLocaleString("en-AU") + " AUD"
+      ];
+      if (isWaDefacto) {
+        linesEn.push("  • WA De Facto Note: Proceedings run in Family Court of WA (Family Court Act 1997 (WA) Part 5A; Super splitting under FLA Part VIIIC).");
+      }
+      linesEn.push(
+        "--------------------------------------------------------------------",
+        "Statutory Note: Under s 71B of the Family Law Act 1975 (Cth) (effective 10 June 2025) and FCFCOA (Family Law) Rules 2021, both parties owe a strict duty of full and frank disclosure of all direct/indirect worldwide property, Jeonse deposits, bank accounts, pensions, and liabilities.",
+        "Official Consultation: Park & Co Lawyers | enquiry@parkcolawyers.com | https://parklawyers.com.au/links/?lang=en"
+      );
+      return linesEn.join("\n");
+    }
+
+    var linesKo = [
+      "====================================================================",
+      "[한·호 통합 자산·부채 1페이지 공개 명세서 (Family Law Act s 71B)]",
+      "법무법인 박앤코 (Park & Co Lawyers) · 연방순회·가족법원(FCFCOA) 성실 공개 의무",
+      "====================================================================",
+      "• 작성 기준일: " + dateIso + " | 관할 주/준주: " + stateCode + " (" + REL_LABELS[relType].ko + ")",
+      "• 적용 환율: 1 AUD = ₩" + krwRate.toLocaleString("en-AU") + " 원 (실시간 지정 환율)",
+      "--------------------------------------------------------------------",
+      "[A] 호주 내 자산 · 슈퍼애뉴에이션 · 부채 내역 (AUD $)",
+      "  1. 호주 비연금 자산 (부동산·예금·사업체·차량): $" + Math.round(ausAssets).toLocaleString("en-AU") + " AUD",
+      "  2. 호주 부채 공제 (주택담보대출·개인대출·세금): -$" + Math.round(ausDebt).toLocaleString("en-AU") + " AUD",
+      "  3. 호주 비연금 순자산 소계:                     $" + Math.round(ausNet).toLocaleString("en-AU") + " AUD",
+      "  4. 호주 부부 합산 슈퍼애뉴에이션 (Super):       $" + Math.round(ausSuper).toLocaleString("en-AU") + " AUD",
+      "--------------------------------------------------------------------",
+      "[B] 한국 내 자산 · 부채 내역 (s 71B 전 세계 의무 공개 대상)",
+      "  5. 한국 총자산 (아파트·전세보증금·예금·연금):   ₩" + korAssetsKrw.toLocaleString("en-AU") + "원 (" + korAssetsManwon.toLocaleString("en-AU") + "만원 · 약 $" + korAssetsAud.toLocaleString("en-AU") + " AUD)",
+      "  6. 한국 부채 공제 (주담대·전세반환·신용대출):  -₩" + korDebtKrw.toLocaleString("en-AU") + "원 (" + korDebtManwon.toLocaleString("en-AU") + "만원 · 약 -$" + korDebtAud.toLocaleString("en-AU") + " AUD)",
+      "  7. 한국 순자산 소계 (호주달러 환산):            ₩" + korNetKrw.toLocaleString("en-AU") + "원 (약 $" + korNetAud.toLocaleString("en-AU") + " AUD)",
+      "--------------------------------------------------------------------",
+      "[C] 한·호 전 세계 통합 순자산 풀 합계 (Worldwide Divisible Pool)",
+      "  • 한·호 총자산 + Super 합계: $" + totalGrossAud.toLocaleString("en-AU") + " AUD",
+      "  • 한·호 총부채 공제 합계:   -$" + totalDebtAud.toLocaleString("en-AU") + " AUD",
+      "  • 최종 통합 순자산 풀(Net):  $" + totalPoolAud.toLocaleString("en-AU") + " AUD"
+    ];
+    if (isWaDefacto) {
+      linesKo.push("  • 서호주(WA) 사실혼 관할 고지: Family Court of WA (Family Court Act 1997 (WA) Part 5A) 및 연금 분할 FLA Part VIIIC 전용 서식 적용.");
+    }
+    linesKo.push(
+      "--------------------------------------------------------------------",
+      "법정 고지: 호주 가족법 제71B조(2025.6.10 시행) 및 연방순회·가족법원(FCFCOA) 규칙에 따라 호주와 한국에 보유한 모든 부동산·전세보증금·예금·퇴직연금·부채를 성실히 공개해야 합니다.",
+      "공식 상담 문의: 법무법인 박앤코 | enquiry@parkcolawyers.com | https://parklawyers.com.au/links/?lang=ko"
+    );
+    return linesKo.join("\n");
+  }
+
+  var TOOL_DEEPLINK_MAP = {
+    separation: { sectionId: "separation-deadlines", toolKey: "m1" },
+    deadline: { sectionId: "separation-deadlines", toolKey: "m1" },
+    property: { sectionId: "property-precedent-matcher", toolKey: "m2" },
+    parenting: { sectionId: "parenting-relocation", toolKey: "m3" },
+    safety: { sectionId: "partner-visa-crossover", toolKey: "m4", alsoActivate: "m3" },
+    visa: { sectionId: "partner-visa-crossover", toolKey: "m4" }
+  };
+
+  function resolveToolDeepLink(rawTool) {
+    if (!rawTool || typeof rawTool !== "string") return null;
+    var key = rawTool.trim().toLowerCase();
+    return TOOL_DEEPLINK_MAP[key] || null;
+  }
+
   function evaluateSeparationDeadlinesPure(params) {
     var relType = params.relType === "defacto" ? "defacto" : "married";
+    var stateCode = ParkCoDates.normalizeStateCode(params.stateCode || "QLD");
+    var isWaDefacto = stateCode === "WA" && relType === "defacto";
     var sepStr = (params.sepStr || "").trim();
     var divStr = (params.divStr || "").trim();
     var oneRoof = !!params.oneRoof;
     var refToday = params.todayIso || ParkCoDates.todayBrisbaneIso();
 
     if (!sepStr && !divStr) {
-      return { status: "neutral", relType: relType, relLabel: REL_LABELS[relType] };
+      return {
+        status: "neutral",
+        relType: relType,
+        stateCode: stateCode,
+        isWaDefacto: isWaDefacto,
+        relLabel: REL_LABELS[relType]
+      };
     }
 
     if (sepStr && !ParkCoDates.parseIsoLocal(sepStr)) {
-      return { status: "error", code: "invalid_sep_date", relType: relType };
+      return { status: "error", code: "invalid_sep_date", relType: relType, stateCode: stateCode, isWaDefacto: isWaDefacto };
     }
     if (divStr && !ParkCoDates.parseIsoLocal(divStr)) {
-      return { status: "error", code: "invalid_div_date", relType: relType };
+      return { status: "error", code: "invalid_div_date", relType: relType, stateCode: stateCode, isWaDefacto: isWaDefacto };
     }
     if (sepStr && divStr && divStr < sepStr) {
       return {
@@ -810,7 +1280,9 @@
         code: "divorce_before_separation",
         sepStr: sepStr,
         divStr: divStr,
-        relType: relType
+        relType: relType,
+        stateCode: stateCode,
+        isWaDefacto: isWaDefacto
       };
     }
 
@@ -820,36 +1292,59 @@
       eligibleDivorceIso = ParkCoDates.formatIsoLocal(eligObj);
     }
 
+    var rawPropDeadlineIso = null;
     var propDeadlineIso = null;
     var propSafeIso = null;
+    var propSafe1dIso = null;
+    var propRolledReason = null;
     var propDaysLeft = null;
-    var leaveSection = relType === "married" ? "s 44(3)" : "s 44(6)";
+    var limitationSection = relType === "married"
+      ? "s 44(3)"
+      : (isWaDefacto ? "s 205ZB(1) (FCA 1997 WA) / s 44(5)" : "s 44(5)");
+    var leaveSection = relType === "married"
+      ? "s 44(3)"
+      : (isWaDefacto ? "s 205ZB(2) (FCA 1997 WA) / s 44(6)" : "s 44(6)");
 
     if (relType === "defacto" && sepStr) {
       var dfLimObj = ParkCoDates.addYearsMonthsClamped(sepStr, 2, 0, 0);
-      propDeadlineIso = ParkCoDates.formatIsoLocal(dfLimObj);
-      propSafeIso = ParkCoDates.computeSafePriorBusinessIso(propDeadlineIso, 30, "QLD");
+      var dfRoll = ParkCoDates.rollForwardBusinessDay(dfLimObj, stateCode);
+      rawPropDeadlineIso = dfRoll.rawDate;
+      propDeadlineIso = dfRoll.statutoryDate;
+      propRolledReason = dfRoll.rolledReason;
+      propSafeIso = ParkCoDates.computeSafePriorBusinessIso(propDeadlineIso, 30, stateCode, sepStr);
+      propSafe1dIso = ParkCoDates.computeSafePriorBusinessIso(propDeadlineIso, 1, stateCode, sepStr);
       propDaysLeft = ParkCoDates.diffDaysBetweenIso(refToday, propDeadlineIso);
     } else if (relType === "married" && divStr) {
       var mLimObj = ParkCoDates.addYearsMonthsClamped(divStr, 1, 0, 0);
-      propDeadlineIso = ParkCoDates.formatIsoLocal(mLimObj);
-      propSafeIso = ParkCoDates.computeSafePriorBusinessIso(propDeadlineIso, 30, "QLD");
+      var mRoll = ParkCoDates.rollForwardBusinessDay(mLimObj, stateCode);
+      rawPropDeadlineIso = mRoll.rawDate;
+      propDeadlineIso = mRoll.statutoryDate;
+      propRolledReason = mRoll.rolledReason;
+      propSafeIso = ParkCoDates.computeSafePriorBusinessIso(propDeadlineIso, 30, stateCode, divStr);
+      propSafe1dIso = ParkCoDates.computeSafePriorBusinessIso(propDeadlineIso, 1, stateCode, divStr);
       propDaysLeft = ParkCoDates.diffDaysBetweenIso(refToday, propDeadlineIso);
     }
 
     return {
       status: "ok",
       relType: relType,
+      stateCode: stateCode,
+      isWaDefacto: isWaDefacto,
       relLabel: REL_LABELS[relType],
       sepStr: sepStr || null,
       divStr: divStr || null,
       oneRoof: oneRoof,
       eligibleDivorceIso: eligibleDivorceIso,
+      rawPropDeadlineIso: rawPropDeadlineIso,
       propDeadlineIso: propDeadlineIso,
+      propRolledReason: propRolledReason,
       propSafeIso: propSafeIso,
+      propSafe1dIso: propSafe1dIso,
+      safeDate: propSafe1dIso,
       propDaysLeft: propDaysLeft,
       isOverdue: typeof propDaysLeft === "number" && propDaysLeft < 0,
       overdueDays: typeof propDaysLeft === "number" && propDaysLeft < 0 ? Math.abs(propDaysLeft) : 0,
+      limitationSection: limitationSection,
       leaveSection: leaveSection
     };
   }
@@ -988,12 +1483,23 @@
     FCFCOA_PRECEDENT_CASES: FCFCOA_PRECEDENT_CASES,
     evaluateSeparationDeadlinesPure: evaluateSeparationDeadlinesPure,
     matchPropertyPrecedentsPure: matchPropertyPrecedentsPure,
-    evaluateVisaBreakdownPure: evaluateVisaBreakdownPure
+    evaluateVisaBreakdownPure: evaluateVisaBreakdownPure,
+    buildWaDefactoAlertHtml: buildWaDefactoAlertHtml,
+    buildS71bDisclosureSummary: buildS71bDisclosureSummary,
+    resolveToolDeepLink: resolveToolDeepLink
   };
 
   /* ==========================================================================
      6. DOM RENDERING CONTROLLERS
      ========================================================================== */
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
   function renderNeutralPrompt(btnId, textKo, textEn) {
     return (
       '<div class="neutral-prompt">' +
@@ -1009,6 +1515,7 @@
   }
 
   function calcSeparationDeadlines() {
+    var stateCode = ParkCoDates.normalizeStateCode((document.getElementById("fam-state") || {}).value || "QLD");
     var relType = (document.getElementById("fam-rel-type") || {}).value || "married";
     var sepStr = (document.getElementById("fam-sep-date") || {}).value || "";
     var oneRoof = (document.getElementById("fam-one-roof") || {}).value === "yes";
@@ -1016,6 +1523,7 @@
     var out = document.getElementById("fam-deadline-output");
 
     var res = evaluateSeparationDeadlinesPure({
+      stateCode: stateCode,
       relType: relType,
       sepStr: sepStr,
       divStr: divStr,
@@ -1023,17 +1531,19 @@
     });
 
     if (out) {
+      var waAlert = res.isWaDefacto ? buildWaDefactoAlertHtml(currentLang) : "";
+
       if (!toolActive.m1 && res.status === "neutral") {
-        out.innerHTML = renderNeutralPrompt(
+        out.innerHTML = waAlert + renderNeutralPrompt(
           "btn-sample-m1",
-          "왼쪽에서 최종 별거 시작일(또는 이혼 확정일)을 선택하면 12개월 별거 충족일과 재산분할 보수적 안전 신청 권고일·법정 제소 마감일을 함께 계산합니다.",
-          "Enter your final separation date (or divorce effective date) on the left to calculate your earliest divorce filing date and dual safe/statutory property deadlines."
+          "왼쪽에서 관할 주/준주와 최종 별거 시작일(또는 이혼 확정일)을 선택하면 12개월 별거 충족일과 재산분할 보수적 안전 신청 권고일·법정 제소 마감일(s 36(2) 주말·공휴일 연장 포함)을 함께 계산합니다.",
+          "Select your State/Territory and final separation date (or divorce effective date) on the left to calculate your earliest divorce filing date and dual safe/statutory property deadlines (incl. s 36(2) holiday rollovers)."
         );
         return res;
       }
 
       if (res.status === "neutral") {
-        out.innerHTML = renderNeutralPrompt(
+        out.innerHTML = waAlert + renderNeutralPrompt(
           "btn-sample-m1",
           "최종 별거 시작일 또는 이혼 명령 확정일을 입력해 주십시오.",
           "Please enter a final separation date or divorce order effective date."
@@ -1049,29 +1559,34 @@
           : (currentLang === "ko"
               ? "<strong>입력 오류:</strong> 올바른 날짜 형식(YYYY-MM-DD)을 입력해 주십시오."
               : "<strong>Input Error:</strong> Please enter a valid date (YYYY-MM-DD).");
-        out.innerHTML = '<div class="alert-box alert-box--danger">' + errMsg + '</div>';
+        out.innerHTML = waAlert + '<div class="alert-box alert-box--danger">' + errMsg + '</div>';
         return res;
       }
 
-      var html = "";
+      var html = waAlert;
       if (currentLang === "ko") {
         html += '<div class="alert-box alert-box--info">' +
+          '• <strong>적용 관할 레지스트리:</strong> <strong>' + res.stateCode + '</strong>' + (res.isWaDefacto ? ' (Family Court of WA · <code>Family Court Act 1997 (WA)</code>)' : ' (연방순회·가족법원 FCFCOA)') + '<br/>' +
           '• <strong>재산분할·양육권 협의 및 소송 개시:</strong> <strong>별거 직후 즉시 가능</strong> (이혼 확정 전에도 합의 명령 Consent Orders 진행 가능)<br/>' +
           (res.relType === "married"
             ? (res.eligibleDivorceIso
-                ? '• <strong>이혼 신청 가능일 (12개월+1일 별거 · s 48):</strong> <strong>' + res.eligibleDivorceIso + '</strong> 이후 접수 가능 (FCFCOA 이혼 수수료 <strong>$1,170</strong> / 감면 <strong>$390</strong>)<br/>'
+                ? '• <strong>이혼 신청 가능일 (12개월+1일 별거 · s 48):</strong> <strong>' + res.eligibleDivorceIso + '</strong> 이후 접수 가능 (FCFCOA 수수료 <strong>' + escapeHtml(liveFeeMetrics.divorceFee) + '</strong>)<br/>'
                 : '• <strong>이혼 신청 가능일 (s 48):</strong> 별거 시작일을 입력하면 12개월+1일 충족일을 산출합니다.<br/>')
-            : '• <strong>사실혼(De Facto) 관계 해소:</strong> 별도 이혼 신청 절차 없음 (s 90SB 총 2년 동거 또는 공동 자녀·중대 기여 요건 확인)<br/>') +
-          '• <strong>FCFCOA 재산·양육 법원 수수료 (FY2026–27):</strong> 합의 명령(Consent Orders) <strong>$215</strong> · 소송 개시 <strong>$455</strong>(단독) / <strong>$740</strong>(병합)' +
+            : '• <strong>사실혼(De Facto) 관계 해소:</strong> 별도 이혼 신청 절차 없음 (' + (res.isWaDefacto ? 'FCA 1997 (WA) Part 5A' : 's 90SB') + ' 총 2년 동거 또는 공동 자녀·중대 기여 요건 확인)<br/>') +
+          '• <strong>법원 접수 수수료 (FY2026–27):</strong> 합의 명령(Consent Orders) <strong>' + escapeHtml(liveFeeMetrics.consentOrdersFee) + '</strong> · 소송 개시 <strong>' + escapeHtml(liveFeeMetrics.initiatingFee) + '</strong>' +
           '</div>';
 
         if (res.propDeadlineIso) {
-          var statLabel = res.relType === "married" ? "법정 제소 마감일 (이혼 확정 후 12개월 · s 44(3))" : "법정 제소 마감일 (사실혼 해소 후 2년 · s 44(5))";
+          var statLabel = res.relType === "married"
+            ? "법정 제소 마감일 (이혼 확정 후 12개월 · s 44(3))"
+            : (res.isWaDefacto
+                ? "법정 제소 마감일 (WA 사실혼 해소 후 2년 · s 205ZB / s 44(5))"
+                : "법정 제소 마감일 (사실혼 해소 후 2년 · s 44(5))");
           html += '<div class="dual-date-grid">' +
             '<div class="dual-date-box dual-date-box--safe">' +
               '<div class="dual-date-lbl">보수적 안전 신청 권고일 (마감 30일 전 영업일)</div>' +
               '<div class="dual-date-val">' + res.propSafeIso + '</div>' +
-              '<div class="dual-date-sub">재산 공개·서류 작성 여유 확보 기준</div>' +
+              '<div class="dual-date-sub">직전 영업일 마지노선: <strong>' + res.propSafe1dIso + '</strong> (' + res.stateCode + ' 영업일 기준)</div>' +
             '</div>' +
             '<div class="dual-date-box ' + (res.isOverdue ? 'dual-date-box--danger' : 'dual-date-box--stat') + '">' +
               '<div class="dual-date-lbl">' + statLabel + '</div>' +
@@ -1083,6 +1598,12 @@
               '</div>' +
             '</div>' +
           '</div>';
+
+          if (res.propRolledReason) {
+            html += '<div class="alert-box alert-box--info">' +
+              '<strong>주말·공휴일 익영업일 연장 적용 (<code>Acts Interpretation Act 1901 (Cth) s 36(2)</code>):</strong> 원래 만료일(<code>' + res.rawPropDeadlineIso + '</code>)이 ' + res.stateCode + ' 기준 비영업일(<strong>' + escapeHtml(res.propRolledReason) + '</strong>)에 해당하여 다음 영업일인 <strong>' + res.propDeadlineIso + '</strong>로 법정 마감일이 연장되었습니다 (직전 안전 영업일: <code>' + res.propSafe1dIso + '</code>).' +
+              '</div>';
+          }
 
           if (res.isOverdue) {
             html += '<div class="alert-box alert-box--danger">' +
@@ -1102,22 +1623,27 @@
         }
       } else {
         html += '<div class="alert-box alert-box--info">' +
-          '• <strong>Property & Parenting Orders:</strong> <strong>Available Immediately</strong> after separation (Consent Orders $215)<br/>' +
+          '• <strong>Active Registry / State:</strong> <strong>' + res.stateCode + '</strong>' + (res.isWaDefacto ? ' (Family Court of WA · <code>Family Court Act 1997 (WA)</code>)' : ' (FCFCOA)') + '<br/>' +
+          '• <strong>Property & Parenting Orders:</strong> <strong>Available Immediately</strong> after separation (Consent Orders ' + escapeHtml(liveFeeMetrics.consentOrdersFee) + ')<br/>' +
           (res.relType === "married"
             ? (res.eligibleDivorceIso
-                ? '• <strong>Earliest Divorce Filing Date (s 48):</strong> <strong>' + res.eligibleDivorceIso + '</strong> (FCFCOA Divorce Fee <strong>$1,170</strong> / Reduced <strong>$390</strong>)<br/>'
+                ? '• <strong>Earliest Divorce Filing Date (s 48):</strong> <strong>' + res.eligibleDivorceIso + '</strong> (FCFCOA Divorce Fee <strong>' + escapeHtml(liveFeeMetrics.divorceFee) + '</strong>)<br/>'
                 : '• <strong>Earliest Divorce Filing Date (s 48):</strong> Enter separation date to compute 12m + 1d eligibility.<br/>')
-            : '• <strong>De Facto Relationship:</strong> No divorce filing required (subject to s 90SB 2-year or child gateway)<br/>') +
-          '• <strong>FCFCOA Filing Fees (FY2026–27):</strong> Consent Orders <strong>$215</strong> · Initiating Application <strong>$455</strong> (single) / <strong>$740</strong> (combined)' +
+            : '• <strong>De Facto Relationship:</strong> No divorce filing required (subject to ' + (res.isWaDefacto ? 'FCA 1997 (WA) Part 5A' : 's 90SB') + ' 2-year or child gateway)<br/>') +
+          '• <strong>Court Filing Fees (FY2026–27):</strong> Consent Orders <strong>' + escapeHtml(liveFeeMetrics.consentOrdersFee) + '</strong> · Initiating Application <strong>' + escapeHtml(liveFeeMetrics.initiatingFee) + '</strong>' +
           '</div>';
 
         if (res.propDeadlineIso) {
-          var statLabelEn = res.relType === "married" ? "Statutory Filing Deadline (12m Post-Divorce · s 44(3))" : "Statutory Filing Deadline (2y De Facto · s 44(5))";
+          var statLabelEn = res.relType === "married"
+            ? "Statutory Filing Deadline (12m Post-Divorce · s 44(3))"
+            : (res.isWaDefacto
+                ? "Statutory Filing Deadline (2y WA De Facto · s 205ZB / s 44(5))"
+                : "Statutory Filing Deadline (2y De Facto · s 44(5))");
           html += '<div class="dual-date-grid">' +
             '<div class="dual-date-box dual-date-box--safe">' +
               '<div class="dual-date-lbl">Conservative Safe Filing Target (30d Prior Business Day)</div>' +
               '<div class="dual-date-val">' + res.propSafeIso + '</div>' +
-              '<div class="dual-date-sub">Recommended buffer for disclosure & drafting</div>' +
+              '<div class="dual-date-sub">Last preceding business day: <strong>' + res.propSafe1dIso + '</strong> (' + res.stateCode + ')</div>' +
             '</div>' +
             '<div class="dual-date-box ' + (res.isOverdue ? 'dual-date-box--danger' : 'dual-date-box--stat') + '">' +
               '<div class="dual-date-lbl">' + statLabelEn + '</div>' +
@@ -1129,6 +1655,12 @@
               '</div>' +
             '</div>' +
           '</div>';
+
+          if (res.propRolledReason) {
+            html += '<div class="alert-box alert-box--info">' +
+              '<strong>Holiday / Weekend Rollover Applied (<code>Acts Interpretation Act 1901 (Cth) s 36(2)</code>):</strong> Raw limitation date <code>' + res.rawPropDeadlineIso + '</code> fell on a non-business day in ' + res.stateCode + ' (<strong>' + escapeHtml(res.propRolledReason) + '</strong>) and rolled forward to the next business day <strong>' + res.propDeadlineIso + '</strong> (preceding safe business day: <code>' + res.propSafe1dIso + '</code>).' +
+              '</div>';
+          }
 
           if (res.isOverdue) {
             html += '<div class="alert-box alert-box--danger">' +
@@ -1152,10 +1684,38 @@
     return res;
   }
 
+  function renderS71bCardHtml(summaryText) {
+    var titleTxt = currentLang === "ko"
+      ? "한·호 통합 자산·부채 1페이지 공개 명세서 (FCFCOA / FLA s 71B Duty of Disclosure)"
+      : "1-Page KR–AU Combined Asset/Liability Disclosure Worksheet (FCFCOA / FLA s 71B)";
+    var copyLbl = currentLang === "ko" ? "1페이지 s 71B 요약 복사" : "Copy 1-Page s 71B Summary";
+    var printLbl = currentLang === "ko" ? "1페이지 s 71B 명세서 인쇄" : "Print 1-Page s 71B Worksheet";
+    return (
+      '<div id="fam-s71b-worksheet" class="s71b-disclosure-card">' +
+        '<div class="s71b-disclosure-head">' +
+          '<strong style="font-size:13.2px;color:#0E3A3E;">' + titleTxt + '</strong>' +
+          '<div class="s71b-disclosure-actions">' +
+            '<button type="button" id="btn-s71b-copy" class="btn-secondary" style="padding:5px 10px;font-size:12px;">' + copyLbl + '</button>' +
+            '<button type="button" id="btn-s71b-print" class="btn-burgundy" style="padding:5px 10px;font-size:12px;">' + printLbl + '</button>' +
+          '</div>' +
+        '</div>' +
+        '<pre id="fam-s71b-summary-text" class="s71b-disclosure-pre">' + escapeHtml(summaryText) + '</pre>' +
+      '</div>'
+    );
+  }
+
   function renderPropertyPrecedentMatcher() {
+    var stateCode = ParkCoDates.normalizeStateCode((document.getElementById("fam-state") || {}).value || "QLD");
+    var relType = (document.getElementById("fam-rel-type") || {}).value || "married";
+    var isWaDefacto = stateCode === "WA" && relType === "defacto";
+
     var ausRaw = (document.getElementById("pool-aus-net") || {}).value || "";
+    var ausDebtRaw = (document.getElementById("pool-aus-debt") || {}).value || "";
     var supRaw = (document.getElementById("pool-aus-super") || {}).value || "";
     var korRaw = (document.getElementById("pool-kor-krw") || {}).value || "";
+    var korDebtRaw = (document.getElementById("pool-kor-debt-krw") || {}).value || "";
+    var rateRaw = (document.getElementById("pool-krw-rate") || {}).value || "";
+
     var durFilter = (document.getElementById("match-duration") || {}).value || "all";
     var facFilter = (document.getElementById("match-factor") || {}).value || "all";
     var ackChecked = (document.getElementById("ack-ethical-disclaimer") || {}).checked !== false;
@@ -1164,24 +1724,51 @@
     var cardsWrap = document.getElementById("fam-precedent-cards-wrap");
     var cardsGrid = document.getElementById("fam-precedent-cards-grid");
 
-    var hasAnyAssetInput = ausRaw.trim() !== "" || supRaw.trim() !== "" || korRaw.trim() !== "";
+    var ausAssets = Math.max(0, parseFloat(ausRaw) || 0);
+    var ausDebt = Math.max(0, parseFloat(ausDebtRaw) || 0);
+    var ausNet = Math.max(0, ausAssets - ausDebt);
+    var ausSuper = Math.max(0, parseFloat(supRaw) || 0);
+    var korAssetsManwon = Math.max(0, parseFloat(korRaw) || 0);
+    var korDebtManwon = Math.max(0, parseFloat(korDebtRaw) || 0);
+    var korNetManwon = Math.max(0, korAssetsManwon - korDebtManwon);
+    var parsedRate = parseFloat(rateRaw);
+    var krwRate = (parsedRate && parsedRate > 0) ? parsedRate : DEFAULT_KRW_PER_AUD;
+
+    var korAud = Math.round((korNetManwon * 10000) / krwRate);
+    var totalPoolAud = Math.round(ausNet + ausSuper + korAud);
+
+    var s71bText = buildS71bDisclosureSummary({
+      stateCode: stateCode,
+      relType: relType,
+      ausAssets: ausAssets,
+      ausDebt: ausDebt,
+      ausSuper: ausSuper,
+      korAssetsManwon: korAssetsManwon,
+      korDebtManwon: korDebtManwon,
+      krwRate: krwRate
+    }, currentLang);
+
+    var waAlert = isWaDefacto ? buildWaDefactoAlertHtml(currentLang) : "";
+
+    var hasAnyAssetInput = (
+      ausRaw.trim() !== "" ||
+      ausDebtRaw.trim() !== "" ||
+      supRaw.trim() !== "" ||
+      korRaw.trim() !== "" ||
+      korDebtRaw.trim() !== ""
+    );
+
     if (!toolActive.m2 && !hasAnyAssetInput && durFilter === "all" && facFilter === "all") {
       if (poolOut) {
-        poolOut.innerHTML = renderNeutralPrompt(
+        poolOut.innerHTML = waAlert + renderNeutralPrompt(
           "btn-sample-m2",
-          "호주·한국 순자산을 입력하거나 혼인기간·쟁점 필터를 선택하면 전 세계 통합 자산 풀(s 71B)과 해당 조건에 매칭된 실제 FCFCOA 판결 비율 분포를 계산합니다.",
-          "Enter your Australian/Korean asset figures or select a duration/factor filter to calculate your s 71B global pool and view dynamically matched FCFCOA court splits."
-        );
+          "호주·한국 자산 및 부채와 실시간 환율(기본 ₩900/AUD)을 입력하거나 쟁점 필터를 선택하면 전 세계 통합 자산 풀(s 71B)과 실제 FCFCOA 판결 비율 분포 및 1페이지 공개 명세서를 즉시 생성합니다.",
+          "Enter your Australian/Korean assets, liabilities, and real-time KRW/AUD rate (default ₩900) to calculate your s 71B global pool, matched FCFCOA court splits, and 1-page disclosure worksheet."
+        ) + renderS71bCardHtml(s71bText);
       }
       if (cardsWrap) cardsWrap.hidden = true;
-      return { active: false, totalPoolAud: 0, korAud: 0, matchedCount: 0, topCitation: "-" };
+      return { active: false, totalPoolAud: 0, korAud: 0, krwRate: krwRate, matchedCount: 0, topCitation: "-" };
     }
-
-    var ausNet = Math.max(0, parseFloat(ausRaw) || 0);
-    var ausSuper = Math.max(0, parseFloat(supRaw) || 0);
-    var korManwon = Math.max(0, parseFloat(korRaw) || 0);
-    var korAud = Math.round((korManwon * 10000) / KRW_PER_AUD);
-    var totalPoolAud = Math.round(ausNet + ausSuper + korAud);
 
     var spec = matchPropertyPrecedentsPure(durFilter, facFilter);
     var matched = spec.matched;
@@ -1196,18 +1783,24 @@
         : "";
 
       poolOut.innerHTML =
+        waAlert +
         '<div class="result-summary-grid">' +
           '<div class="mini-kpi">' +
             '<span>' + (currentLang === "ko" ? "호주 순자산 + Super" : "AUS Net + Super") + '</span>' +
-            '<strong>$' + (ausNet + ausSuper).toLocaleString() + '</strong>' +
+            '<strong>$' + (ausNet + ausSuper).toLocaleString("en-AU") + '</strong>' +
+            '<small>' + (ausDebt > 0
+              ? (currentLang === "ko" ? "부채 -$" + ausDebt.toLocaleString("en-AU") + " 반영" : "Net of -$" + ausDebt.toLocaleString("en-AU") + " debt")
+              : (currentLang === "ko" ? "Super $" + ausSuper.toLocaleString("en-AU") + " 포함" : "Incl. $" + ausSuper.toLocaleString("en-AU") + " Super")) + '</small>' +
           '</div>' +
           '<div class="mini-kpi">' +
             '<span>' + (currentLang === "ko" ? "한국 순자산 (s 71B 환산)" : "KOR Net Assets (s 71B)") + '</span>' +
-            '<strong>$' + korAud.toLocaleString() + ' AUD</strong>' +
+            '<strong>$' + korAud.toLocaleString("en-AU") + ' AUD</strong>' +
+            '<small>1 AUD = ₩' + krwRate.toLocaleString("en-AU") + '</small>' +
           '</div>' +
           '<div class="mini-kpi">' +
-            '<span>' + (currentLang === "ko" ? "전 세계 통합 자산 풀" : "Worldwide Net Pool") + '</span>' +
-            '<strong>$' + totalPoolAud.toLocaleString() + ' AUD</strong>' +
+            '<span>' + (currentLang === "ko" ? "전 세계 통합 순자산 풀" : "Worldwide Net Pool") + '</span>' +
+            '<strong>$' + totalPoolAud.toLocaleString("en-AU") + ' AUD</strong>' +
+            '<small>FLA s 71B Global Pool</small>' +
           '</div>' +
         '</div>' +
         '<div class="alert-box alert-box--warn" style="margin-bottom:0;">' +
@@ -1217,7 +1810,8 @@
             : "Dynamic Split Spectrum Across " + matched.length + " Matched Precedent(s):") + '</strong><br/>' +
           '• ' + (currentLang === "ko" ? spec.rangeHeaderKo : spec.rangeHeaderEn) + '<br/>' +
           '• ' + (currentLang === "ko" ? spec.koListHtml : spec.enListHtml) +
-        '</div>';
+        '</div>' +
+        renderS71bCardHtml(s71bText);
     }
 
     if (cardsWrap) cardsWrap.hidden = false;
@@ -1257,6 +1851,7 @@
       active: true,
       totalPoolAud: totalPoolAud,
       korAud: korAud,
+      krwRate: krwRate,
       matchedCount: matched.length,
       topCitation: matched[0] ? matched[0].citation : "-"
     };
@@ -1284,8 +1879,8 @@
         : "<strong>Safety Paramount Principle (s 60CC(2)(a)):</strong> Post-May 2024 reforms repealed equal shared parental responsibility; courts prioritize protection from family violence over speculative unsupervised contact (<code>Gallagher & Day [2025]</code>).");
     } else if (safety === "no_fv") {
       items.push(currentLang === "ko"
-        ? "<strong>부모 간 합의 양육 명령 (Consent Orders) 권장:</strong> 안전 위협이 없는 경우 소송 대신 법원 구속력을 갖춘 양육 합의 명령($215)으로 양육 일정·학업·여권 발급 및 해외여행 사전 서면 동의 조항을 명문화할 수 있습니다."
-        : "<strong>Parenting Consent Orders Recommended:</strong> Where no safety risk exists, formalise parenting schedules, passport rules, and international travel notice via Consent Orders ($215 filing fee).");
+        ? "<strong>부모 간 합의 양육 명령 (Consent Orders) 권장:</strong> 안전 위협이 없는 경우 소송 대신 법원 구속력을 갖춘 양육 합의 명령(" + escapeHtml(liveFeeMetrics.consentOrdersFee) + ")으로 양육 일정·학업·여권 발급 및 해외여행 사전 서면 동의 조항을 명문화할 수 있습니다."
+        : "<strong>Parenting Consent Orders Recommended:</strong> Where no safety risk exists, formalise parenting schedules, passport rules, and international travel notice via Consent Orders (" + escapeHtml(liveFeeMetrics.consentOrdersFee) + " filing fee).");
     }
 
     if (reloc === "want_korea_reloc") {
@@ -1360,9 +1955,9 @@
     var d4 = calcPartnerVisaCrossover();
 
     var pre = document.getElementById("fam-diagnostic-brief-text");
-    var anyActive = (d1.status === "ok") || d2.active || d3.active || (d4.status && d4.status !== "neutral");
+    var anyActive = (d1.status === "ok") || d1.isWaDefacto || d2.active || d3.active || (d4.status && d4.status !== "neutral");
 
-    var relText = (REL_LABELS[d1.relType] || REL_LABELS.married)[currentLang];
+    var relText = (REL_LABELS[d1.relType] || REL_LABELS.married)[currentLang] + " [" + (d1.stateCode || "QLD") + "]";
     var divEligText = d1.eligibleDivorceIso || (currentLang === "ko" ? "미산출 (별거일 미입력 또는 사실혼)" : "Not calculated");
     var propLimText = d1.propDeadlineIso
       ? (d1.isOverdue
@@ -1387,8 +1982,8 @@
               "[법무법인 박앤코 호주 가족법 · 한·호 재산분할 · 비자 교차 진단 브리프]",
               "• 수신: 법무법인 박앤코 박창민 대표변호사 (Legal Practitioner Director · Acc. Spec. Immi) & 이수진 변호사 (Gina Lee)",
               "• 공식 문의: enquiry@parkcolawyers.com | https://parklawyers.com.au/links/?lang=ko",
-              "• 1. 관계 및 기한: " + relText + " | 이혼 신청 가능일: " + divEligText + " | 재산분할 기한: " + propLimText,
-              "• 2. 한·호 전 세계 통합 순자산 풀(s 71B): $" + d2.totalPoolAud.toLocaleString() + " AUD (한국 순자산 환산액 $" + d2.korAud.toLocaleString() + " AUD 포함)",
+              "• 1. 관할 및 기한: " + relText + (d1.isWaDefacto ? " (Family Court of WA · Part VIIIC 관할)" : "") + " | 이혼 신청 가능일: " + divEligText + " | 재산분할 기한: " + propLimText,
+              "• 2. 한·호 전 세계 통합 순자산 풀(s 71B): $" + d2.totalPoolAud.toLocaleString("en-AU") + " AUD (한국 순자산 환산액 $" + d2.korAud.toLocaleString("en-AU") + " AUD · 1 AUD = ₩" + (d2.krwRate || DEFAULT_KRW_PER_AUD).toLocaleString("en-AU") + ")",
               "• 3. 매칭된 연방순회·가족법원(FCFCOA) 공개 판례: " + (d2.active ? (d2.matchedCount + "건 (대표: " + d2.topCitation + ")") : "미조회"),
               "• 4. 비자·별거 교차 진단: " + visaBriefText,
               "• 비고: 재산분할은 법원의 종합 재량 판단(s 79) 사항임을 확인하며 개별 사실관계에 관한 정식 법률 자문을 요청합니다."
@@ -1397,8 +1992,8 @@
               "[Park & Co Lawyers · Australian Family Law, Global Property & Visa Crossover Brief]",
               "• To: Chang Min Park (Legal Practitioner Director, Acc. Spec. Immi) & Gina Lee (Solicitor)",
               "• Official Contact: enquiry@parkcolawyers.com | https://parklawyers.com.au/links/?lang=en",
-              "• 1. Relationship & Deadlines: " + relText + " | Earliest Divorce: " + divEligText + " | Property Limit: " + propLimText,
-              "• 2. Worldwide Net Asset Pool (s 71B): $" + d2.totalPoolAud.toLocaleString() + " AUD (incl. KOR Net $" + d2.korAud.toLocaleString() + " AUD)",
+              "• 1. Jurisdiction & Deadlines: " + relText + (d1.isWaDefacto ? " (Family Court of WA · Part VIIIC)" : "") + " | Earliest Divorce: " + divEligText + " | Property Limit: " + propLimText,
+              "• 2. Worldwide Net Asset Pool (s 71B): $" + d2.totalPoolAud.toLocaleString("en-AU") + " AUD (incl. KOR Net $" + d2.korAud.toLocaleString("en-AU") + " AUD @ ₩" + (d2.krwRate || DEFAULT_KRW_PER_AUD).toLocaleString("en-AU") + "/AUD)",
               "• 3. Matched FCFCOA Precedents: " + (d2.active ? (d2.matchedCount + " cases (Lead: " + d2.topCitation + ")") : "Not queried"),
               "• 4. Visa Breakdown Assessment: " + visaBriefText,
               "• Requesting formal family law and cross-border property/migration consultation."
@@ -1422,12 +2017,16 @@
   function loadSampleData() {
     var todayIso = ParkCoDates.todayBrisbaneIso();
     var sampleSepObj = ParkCoDates.addYearsMonthsClamped(todayIso, 0, -8, 0);
+    var stateEl = document.getElementById("fam-state");
     var sepEl = document.getElementById("fam-sep-date");
     var relEl = document.getElementById("fam-rel-type");
     var divEl = document.getElementById("fam-divorce-date");
     var ausEl = document.getElementById("pool-aus-net");
+    var ausDebtEl = document.getElementById("pool-aus-debt");
     var supEl = document.getElementById("pool-aus-super");
     var korEl = document.getElementById("pool-kor-krw");
+    var korDebtEl = document.getElementById("pool-kor-debt-krw");
+    var rateEl = document.getElementById("pool-krw-rate");
     var durEl = document.getElementById("match-duration");
     var facEl = document.getElementById("match-factor");
     var safEl = document.getElementById("par-safety");
@@ -1435,12 +2034,16 @@
     var pvStageEl = document.getElementById("pv-stage");
     var pvExcEl = document.getElementById("pv-exception");
 
+    if (stateEl && !stateEl.value) stateEl.value = "QLD";
     if (relEl) relEl.value = "married";
     if (sepEl) sepEl.value = ParkCoDates.formatIsoLocal(sampleSepObj);
     if (divEl) divEl.value = "";
     if (ausEl) ausEl.value = "1150000";
+    if (ausDebtEl) ausDebtEl.value = "0";
     if (supEl) supEl.value = "280000";
     if (korEl) korEl.value = "45000";
+    if (korDebtEl) korDebtEl.value = "0";
+    if (rateEl && !rateEl.value) rateEl.value = String(DEFAULT_KRW_PER_AUD);
     if (durEl) durEl.value = "medium";
     if (facEl) facEl.value = "children_carer";
     if (safEl) safEl.value = "no_fv";
@@ -1456,13 +2059,30 @@
   }
 
   function resetAllData() {
-    var idsToClear = ["fam-sep-date", "fam-divorce-date", "pool-aus-net", "pool-aus-super", "pool-kor-krw", "par-safety", "par-relocation", "pv-stage"];
+    var idsToClear = [
+      "fam-sep-date",
+      "fam-divorce-date",
+      "pool-aus-net",
+      "pool-aus-debt",
+      "pool-aus-super",
+      "pool-kor-krw",
+      "pool-kor-debt-krw",
+      "par-safety",
+      "par-relocation",
+      "pv-stage"
+    ];
     idsToClear.forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.value = "";
     });
+    var stateEl = document.getElementById("fam-state");
+    var relEl = document.getElementById("fam-rel-type");
+    var rateEl = document.getElementById("pool-krw-rate");
     var durEl = document.getElementById("match-duration");
     var facEl = document.getElementById("match-factor");
+    if (stateEl) stateEl.value = "QLD";
+    if (relEl) relEl.value = "married";
+    if (rateEl) rateEl.value = String(DEFAULT_KRW_PER_AUD);
     if (durEl) durEl.value = "all";
     if (facEl) facEl.value = "all";
 
@@ -1473,10 +2093,66 @@
     updateAll();
   }
 
+  function triggerS71bPrint() {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+    if (document.body) document.body.classList.add("print-s71b-only");
+    var cleanup = function () {
+      if (document.body) document.body.classList.remove("print-s71b-only");
+      window.removeEventListener("afterprint", cleanup);
+    };
+    window.addEventListener("afterprint", cleanup);
+    if (typeof window.print === "function") {
+      window.print();
+    }
+    setTimeout(cleanup, 1200);
+  }
+
+  function applyToolDeepLink(rawTool) {
+    var target = resolveToolDeepLink(rawTool);
+    if (!target || typeof document === "undefined") return null;
+    if (target.toolKey && Object.prototype.hasOwnProperty.call(toolActive, target.toolKey)) {
+      toolActive[target.toolKey] = true;
+    }
+    if (target.alsoActivate && Object.prototype.hasOwnProperty.call(toolActive, target.alsoActivate)) {
+      toolActive[target.alsoActivate] = true;
+    }
+    updateAll();
+    document.querySelectorAll(".section-block.is-deeplink-active").forEach(function (el) {
+      el.classList.remove("is-deeplink-active");
+    });
+    var sec = document.getElementById(target.sectionId);
+    if (sec) {
+      sec.classList.add("is-deeplink-active");
+      if (typeof sec.scrollIntoView === "function") {
+        try {
+          sec.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch (_) {
+          sec.scrollIntoView();
+        }
+      }
+    }
+    return target;
+  }
+
   /* ==========================================================================
      7. POLLER TELEMETRY & LANGUAGE SYNC
      ========================================================================== */
   var cachedFamPollingStatus = null;
+
+  function applyFamPollingFees(data) {
+    if (!data) return;
+    var fs = data.fee_schedule || {};
+    var hm = data.headline_metrics || {};
+    if (fs.divorce_fee || hm.fcfcoa_divorce_fee) {
+      liveFeeMetrics.divorceFee = fs.divorce_fee || hm.fcfcoa_divorce_fee;
+    }
+    if (fs.consent_orders_fee || hm.fcfcoa_consent_orders_fee) {
+      liveFeeMetrics.consentOrdersFee = fs.consent_orders_fee || hm.fcfcoa_consent_orders_fee;
+    }
+    if (fs.initiating_fee || hm.fcfcoa_initiating_fee) {
+      liveFeeMetrics.initiatingFee = fs.initiating_fee || hm.fcfcoa_initiating_fee;
+    }
+  }
 
   function renderFamPollerMatrix() {
     var kpiGrid = document.getElementById("fam-poller-kpis");
@@ -1484,16 +2160,21 @@
     if (!kpiGrid || !tbody || !cachedFamPollingStatus) return;
 
     var hm = cachedFamPollingStatus.headline_metrics || {};
+    var feeFallback = !!cachedFamPollingStatus.fee_fallback_used;
     var kpis = [
       {
         label: currentLang === "ko" ? "FCFCOA 이혼 신청 수수료 (FY26–27)" : "FCFCOA Divorce Filing Fee",
-        val: hm.fcfcoa_divorce_fee || "$1,170 (Reduced $390)",
-        sub: currentLang === "ko" ? "fcfcoa.gov.au 2026.07.01 시행" : "Effective 1 Jul 2026 ($390 reduced)"
+        val: hm.fcfcoa_divorce_fee || liveFeeMetrics.divorceFee,
+        sub: feeFallback
+          ? (currentLang === "ko" ? "기준표 폴백 (Baseline Fallback)" : "Baseline Fallback Schedule")
+          : (currentLang === "ko" ? "fcfcoa.gov.au 실시간 검증" : "Live verified via fcfcoa.gov.au")
       },
       {
         label: currentLang === "ko" ? "합의 명령 (Consent Orders)" : "Consent Orders Filing Fee",
-        val: hm.fcfcoa_consent_orders_fee || "$215",
-        sub: currentLang === "ko" ? "소송 개시 $455 / 병합 $740" : "Initiating App $455 / Combined $740"
+        val: hm.fcfcoa_consent_orders_fee || liveFeeMetrics.consentOrdersFee,
+        sub: currentLang === "ko"
+          ? ("소송 개시 " + (hm.fcfcoa_initiating_fee || liveFeeMetrics.initiatingFee))
+          : ("Initiating App " + (hm.fcfcoa_initiating_fee || liveFeeMetrics.initiatingFee))
       },
       {
         label: currentLang === "ko" ? "한·호 전 세계 자산 공개 의무" : "Worldwide Asset Disclosure",
@@ -1521,8 +2202,12 @@
     tbody.innerHTML = sources.map(function (s) {
       var title = currentLang === "ko" ? (s.title_ko || s.title_en) : (s.title_en || s.title_ko);
       var figs = (s.extracted_figures || []).join(" · ") || "-";
-      var kb = s.bytes ? Math.round(s.bytes / 1024).toLocaleString() + " KB" : "Live";
+      var kb = s.bytes ? Math.round(s.bytes / 1024).toLocaleString("en-AU") + " KB" : "Live";
       var method = s.method || "https-direct-live";
+      var isFallback = !!s.fallback_used || (s.status && s.status !== "verified_ok");
+      var badgeHtml = isFallback
+        ? '<span class="badge-warning">⚠ ' + escapeHtml(s.fee_extraction_status || s.status || "baseline_fallback") + ' (' + (s.http_status || 200) + ')</span>'
+        : '<span class="badge-ok">✓ ' + escapeHtml(s.status || "verified_ok") + ' (' + (s.http_status || 200) + ')</span>';
       return (
         '<tr>' +
           '<td>' +
@@ -1534,7 +2219,7 @@
           '<td style="font-family:monospace;font-size:11.5px;">' +
             '<code>' + (s.sha256_prefix || "") + '</code><br/><span style="color:#4A5D5F;">' + kb + ' (' + method + ')</span>' +
           '</td>' +
-          '<td><span class="badge-ok">✓ ' + (s.status || "verified_ok") + ' (' + (s.http_status || 200) + ')</span></td>' +
+          '<td>' + badgeHtml + '</td>' +
         '</tr>'
       );
     }).join("");
@@ -1547,27 +2232,51 @@
       .then(function (data) {
         if (!data) return;
         cachedFamPollingStatus = data;
+        applyFamPollingFees(data);
         renderFamPollerMatrix();
+        updateAll();
       })
       .catch(function () {});
+  }
+
+  function syncInputAttributesForLang(isEn) {
+    if (typeof document === "undefined") return;
+    var brandLnk = document.getElementById("brand-hub-link");
+    if (brandLnk) {
+      brandLnk.setAttribute("title", isEn ? "Park & Co Legal & Visa Hub" : "박앤코 법률·비자 통합 허브");
+    }
+    var phMap = {
+      "pool-aus-net": isEn ? "e.g. 1150000" : "예: 1150000",
+      "pool-aus-debt": isEn ? "e.g. 0 (optional)" : "예: 0 (위 금액이 순자산이면 비워두기)",
+      "pool-aus-super": isEn ? "e.g. 280000" : "예: 280000",
+      "pool-kor-krw": isEn ? "e.g. 45000 (= 450M KRW)" : "예: 45000 (= 4.5억원)",
+      "pool-kor-debt-krw": isEn ? "e.g. 0" : "예: 0"
+    };
+    Object.keys(phMap).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.setAttribute("placeholder", phMap[id]);
+    });
   }
 
   function applyLanguage(lang, syncUrl) {
     currentLang = lang === "en" ? "en" : "ko";
     if (typeof document === "undefined") return;
+    var isEn = currentLang === "en";
     document.documentElement.lang = currentLang;
+    document.title = isEn ? TITLE_EN : TITLE_KO;
     if (document.body) document.body.setAttribute("data-ui-lang", currentLang);
 
-    var dict = currentLang === "en" ? EN_TRANSLATIONS : KO_TRANSLATIONS;
+    var dict = isEn ? EN_TRANSLATIONS : KO_TRANSLATIONS;
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var k = el.getAttribute("data-i18n");
       if (dict[k]) el.innerHTML = dict[k];
     });
+    syncInputAttributesForLang(isEn);
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       btn.classList.toggle("active", btn.getAttribute("data-lang") === currentLang);
     });
     document.querySelectorAll(".parkco-svc-link").forEach(function (lnk) {
-      var h = currentLang === "en" ? lnk.getAttribute("data-en-href") : lnk.getAttribute("data-ko-href");
+      var h = isEn ? lnk.getAttribute("data-en-href") : lnk.getAttribute("data-ko-href");
       if (h) lnk.setAttribute("href", h);
     });
 
@@ -1585,7 +2294,7 @@
 
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", function () {
-      var m1Ids = ["fam-rel-type", "fam-sep-date", "fam-one-roof", "fam-divorce-date"];
+      var m1Ids = ["fam-state", "fam-rel-type", "fam-sep-date", "fam-one-roof", "fam-divorce-date"];
       m1Ids.forEach(function (id) {
         var el = document.getElementById(id);
         if (el) {
@@ -1595,7 +2304,17 @@
         }
       });
 
-      var m2Ids = ["pool-aus-net", "pool-aus-super", "pool-kor-krw", "match-duration", "match-factor", "ack-ethical-disclaimer"];
+      var m2Ids = [
+        "pool-aus-net",
+        "pool-aus-debt",
+        "pool-aus-super",
+        "pool-kor-krw",
+        "pool-kor-debt-krw",
+        "pool-krw-rate",
+        "match-duration",
+        "match-factor",
+        "ack-ethical-disclaimer"
+      ];
       m2Ids.forEach(function (id) {
         var el = document.getElementById(id);
         if (el) {
@@ -1630,8 +2349,27 @@
       if (btnResetAll) btnResetAll.addEventListener("click", resetAllData);
 
       document.addEventListener("click", function (ev) {
-        var t = ev.target && ev.target.closest ? ev.target.closest(".js-trigger-sample") : null;
-        if (t) loadSampleData();
+        var sampleBtn = ev.target && ev.target.closest ? ev.target.closest(".js-trigger-sample") : null;
+        if (sampleBtn) {
+          loadSampleData();
+          return;
+        }
+        var s71bCopyBtn = ev.target && ev.target.closest ? ev.target.closest("#btn-s71b-copy") : null;
+        if (s71bCopyBtn) {
+          var s71bPre = document.getElementById("fam-s71b-summary-text");
+          var txt = s71bPre ? (s71bPre.textContent || "") : "";
+          var origLabel = currentLang === "ko" ? "1페이지 s 71B 요약 복사" : "Copy 1-Page s 71B Summary";
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(txt).catch(function () {});
+          }
+          s71bCopyBtn.textContent = currentLang === "ko" ? "복사 완료 ✓" : "Copied ✓";
+          setTimeout(function () { s71bCopyBtn.textContent = origLabel; }, 1700);
+          return;
+        }
+        var s71bPrintBtn = ev.target && ev.target.closest ? ev.target.closest("#btn-s71b-print") : null;
+        if (s71bPrintBtn) {
+          triggerS71bPrint();
+        }
       });
 
       var btnKo = document.getElementById("btn-lang-ko");
@@ -1661,6 +2399,10 @@
         applyLanguage("en", false);
       } else {
         applyLanguage("ko", false);
+      }
+      var toolParam = params.get("tool");
+      if (toolParam) {
+        applyToolDeepLink(toolParam);
       }
       loadFamPollingStatus();
     });

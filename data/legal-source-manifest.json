@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T22:05:20Z",
+  "generated_at": "2026-11-11T12:30:06Z",
   "sources": [
     {
       "id": "fcfcoa-family-law-fees",
@@ -9,17 +9,22 @@
       "citation": "Family Law (Fees) Regulation 2022 (FY2026–27 Indexed Schedule)",
       "url": "https://www.fcfcoa.gov.au/fl/fees/fl-fees",
       "status": "verified_ok",
+      "live_ok": true,
       "http_status": 200,
-      "bytes": 89398,
+      "bytes": 89557,
       "method": "https-direct-live",
-      "last_checked": "2026-11-08T22:05:20Z",
-      "sha256": "ab858778840dea3a697d80330c1b3c788eefd5cdba45fdf733e68c2175d1e047",
-      "sha256_prefix": "ab858778840dea3a",
+      "last_checked": "2026-11-11T12:30:06Z",
+      "last_good_at": "2026-11-11T12:30:06Z",
+      "sha256": "ca05d60230aea06104d0d26905b5bf32f0c5537dc2aa5f10a6da72104bf69be3",
+      "sha256_prefix": "ca05d60230aea061",
       "extracted_figures": [
-        "Live Extracted: $1,170, $390, $215, $1,660, $550",
-        "Divorce: $1,170 (Reduced $390)",
-        "Consent Orders: $215"
-      ]
+        "Live Extracted Divorce: $1,170 (Reduced $390)",
+        "Live Extracted Consent Orders: $215",
+        "Live Extracted Initiating App: $455 / $740"
+      ],
+      "fee_extraction_status": "live_extracted",
+      "fallback_used": false,
+      "fee_note": "Live regex extracted all FCFCOA family law filing fees from fcfcoa.gov.au/fl/fees/fl-fees."
     },
     {
       "id": "fla-1975-property-2025",
@@ -29,17 +34,22 @@
       "citation": "Family Law Act 1975 (Cth) ss 44, 71B, 75(2), 79, 90SM",
       "url": "https://www.legislation.gov.au/C2004A00275/latest/text",
       "status": "verified_ok",
+      "live_ok": true,
       "http_status": 200,
       "bytes": 1393036,
       "method": "frl-legis-store-c101-C2025C00341",
-      "last_checked": "2026-11-08T22:05:20Z",
+      "last_checked": "2026-11-11T12:30:06Z",
+      "last_good_at": "2026-11-11T12:30:06Z",
       "sha256": "3a170b5cde2cbb91404dfa9bdbb483f63def8754d43a2b9be9cbc905a59f7973",
       "sha256_prefix": "3a170b5cde2cbb91",
       "extracted_figures": [
+        "Compilation #101 (C2025C00341) · Effective 2025-06-10 · 723 clauses",
         "Divorce Separation: 12 Months (s 48)",
-        "Property Limit: 12m (s 44(3)) / 2y De Facto (s 44(5))",
-        "Worldwide Disclosure: Mandatory (s 71B)"
-      ]
+        "Property Limit: 12m (s 44(3)) / 2y De Facto (s 44(5))"
+      ],
+      "compilation": "101",
+      "register_id": "C2025C00341",
+      "effective_start": "2025-06-10"
     },
     {
       "id": "fla-1975-parenting-2024",
@@ -49,12 +59,14 @@
       "citation": "Family Law Act 1975 (Cth) ss 60CA, 60CC, 61CA, 65Y, 65Z",
       "url": "https://www.legislation.gov.au/C2023A00087/latest/text",
       "status": "verified_ok",
+      "live_ok": true,
       "http_status": 200,
-      "bytes": 96523,
+      "bytes": 97194,
       "method": "https-direct-live",
-      "last_checked": "2026-11-08T22:05:20Z",
-      "sha256": "a893280e32bd8406064c9a62239bb888193d5b411b838a267be91d00a13c4924",
-      "sha256_prefix": "a893280e32bd8406",
+      "last_checked": "2026-11-11T12:30:06Z",
+      "last_good_at": "2026-11-11T12:30:06Z",
+      "sha256": "3392bcd42b2e41f004f46973bf625cd3ce9014ee6351b407e0985199fa4a1303",
+      "sha256_prefix": "3392bcd42b2e41f0",
       "extracted_figures": [
         "Paramount Factor: Child & Carer Safety (s 60CC(2)(a))",
         "Unilateral Removal Penalty: 3 yrs imprisonment (s 65Y)"
@@ -68,16 +80,22 @@
       "citation": "Family Law Act 1975 (Cth) s 114Q(2); ASCR 2023 (Qld) r 36.1",
       "url": "https://www.legislation.gov.au/C2004A00275/latest/text",
       "status": "verified_ok",
+      "live_ok": true,
       "http_status": 200,
       "bytes": 1393036,
       "method": "frl-legis-store-c101-C2025C00341",
-      "last_checked": "2026-11-08T22:05:20Z",
+      "last_checked": "2026-11-11T12:30:06Z",
+      "last_good_at": "2026-11-11T12:30:06Z",
       "sha256": "3a170b5cde2cbb91404dfa9bdbb483f63def8754d43a2b9be9cbc905a59f7973",
       "sha256_prefix": "3a170b5cde2cbb91",
       "extracted_figures": [
+        "Compilation #101 (C2025C00341) · Effective 2025-06-10 · 723 clauses",
         "s 114Q(2) Approved Court Pseudonyms Only",
         "ASCR r 36.1 Non-Predictive Empirical Disclosure"
-      ]
+      ],
+      "compilation": "101",
+      "register_id": "C2025C00341",
+      "effective_start": "2025-06-10"
     },
     {
       "id": "mig-regs-partner-fv",
@@ -87,16 +105,22 @@
       "citation": "Migration Regulations 1994 (Cth) Div 1.5, cl 820.221(3)",
       "url": "https://www.legislation.gov.au/F1996B03551/latest/text",
       "status": "verified_ok",
+      "live_ok": true,
       "http_status": 200,
       "bytes": 3580174,
       "method": "frl-legis-store-c289-F2026C01017",
-      "last_checked": "2026-11-08T22:05:20Z",
+      "last_checked": "2026-11-11T12:30:06Z",
+      "last_good_at": "2026-11-11T12:30:06Z",
       "sha256": "a964fbdacae4f71afde15126af821182da08eba3befb4e9fc1e504d631b9224e",
       "sha256_prefix": "a964fbdacae4f71a",
       "extracted_figures": [
+        "Compilation #289 (F2026C01017) · Effective 2026-10-02 · 2,599 clauses",
         "Div 1.5 Judicial / Non-Judicial FV Evidence",
         "cl 820.221(3)(b)(ii) Shared Child Custody Exception"
-      ]
+      ],
+      "compilation": "289",
+      "register_id": "F2026C01017",
+      "effective_start": "2026-10-02"
     },
     {
       "id": "fcfcoa-finances-property-overview",
@@ -106,12 +130,14 @@
       "citation": "Family Law Act 1975 (Cth) ss 71B, 79, 90SM; FCFCOA (Family Law) Rules 2021",
       "url": "https://www.fcfcoa.gov.au/fl/fp/overview",
       "status": "verified_ok",
+      "live_ok": true,
       "http_status": 200,
-      "bytes": 99291,
+      "bytes": 99464,
       "method": "https-direct-live",
-      "last_checked": "2026-11-08T22:05:20Z",
-      "sha256": "4df9edd4a8a1d0308ba73523c0506367fc4e692559187b925cd3c9c62e20775b",
-      "sha256_prefix": "4df9edd4a8a1d030",
+      "last_checked": "2026-11-11T12:30:06Z",
+      "last_good_at": "2026-11-11T12:30:06Z",
+      "sha256": "7bd108cd9af5160ee63702634a136600afa59d07f2ea0152caf3dfec27e41f0c",
+      "sha256_prefix": "7bd108cd9af5160e",
       "extracted_figures": [
         "Live Extracted: $550,000",
         "4-Step Property Assessment (ss 79 / 90SM)",
