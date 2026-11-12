@@ -1420,8 +1420,8 @@
         div15Eligible: false,
         stageLabel: stLabel,
         excLabel: { ko: "파트너 비자 특례(Div 1.5) 비대상", en: "Not eligible for Partner Visa Div 1.5" },
-        headline_ko: "파트너 비자 단독 영주권 특례(Div 1.5) 비대상 — 독자 비자 전환(기술·학생·스폰서) 및 주신청자 결별 통지 의무 점검",
-        headline_en: "Not Eligible for Partner Visa Div 1.5 Solo PR Exception — Assess Independent Visa Options & Notification Duties",
+        headline_ko: "파트너 비자 단독 영주권 특례(Div 1.5) 비대상 · 독자 비자 전환(기술·학생·스폰서) 및 주신청자 결별 통지 의무 점검",
+        headline_en: "Not Eligible for Partner Visa Div 1.5 Solo PR Exception · Assess Independent Visa Options & Notification Duties",
         body_ko: "482·491·494 등 임시 비자의 동반 배우자(Secondary Applicant)는 파트너 비자(820/309) 신청자가 아니므로 가정폭력(Division 1.5)이나 공동 자녀 특례를 통한 단독 영주권(801/100) 승인이 불가능합니다. 관계가 최종 해소되면 이민성 변경사항 통지 의무(ImmiAccount / Form 1022)가 발생하며 가족 구성원 요건 소멸에 따른 비자 취소(s 116) 통지 전에 본인의 경력·자격에 맞는 독자 비자(기술이민 189·190·491 또는 고용주 스폰서 482·186 또는 학생 500) 전환을 먼저 설계해야 합니다. 다만 이미 Subclass 186 영주권을 승인받은 동반 배우자라면 승인 당시 허위 서류(s 109) 문제가 없는 한 사후 별거만으로 영주권이 자동 취소되지 않습니다.",
         body_en: "Secondary holders on temporary sponsored/skilled visas (482, 491, 494) do NOT hold a Partner visa and cannot claim Subclass 801/100 solo PR under Division 1.5 family violence or shared child provisions. Upon final separation, notification obligations arise and secondary temporary visas face s 116 cancellation risk once member-of-the-family-unit status ends. Assess an independent visa pathway (189/190/491, 482/186, or 500) immediately. (If Subclass 186 PR has already been granted, post-grant separation alone does not cancel PR absent s 109 fraud.)"
       };
@@ -1433,8 +1433,8 @@
         div15Eligible: false,
         stageLabel: stLabel,
         excLabel: { ko: "입국 전 파혼 시 Div 1.5 비대상 (혼인 전 결별 엄격 제한)", en: "Offshore pre-entry ineligible for Div 1.5" },
-        headline_ko: "약혼자 비자(300) 입국 전·혼인 전 결별 — 자동 단독 영주권(801/100) 비대상, 체류 대안 즉시 점검 필수",
-        headline_en: "Subclass 300 Pre-Entry / Pre-Marriage Breakdown — No Automatic Solo 801/100 PR; Urgent Review Required",
+        headline_ko: "약혼자 비자(300) 입국 전·혼인 전 결별 · 자동 단독 영주권(801/100) 비대상, 체류 대안 즉시 점검 필수",
+        headline_en: "Subclass 300 Pre-Entry / Pre-Marriage Breakdown · No Automatic Solo 801/100 PR; Urgent Review Required",
         body_ko: "Subclass 300 비자로 호주에 입국하기 전(오프쇼어) 파혼한 경우에는 가정폭력이나 자녀 사유가 있더라도 파트너 비자 단독 영주권(Div 1.5) 특례가 적용되지 않습니다. 호주 입국 후 스폰서와 법적 혼인을 하기 전에 결별한 경우에도 820/801 비자가 유효하게 접수된 상태가 아니면 단독 영주권 진행이 엄격히 제한되므로 Subclass 300 체류 만료일 전에 독자 비자 전환 가능 여부를 즉시 검토해야 합니다.",
         body_en: "Offshore Subclass 300 holders who separate before entering Australia cannot access Division 1.5 solo PR. Even after onshore arrival, if separation occurs before marriage to the sponsor without a valid onshore 820/801 pathway, automatic solo PR does not apply; review alternative substantive visa options before Subclass 300 expiry."
       };
@@ -1446,8 +1446,8 @@
         div15Eligible: true,
         stageLabel: stLabel,
         excLabel: exLabel,
-        headline_ko: "단독 영주권(801/100) 진행 가능 — Division 1.5 가정폭력 피해 특례 적용 검토",
-        headline_en: "Eligible to Pursue Independent PR (801/100) — Division 1.5 Family Violence Exception",
+        headline_ko: "단독 영주권(801/100) 진행 가능 · Division 1.5 가정폭력 피해 특례 적용 검토",
+        headline_en: "Eligible to Pursue Independent PR (801/100) · Division 1.5 Family Violence Exception",
         body_ko: "별거 전까지 혼인·동거 관계가 진실했으며 관계 지속 중 스폰서로부터 가정폭력(신체적 폭력뿐 아니라 비자 취소 협박·경제적 통제·정서적 학대 포함)을 겪었다면 ① 법원 보호명령(DVO) 등 사법적 증거 또는 ② 법정 직군 전문가 2인 이상의 요건 충족 비사법적 증거(Non-judicial evidence)를 갖춰 스폰서 후원 없이 단독 영주권(801/100) 심사를 받을 수 있습니다.",
         body_en: "Where the partner relationship was genuine prior to breakdown and family violence occurred during the relationship, compliant judicial evidence (final DVO/court order) or statutory non-judicial evidence from two independent professionals allows progression to Subclass 801/100 PR without the sponsor."
       };
@@ -1459,8 +1459,8 @@
         div15Eligible: true,
         stageLabel: stLabel,
         excLabel: exLabel,
-        headline_ko: "단독 영주권(801/100) 진행 가능 — 공동 자녀 양육권·면접교섭권 특례 적용 검토",
-        headline_en: "Eligible to Pursue Independent PR (801/100) — Shared Child Parenting / Access Exception",
+        headline_ko: "단독 영주권(801/100) 진행 가능 · 공동 자녀 양육권·면접교섭권 특례 적용 검토",
+        headline_en: "Eligible to Pursue Independent PR (801/100) · Shared Child Parenting / Access Exception",
         body_ko: "가정폭력 이력이 없더라도 스폰서와의 사이에 출생한 자녀에 관해 연방순회·가족법원(FCFCOA) 양육 명령(Parenting Order), 공동 양육 책임, 또는 법정 양육비·면접교섭 요건이 입증되면 스폰서의 후원 철회 이후에도 단독 영주권(801/100) 승인이 가능합니다.",
         body_en: "Even without family violence, formal FCFCOA parenting orders, shared parental responsibility, or statutory custody/access obligations regarding a child of the relationship preserve Subclass 801/100 PR eligibility after separation."
       };
@@ -1471,8 +1471,8 @@
       div15Eligible: false,
       stageLabel: stLabel,
       excLabel: exLabel,
-      headline_ko: "단독 영주권 특례 미해당 — 소명 요청(s 57) 수령 전 독자 비자 전환 및 s 48 제한 점검 필수",
-      headline_en: "No Statutory Solo PR Exception — Assess Alternative Visas & Section 48 Bar Prior to Refusal",
+      headline_ko: "단독 영주권 특례 미해당 · 소명 요청(s 57) 수령 전 독자 비자 전환 및 s 48 제한 점검 필수",
+      headline_en: "No Statutory Solo PR Exception · Assess Alternative Visas & Section 48 Bar Prior to Refusal",
       body_ko: "가정폭력(Div 1.5) 및 공동 자녀 특례에 모두 해당하지 않는 상태에서 스폰서가 후원을 철회하면 연방 이민성이 자연적 정의 소명 서한(s 57 Natural Justice Letter · 통상 28일 기한)을 발송합니다. 거절 결정이 내려지면 호주 내 타 비자 재접수가 제한(Section 48 Bar)될 수 있으므로 기한 안에 기술·고용주 스폰서 등 대체 비자 요건을 먼저 확인해야 합니다.",
       body_en: "Where neither the family violence nor shared child exception applies, sponsorship withdrawal triggers a 28-day s 57 natural justice notice and refusal risk (activating the onshore Section 48 bar). Assess independent skilled or employer-sponsored pathways immediately."
     };
