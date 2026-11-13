@@ -836,19 +836,20 @@
      ========================================================================== */
   var KO_TRANSLATIONS = {
     brandTag: "호주 가족법 내비게이터",
-    navM1: "별거·제척기간",
+    navM1: "별거·제소기한",
     navM2: "재산분할 판례",
     navM3: "양육권·출국금지",
     navM4: "비자·별거 교차",
+    navM5Hub: "41문항 실무 백과",
     ecoFamFaqLink: "가족법 FAQ",
     ecoFaqLink: "이민 FAQ",
     topSvcConsult: "공식 문의 허브",
     heroTitle: "호주 가족법 · 한·호 재산분할 판례 매칭 & 양육권 내비게이터",
-    heroLead: "별거 12개월·재산분할 제척기간과 연방순회·가족법원(FCFCOA) 공개 판결 비율·양육권·비자 별거 영향을 즉시 점검합니다.",
+    heroLead: "별거 12개월·재산분할 법원 제소기한(s 44(3), s 44(5)–(6))과 연방순회·가족법원(FCFCOA) 공개 판결 비율·양육권·비자 별거 영향을 즉시 점검합니다.",
     btnSampleAll: "예시 데이터 불러오기",
     btnResetAll: "초기화",
-    m1Title: "1. 이혼 12개월 별거 & 재산분할 제척기간 계산기",
-    m1Desc: "재산분할은 별거 직후 바로 시작할 수 있으나 이혼 확정 후 12개월(법률혼 s 44(3)) 또는 별거 후 2년(사실혼 s 44(5) · 주말·공휴일 도래 시 s 36(2) 익영업일 연장) 안에 신청해야 합니다.",
+    m1Title: "1. 이혼 12개월 별거 & 재산분할 법원 제소기한 계산기",
+    m1Desc: "재산분할은 별거 직후 바로 시작할 수 있으나 법원 재산분할 청구는 이혼 확정 후 12개월(법률혼 s 44(3)) 또는 별거 후 2년(사실혼 s 44(5) · 주말·공휴일 도래 시 s 36(2) 익영업일 연장 및 합의 동의·법원 허가 예외) 안에 신청해야 합니다.",
     m1FormHeading: "관할 주 · 관계 유형 · 별거일 · 이혼 확정일 입력",
     lblFamState: "거주·관할 주/준주 (s 36(2) 공휴일 연장 및 서호주 관할 판정)",
     optStateQLD: "퀸즐랜드 (QLD · 브리즈번 / 골드코스트)",
@@ -867,8 +868,8 @@
     optRoofNo: "별도 거주로 완전 분리 별거",
     optRoofYes: "같은 집에서 한집 별거 중 (독립 제3자 진술서 필수)",
     lblDivorceDate: "이혼 명령 확정일 (이미 이혼이 확정된 법률혼인 경우만 입력)",
-    m1ResultHeading: "이혼 신청 가능일 & 재산분할 법정 제척기간 판정",
-    m2Title: "2. 한·호 전 세계 자산 풀(s 71B) & 법원 재산분할 판례 매칭",
+    m1ResultHeading: "이혼 신청 가능일 & 재산분할 법원 제소기한 판정",
+    m2Title: "2. 한·호 전 세계 자산 풀(s 79 · s 71B 공개 의무) & 법원 재산분할 판례 매칭",
     m2Desc: "호주·한국 자산·부채를 실시간 환율로 합산해 s 71B 1페이지 재산공개 명세서를 생성하고 연방순회·가족법원(FCFCOA) 공개 판결 비율을 비교합니다.",
     ethicsBannerBody: "<strong>법률·윤리 고지 (ASCR r 36.1 & FLA s 114Q(2)):</strong> 호주 가족법 재산분할은 정해진 수학 공식이 아니라 재판부의 종합 재량 판단(<code>Stanford (2012)</code>)에 따릅니다. 이 도구는 특정 비율을 보장하지 않으며 법원 승인 가명(<code>s 114Q(2)</code>)으로 공개된 실제 선고 판례만 비교 참고용으로 제시합니다.",
     ethicsCheckboxLabel: "위 고지사항(재산분할은 법원의 재량 판단이며 아래는 실제 선고된 유사 판례 샘플임)을 확인합니다.",
@@ -891,7 +892,7 @@
     optFacFv: "가정폭력 · 경제적 통제 · 별거 후 폭력 (s 79(4)(ca) & Kennon)",
     optFacDisclosure: "한국 등 해외 자산 보유 · 재산 은닉/불성실 공개 (s 71B & Add-backs)",
     optFacSeparate: "각자 통장 관리 · 단독 명의 자산 보유 (s 79(2))",
-    m2ResultHeading: "한·호 통합 자산 풀(s 71B) & 매칭된 실제 FCFCOA 판결 분포",
+    m2ResultHeading: "한·호 통합 자산 풀(s 79 · s 71B 공개 의무) & 매칭된 실제 FCFCOA 판결 분포",
     matchedCasesHeading: "선택한 조건과 매칭된 연방순회·가족법원(FCFCOA) 공개 판결문 샘플",
     m3Title: "3. 양육권(아동 안전 최우선 s 60CC) & 자녀 귀국 · 워치리스트 진단",
     m3Desc: "2024년 공동친권 추정 폐지 이후의 양육권 기준과 상대 부모 동의 없는 자녀 출국 금지(s 65Y · 공항 워치리스트) 절차를 진단합니다.",
@@ -938,7 +939,7 @@
     statLabelSep: "이혼 최소 별거기간",
     statValSep: "12개월",
     statSubSep: "Family Law Act s 48",
-    statLabelLim: "재산분할 제척기간",
+    statLabelLim: "재산분할 법원 제소기한",
     statValLim: "12개월 / 2년",
     statSubLim: "이혼 후 12개월 · 사실혼 2년 (s 44)",
     statLabelWorld: "한·호 전 세계 자산",
@@ -971,7 +972,15 @@
     footerLinksHub: "공식 상담 신청 허브 (parklawyers.com.au/links)",
     footerHubLink: "← 박앤코 법률·비자 통합 허브",
     footerFamFaqLink: "호주 가족법 공식 실무 FAQ (faq.immispecialist.com/family) →",
-    footerFaqLink: "호주이민 실무 FAQ (faq.immispecialist.com) →"
+    footerFaqLink: "호주이민 실무 FAQ (faq.immispecialist.com) →",
+    famHubTitle: "5. 호주 가족법 · FCFCOA 41문항 실무 백과 (신청인 · 상대방 양방향 통합)",
+    famHubDesc: "한집 별거(s 49(2))·재산분할 4단계(s 79 / Shinohara [2025] FedCFamC1A 126)·2025년 6월 발효 법정 재산공개 의무(s 71B / s 90RI)·양육권 안전 최우선 원칙(s 60CC)·파트너 비자 별거 교차 41개 실무 문답을 검색하고 공식 FAQ 전문으로 바로 연결할 수 있습니다.",
+    famHubCatAll: "전체 카테고리 (41문항)",
+    famHubCatDivorce: "이혼 · 별거 · 사실혼",
+    famHubCatProperty: "재산분할 · 배우자 부양",
+    famHubCatParenting: "양육권 · 양육비 · 국외이주",
+    famHubCatSafety: "가정폭력 · 긴급 보호명령",
+    famHubCatVisa: "가족법 · 파트너비자 교차"
   };
 
   var EN_TRANSLATIONS = {
@@ -980,6 +989,7 @@
     navM2: "Property Precedents",
     navM3: "Parenting & Watchlist",
     navM4: "Visa & Separation",
+    navM5Hub: "41-Q Knowledge Hub",
     ecoFamFaqLink: "Family FAQ",
     ecoFaqLink: "Immigration FAQ",
     topSvcConsult: "Official Inquiry Hub",
@@ -1111,7 +1121,15 @@
     footerLinksHub: "Official Consultation Hub (parklawyers.com.au/links)",
     footerHubLink: "← Park & Co Legal & Visa Hub",
     footerFamFaqLink: "Australian Family Law Official FAQ (faq.immispecialist.com/family) →",
-    footerFaqLink: "Australian Immigration FAQ (faq.immispecialist.com) →"
+    footerFaqLink: "Australian Immigration FAQ (faq.immispecialist.com) →",
+    famHubTitle: "5. Australian Family Law & FCFCOA 41-Question Knowledge Hub (Applicant & Respondent Views)",
+    famHubDesc: "Search 41 primary-source Q&As covering Separation Under One Roof (s 49(2)), 4-Step Property Division (s 79 / Shinohara [2025] FedCFamC1A 126), Statutory Financial Disclosure (s 71B / s 90RI effective 10 June 2025), Safety-First Parenting (s 60CC), and Partner Visa Breakdown.",
+    famHubCatAll: "All Categories (41 Q&As)",
+    famHubCatDivorce: "Divorce, Separation & De Facto",
+    famHubCatProperty: "Property Settlement & Spousal Maintenance",
+    famHubCatParenting: "Parenting, Child Support & Relocation",
+    famHubCatSafety: "Family Violence & Urgent Injunctions",
+    famHubCatVisa: "Family Law & Partner Visa Crossover"
   };
 
   /* ==========================================================================
@@ -1607,12 +1625,12 @@
 
           if (res.isOverdue) {
             html += '<div class="alert-box alert-box--danger">' +
-              '<strong>법정 기한 ' + res.overdueDays + '일 경과 (법원 특별허가 ' + res.leaveSection + ' 신청 필수):</strong> 제척기간이 도과한 상태이므로 재산분할을 청구하려면 회복하기 어려운 경제적 곤궁(Hardship)과 지연 사유를 입증하여 법원의 특별허가(Leave out of time)를 먼저 받아야 합니다.' +
+              '<strong>법정 기한 ' + res.overdueDays + '일 경과 (법원 특별허가 ' + res.leaveSection + ' 신청 필수):</strong> 법원 제소기한이 도과한 상태이므로 일방적인 재산분할 소송을 제기하려면 회복하기 어려운 경제적 곤궁(Hardship)과 지연 사유를 입증하여 법원의 특별허가(Leave out of time)를 먼저 받아야 합니다 (단 양 당사자 합의 동의나 재정합의서 BFA는 별도 검토 가능).' +
               '</div>';
           }
         } else if (res.relType === "married") {
           html += '<div class="alert-box alert-box--warn">' +
-            '<strong>재산분할 제척기간 안내 (법률혼 미이혼 상태):</strong> 아직 이혼 명령이 확정되지 않았으므로 12개월 제척기간(s 44(3))이 진행되지 않았습니다. 이혼 확정일을 기다리지 않고 지금 바로 재산분할 합의를 진행하는 편이 자산 보전에 유리합니다.' +
+            '<strong>재산분할 법원 제소기한 안내 (법률혼 미이혼 상태):</strong> 아직 이혼 명령이 확정되지 않았으므로 12개월 법원 제소기한(s 44(3))이 진행되지 않았습니다. 이혼 확정일을 기다리지 않고 지금 바로 재산분할 합의를 진행하는 편이 자산 보전에 유리합니다.' +
             '</div>';
         }
 
@@ -2182,7 +2200,7 @@
         sub: currentLang === "ko" ? "2025.06.10 발효 가족법 개정" : "Effective 10 June 2025 Reform"
       },
       {
-        label: currentLang === "ko" ? "재산분할 법정 제척기간" : "Property Limitation Period",
+        label: currentLang === "ko" ? "재산분할 법원 제소기한" : "Property Limitation Period",
         val: hm.property_limitation || "12m (Divorce) / 2y (De Facto)",
         sub: currentLang === "ko" ? "s 44(3) 이혼 후 · s 44(5) 사실혼" : "s 44(3) Post-Divorce · s 44(5) De Facto"
       }
@@ -2223,6 +2241,91 @@
         '</tr>'
       );
     }).join("");
+  }
+
+  var cachedFamKnowledgeHub = null;
+
+  function loadFamKnowledgeHub() {
+    if (typeof fetch !== "function") return;
+    fetch("data/fam_knowledge_hub.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        cachedFamKnowledgeHub = data;
+        renderFamKnowledgeHub();
+      })
+      .catch(function () {});
+  }
+
+  function renderFamKnowledgeHub() {
+    var bodyEl = document.getElementById("fam-hub-body");
+    if (!bodyEl || !cachedFamKnowledgeHub || !Array.isArray(cachedFamKnowledgeHub.items)) return;
+    var isEn = currentLang === "en";
+    var searchEl = document.getElementById("fam-hub-search");
+    var catEl = document.getElementById("fam-hub-cat");
+    if (searchEl) {
+      searchEl.setAttribute(
+        "placeholder",
+        isEn
+          ? "Search 41 Q&As (e.g. s 71B, Shinohara, Watchlist, BFA, Consent Orders, 820)..."
+          : "검색어 입력 (예: s 71B, Shinohara, 워치리스트, BFA, 합의명령, 820)..."
+      );
+    }
+    var q = searchEl && searchEl.value ? searchEl.value.trim().toLowerCase() : "";
+    var cat = catEl && catEl.value ? catEl.value : "all";
+    var items = cachedFamKnowledgeHub.items.filter(function (it) {
+      if (cat !== "all" && it.category !== cat) return false;
+      if (!q) return true;
+      var hay = [
+        it.slug,
+        it.question_ko,
+        it.question_en,
+        it.summary_ko,
+        it.summary_en,
+        (it.key_points_ko || []).join(" "),
+        (it.key_points_en || []).join(" ")
+      ].join(" ").toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+
+    if (!items.length) {
+      bodyEl.innerHTML = '<div style="padding:14px;background:#FBF9F5;border:1px solid #E5DFD3;border-radius:8px;font-size:13.5px;color:#4A5D5F;">' +
+        (isEn ? "No matching family law Q&As found." : "검색 조건에 일치하는 가족법 실무 문답이 없습니다.") +
+        '</div>';
+      return;
+    }
+
+    var countBanner = '<div style="font-size:12.5px;font-weight:700;color:#0E3A3E;margin-bottom:10px;">' +
+      (isEn
+        ? ("Showing " + items.length + " of " + cachedFamKnowledgeHub.items.length + " verified Family Law Q&As")
+        : ("전체 " + cachedFamKnowledgeHub.items.length + "개 문항 중 " + items.length + "개 표시")) +
+      '</div>';
+
+    var cards = items.map(function (it) {
+      var qTxt = isEn ? (it.question_en || it.question_ko) : it.question_ko;
+      var sTxt = isEn ? (it.summary_en || it.summary_ko) : it.summary_ko;
+      var kps = isEn ? (it.key_points_en || []) : (it.key_points_ko || []);
+      var faqUrl = "https://faq.immispecialist.com/faq/" + encodeURIComponent(it.slug) + (isEn ? "?lang=en" : "?lang=ko");
+      var kpHtml = kps.slice(0, 3).map(function (kp) {
+        return '<li style="margin-bottom:4px;">' + kp + '</li>';
+      }).join("");
+      return (
+        '<details style="background:#FFFFFF;border:1px solid #E5DFD3;border-radius:10px;padding:12px 14px;margin-bottom:8px;">' +
+          '<summary style="cursor:pointer;font-weight:800;font-size:14px;color:#14282A;display:flex;justify-content:space-between;align-items:center;gap:10px;">' +
+            '<span><code style="font-size:11.5px;color:#0E3A3E;margin-right:6px;">' + it.slug.toUpperCase() + '</code>' + qTxt + '</span>' +
+          '</summary>' +
+          '<div style="margin-top:10px;padding-top:10px;border-top:1px solid #E5DFD3;font-size:13.2px;line-height:1.65;color:#14282A;">' +
+            '<p style="margin:0 0 8px;">' + sTxt + '</p>' +
+            (kpHtml ? '<ul style="margin:0 0 10px;padding-left:18px;color:#4A5D5F;font-size:12.6px;">' + kpHtml + '</ul>' : '') +
+            '<a href="' + faqUrl + '" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:800;color:#0E3A3E;text-decoration:none;">' +
+              (isEn ? "Read Full Dual-Perspective Legal Guide on FAQ Portal ↗" : "공식 FAQ 포털에서 신청인·상대방 양방향 전문 보기 ↗") +
+            '</a>' +
+          '</div>' +
+        '</details>'
+      );
+    }).join("");
+
+    bodyEl.innerHTML = countBanner + cards;
   }
 
   function loadFamPollingStatus() {
@@ -2289,6 +2392,7 @@
     }
 
     renderFamPollerMatrix();
+    renderFamKnowledgeHub();
     updateAll();
   }
 
@@ -2404,7 +2508,12 @@
       if (toolParam) {
         applyToolDeepLink(toolParam);
       }
+      var hubSearch = document.getElementById("fam-hub-search");
+      var hubCat = document.getElementById("fam-hub-cat");
+      if (hubSearch) hubSearch.addEventListener("input", renderFamKnowledgeHub);
+      if (hubCat) hubCat.addEventListener("change", renderFamKnowledgeHub);
       loadFamPollingStatus();
+      loadFamKnowledgeHub();
     });
   }
 })(typeof window !== "undefined" ? window : globalThis);
