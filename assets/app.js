@@ -959,8 +959,8 @@
     ecoCalloutBtnDiagnose: "대체 비자 6단계 진단",
     ctaArtBtn: "행정재심기구(ART) 재심 검토",
     ecoDiyLink: "FCFCOA 합의명령·이혼 셀프 가이드",
-    pollerTitle: "1차 가족법령 · 연방순회·가족법원(FCFCOA) 수수료 실시간 폴링 검증 (SHA-256)",
-    pollerDesc: "호주 가족법 원문(<code>legislation.gov.au</code>)과 연방순회·가족법원(FCFCOA) 법정 접수 수수료 안내(<code>fcfcoa.gov.au</code>), 파트너 비자 가정폭력 특례 법령을 정기 폴링하여 SHA-256 해시와 최신 법정 수치를 검증합니다.",
+    pollerTitle: "1차 가족법령 · 연방순회·가족법원(FCFCOA) 수수료 스냅샷 바이트 무결성(SHA-256)",
+    pollerDesc: "호주 가족법 원문(<code>legislation.gov.au</code>)과 연방순회·가족법원(FCFCOA) 법정 접수 수수료 안내(<code>fcfcoa.gov.au</code>) 및 파트너 비자 가정폭력 특례 법령 원문의 접속 상태와 스냅샷 바이트 무결성(SHA-256 해시)을 기록합니다. 이 해시는 수집된 출처 스냅샷의 변조 여부만 증명하며 개별 사안의 제소기한·재산분할·양육권 판단에 대한 자동 법률 보증을 의미하지 않습니다.",
     thPollerSource: "1차 출처 및 검증 대상",
     thPollerCitation: "근거 조문 · 엔드포인트",
     thPollerFigures: "실시간 추출 핵심 수치",
@@ -1108,8 +1108,8 @@
     ecoCalloutBtnDiagnose: "6-Step Alternative Visa Diagnosis",
     ctaArtBtn: "Administrative Review Tribunal (ART) Review",
     ecoDiyLink: "FCFCOA Consent Orders & Divorce DIY Guide",
-    pollerTitle: "Live Primary-Source Family Law & FCFCOA Filing Fee Telemetry (SHA-256)",
-    pollerDesc: "Automated polling of the Family Law Act 1975 (<code>legislation.gov.au</code>), FCFCOA court filing fees (<code>fcfcoa.gov.au</code>), and Migration Regulations family violence rules with SHA-256 verification.",
+    pollerTitle: "Primary-Source Family Law & FCFCOA Filing Fee Snapshot Byte-Integrity (SHA-256)",
+    pollerDesc: "Records HTTP reachability and fetched source snapshot byte-integrity (SHA-256 hashes) for the Family Law Act 1975 (<code>legislation.gov.au</code>), FCFCOA court filing fees (<code>fcfcoa.gov.au</code>), and Migration Regulations family violence rules. SHA-256 hashes confirm source snapshot non-tampering only and do not constitute automated legal certification of individual limitation dates, property splits, or parenting outcomes.",
     thPollerSource: "Primary Source & Target",
     thPollerCitation: "Statutory Provision / Endpoint",
     thPollerFigures: "Live Extracted Figures",
@@ -1496,12 +1496,67 @@
     };
   }
 
+  function evaluatePppEligibilityPure(opts) {
+    var o = opts || {};
+    var netNonSuperAud = Math.max(0, Number(o.netNonSuperAud) || 0);
+    var superAud = Math.max(0, Number(o.superAud) || 0);
+    var hasParentingOrders = !!o.hasParentingOrders;
+    var hasContestedEntityTrustSmsf = !!o.hasContestedEntityTrustSmsf;
+    var excludedPara33 = hasParentingOrders || hasContestedEntityTrustSmsf;
+    var para31aEligible = !excludedPara33 && netNonSuperAud < 550000;
+    var discretionaryPara31bPossible = !excludedPara33 && netNonSuperAud >= 550000;
+
+    if (excludedPara33) {
+      return {
+        status: "excluded_para_3_3",
+        netNonSuperAud: netNonSuperAud,
+        superAud: superAud,
+        para31aEligible: false,
+        discretionaryPara31bPossible: false,
+        excludedPara33: true,
+        headline_ko: "소액 우선 재산분할(PPP · FAM-PPP para 3.3) 일반 제외 대상 (양육 동시 신청 또는 법인·신탁·SMSF 복잡 쟁점)",
+        headline_en: "Excluded from Ordinary PPP Track (FCFCOA FAM-PPP para 3.3 · Parenting-Combined or Contested Entity/Trust/SMSF)",
+        detail_ko: "연방순회·가족법원(FCFCOA) 실무지침(FAM-PPP para 3.3)에 따라 양육명령을 함께 신청하는 사건이나 법인·가족신탁·SMSF 지분 가치가 쟁점인 사건은 퇴직연금 제외 순자산이 $550,000 미만이더라도 일반 PPP 사건관리 대상에서 제외됩니다.",
+        detail_en: "Under FCFCOA Practice Direction FAM-PPP para 3.3, combined parenting/property applications and matters involving contested company, discretionary trust, or SMSF valuations are excluded from ordinary PPP case management even where net non-super property is under $550,000."
+      };
+    }
+
+    if (para31aEligible) {
+      return {
+        status: "eligible_para_3_1_a",
+        netNonSuperAud: netNonSuperAud,
+        superAud: superAud,
+        para31aEligible: true,
+        discretionaryPara31bPossible: false,
+        excludedPara33: false,
+        headline_ko: "소액 우선 재산분할 사건관리 모델(PPP · FAM-PPP para 3.1(a)) 기본 금액 요건 충족 (퇴직연금 제외 순자산 $550,000 미만)",
+        headline_en: "Meets Ordinary PPP Threshold (FCFCOA FAM-PPP para 3.1(a) · Net Property Under $550,000 Excl. Superannuation)",
+        detail_ko: "퇴직연금(Super $" + superAud.toLocaleString("en-AU") + ")을 제외한 한·호 통합 순자산($" + netNonSuperAud.toLocaleString("en-AU") + " AUD)이 $550,000 미만(< $550,000)이므로 재산분할·배우자 부양 단독 신청이고 복잡한 법인·신탁 쟁점(para 3.3)이 없다면 FCFCOA 소액 우선 재산분할(PPP) 사건관리 트랙 기본 요건(para 3.1(a))에 해당합니다.",
+        detail_en: "Combined net property excluding superannuation ($" + netNonSuperAud.toLocaleString("en-AU") + " AUD; Super $" + superAud.toLocaleString("en-AU") + " assessed separately) is strictly under $550,000 (< $550,000), meeting FCFCOA Practice Direction FAM-PPP para 3.1(a) for financial-only proceedings without para 3.3 entity/trust exclusions."
+      };
+    }
+
+    return {
+      status: "discretionary_para_3_1_b_only",
+      netNonSuperAud: netNonSuperAud,
+      superAud: superAud,
+      para31aEligible: false,
+      discretionaryPara31bPossible: true,
+      excludedPara33: false,
+      headline_ko: "PPP 기본 기준($550,000 미만 · para 3.1(a)) 초과 · 법원 재량 지정(para 3.1(b)) 여부만 검토 가능",
+      headline_en: "Above Strict Under-$550,000 Threshold (para 3.1(a)) · Eligible Only via Court Discretion (FAM-PPP para 3.1(b))",
+      detail_ko: "퇴직연금을 제외한 순자산($" + netNonSuperAud.toLocaleString("en-AU") + " AUD)이 $550,000 이상이므로 FAM-PPP para 3.1(a) 기본 요건($550,000 미만)에는 해당하지 않습니다. 다만 기준액을 크게 초과하지 않거나 자산 구조가 단순한 사안은 법원·사법등기관이 재량(para 3.1(b))으로 PPP 트랙에 지정할 수 있습니다.",
+      detail_en: "Net property excluding superannuation ($" + netNonSuperAud.toLocaleString("en-AU") + " AUD) is $550,000 or more and does NOT satisfy the strict under-$550,000 rule in FAM-PPP para 3.1(a). However, where net non-super property is not significantly greater than $550,000 or asset issues are simple, the Court or a Judicial Registrar retains discretion to designate the matter as a PPP case under para 3.1(b)."
+    };
+  }
+
   root.FamilyLawEngine = {
     ParkCoDates: ParkCoDates,
     FCFCOA_PRECEDENT_CASES: FCFCOA_PRECEDENT_CASES,
     evaluateSeparationDeadlinesPure: evaluateSeparationDeadlinesPure,
     matchPropertyPrecedentsPure: matchPropertyPrecedentsPure,
     evaluateVisaBreakdownPure: evaluateVisaBreakdownPure,
+    evaluatePppEligibilityPure: evaluatePppEligibilityPure,
     buildWaDefactoAlertHtml: buildWaDefactoAlertHtml,
     buildS71bDisclosureSummary: buildS71bDisclosureSummary,
     resolveToolDeepLink: resolveToolDeepLink
@@ -1800,6 +1855,17 @@
           '</div>'
         : "";
 
+      var pppEval = evaluatePppEligibilityPure({
+        netNonSuperAud: Math.round(ausNet + korAud),
+        superAud: Math.round(ausSuper)
+      });
+      var pppBoxCls = pppEval.para31aEligible ? "alert-box alert-box--info" : "alert-box";
+      var pppHtml =
+        '<div id="fam-ppp-track-box" class="' + pppBoxCls + '" style="margin-bottom:10px;">' +
+          '<strong>' + escapeHtml(currentLang === "ko" ? pppEval.headline_ko : pppEval.headline_en) + '</strong><br/>' +
+          '<span style="font-size:12.6px;">' + escapeHtml(currentLang === "ko" ? pppEval.detail_ko : pppEval.detail_en) + '</span>' +
+        '</div>';
+
       poolOut.innerHTML =
         waAlert +
         '<div class="result-summary-grid">' +
@@ -1821,6 +1887,7 @@
             '<small>FLA s 71B Global Pool</small>' +
           '</div>' +
         '</div>' +
+        pppHtml +
         '<div class="alert-box alert-box--warn" style="margin-bottom:0;">' +
           broadenNotice +
           '<strong>' + (currentLang === "ko"
@@ -2259,7 +2326,8 @@
 
   function renderFamKnowledgeHub() {
     var bodyEl = document.getElementById("fam-hub-body");
-    if (!bodyEl || !cachedFamKnowledgeHub || !Array.isArray(cachedFamKnowledgeHub.items)) return;
+    var rawItems = cachedFamKnowledgeHub && (cachedFamKnowledgeHub.faq_items || cachedFamKnowledgeHub.items);
+    if (!bodyEl || !Array.isArray(rawItems)) return;
     var isEn = currentLang === "en";
     var searchEl = document.getElementById("fam-hub-search");
     var catEl = document.getElementById("fam-hub-cat");
@@ -2267,19 +2335,30 @@
       searchEl.setAttribute(
         "placeholder",
         isEn
-          ? "Search 41 Q&As (e.g. s 71B, Shinohara, Watchlist, BFA, Consent Orders, 820)..."
-          : "검색어 입력 (예: s 71B, Shinohara, 워치리스트, BFA, 합의명령, 820)..."
+          ? "Search 41 Q&As (e.g. PPP, $550,000, s 71B, Shinohara, Watchlist, BFA, Consent Orders, 820)..."
+          : "검색어 입력 (예: PPP, $550,000, s 71B, Shinohara, 워치리스트, BFA, 합의명령, 820)..."
       );
     }
+    var catSlugMap = {
+      "이혼 · 별거 · 사실혼": ["fam-divorce-jurisdiction"],
+      "재산분할 · 배우자 부양": ["fam-property-consent", "fam-ppp-costs-fees", "fam-2025-reforms"],
+      "양육권 · 양육비 · 국외이주": ["fam-parenting-relocation"],
+      "가정폭력 · 긴급 보호명령": ["fam-dvo-visa"],
+      "가족법 · 파트너비자 교차": ["fam-dvo-visa"]
+    };
     var q = searchEl && searchEl.value ? searchEl.value.trim().toLowerCase() : "";
     var cat = catEl && catEl.value ? catEl.value : "all";
-    var items = cachedFamKnowledgeHub.items.filter(function (it) {
-      if (cat !== "all" && it.category !== cat) return false;
+    var items = rawItems.filter(function (it) {
+      if (cat !== "all") {
+        var allowedSlugs = catSlugMap[cat] || [];
+        var matchCat = (it.category && it.category === cat) || (it.category_slug && allowedSlugs.indexOf(it.category_slug) !== -1);
+        if (!matchCat) return false;
+      }
       if (!q) return true;
       var hay = [
         it.slug,
-        it.question_ko,
-        it.question_en,
+        it.title_ko || it.question_ko,
+        it.title_en || it.question_en,
         it.summary_ko,
         it.summary_en,
         (it.key_points_ko || []).join(" "),
@@ -2297,27 +2376,29 @@
 
     var countBanner = '<div style="font-size:12.5px;font-weight:700;color:#0E3A3E;margin-bottom:10px;">' +
       (isEn
-        ? ("Showing " + items.length + " of " + cachedFamKnowledgeHub.items.length + " verified Family Law Q&As")
-        : ("전체 " + cachedFamKnowledgeHub.items.length + "개 문항 중 " + items.length + "개 표시")) +
+        ? ("Showing " + items.length + " of " + rawItems.length + " verified Family Law Q&As")
+        : ("전체 " + rawItems.length + "개 문항 중 " + items.length + "개 표시")) +
       '</div>';
 
     var cards = items.map(function (it) {
-      var qTxt = isEn ? (it.question_en || it.question_ko) : it.question_ko;
+      var qTxt = isEn ? (it.title_en || it.question_en || it.title_ko || it.question_ko) : (it.title_ko || it.question_ko);
       var sTxt = isEn ? (it.summary_en || it.summary_ko) : it.summary_ko;
       var kps = isEn ? (it.key_points_en || []) : (it.key_points_ko || []);
-      var faqUrl = "https://faq.immispecialist.com/faq/" + encodeURIComponent(it.slug) + (isEn ? "?lang=en" : "?lang=ko");
+      var faqUrl = isEn
+        ? (it.faq_url_en || ("https://faq.immispecialist.com/family/q/" + encodeURIComponent(it.slug) + "?lang=en"))
+        : (it.faq_url_ko || ("https://faq.immispecialist.com/family/q/" + encodeURIComponent(it.slug) + "?lang=ko"));
       var kpHtml = kps.slice(0, 3).map(function (kp) {
-        return '<li style="margin-bottom:4px;">' + kp + '</li>';
+        return '<li style="margin-bottom:4px;">' + escapeHtml(kp) + '</li>';
       }).join("");
       return (
         '<details style="background:#FFFFFF;border:1px solid #E5DFD3;border-radius:10px;padding:12px 14px;margin-bottom:8px;">' +
           '<summary style="cursor:pointer;font-weight:800;font-size:14px;color:#14282A;display:flex;justify-content:space-between;align-items:center;gap:10px;">' +
-            '<span><code style="font-size:11.5px;color:#0E3A3E;margin-right:6px;">' + it.slug.toUpperCase() + '</code>' + qTxt + '</span>' +
+            '<span><code style="font-size:11.5px;color:#0E3A3E;margin-right:6px;">' + escapeHtml(it.slug.toUpperCase()) + '</code>' + escapeHtml(qTxt) + '</span>' +
           '</summary>' +
           '<div style="margin-top:10px;padding-top:10px;border-top:1px solid #E5DFD3;font-size:13.2px;line-height:1.65;color:#14282A;">' +
-            '<p style="margin:0 0 8px;">' + sTxt + '</p>' +
+            '<p style="margin:0 0 8px;">' + escapeHtml(sTxt) + '</p>' +
             (kpHtml ? '<ul style="margin:0 0 10px;padding-left:18px;color:#4A5D5F;font-size:12.6px;">' + kpHtml + '</ul>' : '') +
-            '<a href="' + faqUrl + '" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:800;color:#0E3A3E;text-decoration:none;">' +
+            '<a href="' + escapeHtml(faqUrl) + '" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:800;color:#0E3A3E;text-decoration:none;">' +
               (isEn ? "Read Full Dual-Perspective Legal Guide on FAQ Portal ↗" : "공식 FAQ 포털에서 신청인·상대방 양방향 전문 보기 ↗") +
             '</a>' +
           '</div>' +
