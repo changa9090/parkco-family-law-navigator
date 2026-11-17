@@ -113,6 +113,7 @@
           <div class="form-group">
             <label for="fam-divorce-date" data-i18n="lblDivorceDate">이혼 명령 확정일 (이미 이혼이 확정된 법률혼인 경우만 입력)</label>
             <input type="date" id="fam-divorce-date" class="form-control" />
+            <small style="display:block;margin-top:4px;font-size:11.8px;color:#4A5D5F;line-height:1.45;" data-i18n="hintDivorceS55">※ FLA s 55(1): 이혼 심리·선고일이 아니라 선고 후 1개월 1일이 지나 실제 효력이 발생한 날짜(최소 별거일+12개월 이후)를 입력합니다.</small>
           </div>
         </div>
 
@@ -127,7 +128,7 @@
     <section id="property-precedent-matcher" class="section-block">
       <div class="section-head">
         <div>
-          <h2 data-i18n="m2Title">2. 한·호 전 세계 자산 풀(s 79 · s 71B 공개 의무) &amp; 법원 재산분할 판례 매칭</h2>
+          <h2 data-i18n="m2Title">2. 한·호 전 세계 자산 풀(s 79 · s 71B / s 90RI 공개 의무) &amp; 법원 재산분할 판례 매칭</h2>
           <p data-i18n="m2Desc">호주·한국 자산을 합산해 유사 조건에서 연방순회·가족법원(FCFCOA)이 실제로 선고한 공개 판결 비율을 비교합니다.</p>
         </div>
       </div>
@@ -188,14 +189,25 @@
               <option value="initial_capital" data-i18n="optFacInitial">일방의 초기 부동산·자금 투입 / 부모 자금 지원</option>
               <option value="children_carer" data-i18n="optFacChildren">미성년 자녀 주양육 &amp; 장래 소득능력 격차 (s 75(2) / s 79(5))</option>
               <option value="family_violence" data-i18n="optFacFv">가정폭력 · 경제적 통제 · 별거 후 폭력 (s 79(4)(ca) &amp; Kennon)</option>
-              <option value="overseas_disclosure" data-i18n="optFacDisclosure">한국 등 해외 자산 보유 · 재산 은닉/불성실 공개 (s 71B &amp; Add-backs)</option>
+              <option value="overseas_disclosure" data-i18n="optFacDisclosure">한국 등 해외 자산 보유 · 재산 은닉/불성실 공개 (s 71B / s 90RI &amp; Add-backs)</option>
               <option value="separate_finances" data-i18n="optFacSeparate">각자 통장 관리 · 단독 명의 자산 보유 (s 79(2))</option>
             </select>
+          </div>
+          <div class="form-group" style="background:#FBF9F5;border:1px solid #E5DFD3;border-radius:8px;padding:10px 12px;margin-bottom:0;">
+            <div style="font-size:12.3px;font-weight:800;color:#0E3A3E;margin-bottom:6px;" data-i18n="lblPppExclusionHead">소액 우선 재산분할(PPP · FAM-PPP para 3.3) 일반 제외 사유 점검</div>
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:12.4px;color:#14282A;cursor:pointer;margin-bottom:6px;">
+              <input type="checkbox" id="hasParentingOrders" style="margin-top:2px;width:15px;height:15px;accent-color:#0E3A3E;" />
+              <span data-i18n="lblPppHasParenting">양육명령(Parenting Orders)을 재산분할과 동시에 신청함 (FAM-PPP para 3.3 제외)</span>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:8px;font-size:12.4px;color:#14282A;cursor:pointer;">
+              <input type="checkbox" id="hasContestedEntityTrustSmsf" style="margin-top:2px;width:15px;height:15px;accent-color:#0E3A3E;" />
+              <span data-i18n="lblPppHasEntity">비상장 법인(Pty Ltd) · 가족신탁(Family Trust) · SMSF 지분 가치 다툼이 있음 (FAM-PPP para 3.3 제외)</span>
+            </label>
           </div>
         </div>
 
         <div class="card">
-          <h3 style="margin:0 0 12px;font-size:15.5px;" data-i18n="m2ResultHeading">한·호 통합 자산 풀(s 79 · s 71B 공개 의무) &amp; 매칭된 실제 FCFCOA 판결 분포</h3>
+          <h3 style="margin:0 0 12px;font-size:15.5px;" data-i18n="m2ResultHeading">한·호 통합 자산 풀(s 71B · s 90RI · WA Part 5A) &amp; 매칭된 실제 FCFCOA 판결 분포</h3>
           <div id="fam-pool-summary-output"></div>
         </div>
       </div>

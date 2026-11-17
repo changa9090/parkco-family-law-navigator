@@ -50,46 +50,51 @@
     "2030-12-26": "Boxing Day"
   };
 
+  var BRISBANE_LGA_SHOW_DAYS = {
+    "2026-08-12": "Royal Queensland Show (Brisbane LGA only)",
+    "2027-08-11": "Royal Queensland Show (Brisbane LGA only)",
+    "2028-08-16": "Royal Queensland Show (Brisbane LGA only)",
+    "2029-08-15": "Royal Queensland Show (Brisbane LGA only)",
+    "2030-08-14": "Royal Queensland Show (Brisbane LGA only)"
+  };
+
   var STATE_HOLIDAYS = {
     QLD: {
       "2026-04-04": "Easter Saturday",
       "2026-04-05": "Easter Sunday",
       "2026-04-25": "Anzac Day",
       "2026-05-04": "Labour Day (QLD)",
-      "2026-08-12": "Royal Queensland Show (Brisbane)",
       "2026-10-05": "King's Birthday (QLD)",
       "2027-03-27": "Easter Saturday",
       "2027-03-28": "Easter Sunday",
       "2027-04-25": "Anzac Day",
       "2027-04-26": "Anzac Day (Observed QLD)",
       "2027-05-03": "Labour Day (QLD)",
-      "2027-08-11": "Royal Queensland Show (Brisbane)",
       "2027-10-04": "King's Birthday (QLD)",
       "2028-04-15": "Easter Saturday",
       "2028-04-16": "Easter Sunday",
       "2028-05-01": "Labour Day (QLD)",
-      "2028-08-16": "Royal Queensland Show (Brisbane)",
       "2028-10-02": "King's Birthday (QLD)",
       "2029-03-31": "Easter Saturday",
       "2029-04-01": "Easter Sunday",
       "2029-05-07": "Labour Day (QLD)",
-      "2029-08-15": "Royal Queensland Show (Brisbane)",
       "2029-10-01": "King's Birthday (QLD)",
       "2030-04-20": "Easter Saturday",
       "2030-04-21": "Easter Sunday",
       "2030-05-06": "Labour Day (QLD)",
-      "2030-08-14": "Royal Queensland Show (Brisbane)",
       "2030-10-07": "King's Birthday (QLD)"
     },
     NSW: {
       "2026-04-04": "Easter Saturday",
       "2026-04-05": "Easter Sunday",
       "2026-04-25": "Anzac Day",
+      "2026-04-27": "Anzac Day (Additional Day NSW)",
       "2026-06-08": "King's Birthday (NSW)",
       "2026-10-05": "Labour Day (NSW)",
       "2027-03-27": "Easter Saturday",
       "2027-03-28": "Easter Sunday",
       "2027-04-25": "Anzac Day",
+      "2027-04-26": "Anzac Day (Additional Day NSW)",
       "2027-06-14": "King's Birthday (NSW)",
       "2027-10-04": "Labour Day (NSW)",
       "2028-04-15": "Easter Saturday",
@@ -173,7 +178,6 @@
       "2026-10-05": "Labour Day (SA)",
       "2027-03-08": "Adelaide Cup Day (SA)",
       "2027-03-27": "Easter Saturday",
-      "2027-04-26": "Anzac Day (Observed SA)",
       "2027-06-14": "King's Birthday (SA)",
       "2027-10-04": "Labour Day (SA)",
       "2028-03-13": "Adelaide Cup Day (SA)",
@@ -191,21 +195,16 @@
     },
     TAS: {
       "2026-03-09": "Eight Hours Day (TAS)",
-      "2026-04-07": "Easter Tuesday (TAS Public Service)",
       "2026-04-25": "Anzac Day",
       "2026-06-08": "King's Birthday (TAS)",
       "2027-03-08": "Eight Hours Day (TAS)",
-      "2027-03-30": "Easter Tuesday (TAS Public Service)",
       "2027-04-25": "Anzac Day",
       "2027-06-14": "King's Birthday (TAS)",
       "2028-03-13": "Eight Hours Day (TAS)",
-      "2028-04-18": "Easter Tuesday (TAS Public Service)",
       "2028-06-12": "King's Birthday (TAS)",
       "2029-03-12": "Eight Hours Day (TAS)",
-      "2029-04-03": "Easter Tuesday (TAS Public Service)",
       "2029-06-11": "King's Birthday (TAS)",
       "2030-03-11": "Eight Hours Day (TAS)",
-      "2030-04-23": "Easter Tuesday (TAS Public Service)",
       "2030-06-10": "King's Birthday (TAS)"
     },
     ACT: {
@@ -429,6 +428,7 @@
   var ParkCoDates = {
     NATIONAL_HOLIDAYS: NATIONAL_HOLIDAYS,
     STATE_HOLIDAYS: STATE_HOLIDAYS,
+    BRISBANE_LGA_SHOW_DAYS: BRISBANE_LGA_SHOW_DAYS,
     VALID_STATES: VALID_STATES,
     easterSundayIso: easterSundayIso,
     getDynamicFallbackHoliday: getDynamicFallbackHoliday,
@@ -437,6 +437,9 @@
     formatIsoLocal: formatIsoLocal,
     todayBrisbaneIso: todayBrisbaneIso,
     getHolidayName: getHolidayName,
+    getLgaShowDayName: function (isoStr, stateCode) {
+      return normalizeStateCode(stateCode) === "QLD" ? (BRISBANE_LGA_SHOW_DAYS[isoStr] || null) : null;
+    },
     isBusinessDay: isBusinessDay,
     addCalendarDays: addCalendarDays,
     addYearsMonthsClamped: addYearsMonthsClamped,
@@ -758,29 +761,29 @@
       url: "https://www.legislation.gov.au/C2004A00275/latest/text"
     },
     {
-      id: "tomaras-worldwide",
-      citation: "Tomaras & Tomaras [2021] FedCFamC1A 82 (with s 71B 2025 Reform)",
-      shortCite: "Tomaras & Tomaras [2021]",
-      date: "2021-12-13",
-      court: "FCFCOA Div 1 (Appellate)",
+      id: "weir-chang-worldwide",
+      citation: "Weir & Weir (1993) FLC 92-338; Black & Kellner (1992) FLC 92-287; Chang v Su [2002] FamCA 156",
+      shortCite: "Weir & Weir (1993) / Chang v Su [2002]",
+      date: "1992–2002 (s 71B / s 90RI 2025)",
+      court: "Full Court of the Family Court",
       durationBand: "long",
       highPct: null,
       lowPct: null,
-      splitTag_ko: "해외 은닉 상계·호주 자산 우위 배분 (s 71B)",
-      splitTag_en: "Dominant local share offsetting overseas pool (s 71B)",
-      durationText_ko: "한·호 국제 자산 (한국 부동산·예금·연금 보유 및 은닉 쟁점)",
-      durationText_en: "Worldwide Asset Pool & Overseas Property Non-Disclosure (s 71B)",
-      poolAud: "호주 내 자산 + 한국 등 해외 부동산·금융자산 전 세계 합산 풀",
-      poolAud_en: "Australian assets + overseas (South Korea) real estate & bank accounts",
+      splitTag_ko: "해외·은닉 자산 불이익 추정·호주 자산 전액/우위 배분 (Weir / Chang v Su)",
+      splitTag_en: "Robust adverse inference & dominant/full local share (Weir / Chang v Su)",
+      durationText_ko: "한·호 국제 자산 · 고의적 해외 재산 은닉 및 불성실 공개 법리",
+      durationText_en: "Worldwide Asset Pool & Deliberate Overseas Non-Disclosure Authorities",
+      poolAud: "호주 내 확인 자산 + 해외(아시아·한국 등) 미공개 부동산·금융자산",
+      poolAud_en: "Known Australian property + undisclosed overseas real estate & accounts",
       factors: ["overseas_disclosure"],
-      contribSplit: "해외(한국) 소재 부동산·예금도 호주 법원의 대인관할(in personam) 아래 100% 합산",
-      contribSplit_en: "Overseas (Korean) property & accounts 100% included via in personam jurisdiction",
-      adjSplit: "해외 재산 은닉·불성실 공개 시 공개 거부 배우자에게 불리한 추정(Adverse Inference) 적용",
-      adjSplit_en: "Adverse inference & s 79(5) uplift against party failing to disclose overseas assets",
-      finalSplit: "은닉된 해외 자산 가치를 감안해 호주 내 남아있는 부동산 대부분을 상대 배우자에게 배분 가능",
-      finalSplit_en: "Innocent spouse awarded dominant share of local Australian assets to offset undisclosed overseas pool",
-      summary_ko: "한국에 있는 아파트·전세보증금·예금·연금도 호주 가족법원 재산분할 풀에 모두 포함됩니다(2025.6.10 발효 s 71B 법정 공개 의무). 해외 자산을 숨기거나 친족에게 빼돌리면 법원이 호주 내 자산을 상대 배우자에게 대폭 배분하는 방식으로 불이익을 줍니다.",
-      summary_en: "Established that overseas real estate, bank accounts, and pensions (e.g. in South Korea) form part of the global asset pool under s 71B; non-disclosure triggers adverse inferences awarding a dominant share of Australian assets to the innocent spouse.",
+      contribSplit: "해외 소재 부동산·예금·사업자산도 대인관할(in personam) 아래 성실 공개 의무(s 71B / s 90RI)",
+      contribSplit_en: "Overseas real estate & accounts subject to mandatory full and frank disclosure (s 71B / s 90RI)",
+      adjSplit: "고의적 재산 은닉 시 은닉 당사자에게 불리한 추정(Weir & Weir; Black & Kellner) 엄격 적용",
+      adjSplit_en: "Court need not be unduly cautious in making robust findings against non-disclosing party (Weir; Black & Kellner)",
+      finalSplit: "미공개 해외 자산을 상계해 호주 내 확인된 자산 전부 또는 대다수를 성실 공개 배우자에게 귀속(Chang v Su)",
+      finalSplit_en: "100% or dominant share of known Australian assets awarded to innocent spouse (Chang v Su [2002] FamCA 156)",
+      summary_ko: "고의적 재산 은닉이 확인되면 법원은 은닉 배우자에게 유리하도록 신중할 필요가 없으며 불리한 추정으로 강력한 재산분할 명령을 내릴 수 있습니다(Weir & Weir (1993) FLC 92-338; Black & Kellner (1992) FLC 92-287). 해외 자산을 끝까지 공개하지 않은 사안에서 호주 내 확인된 주택 전부를 상대 배우자에게 단독 귀속시킨 선례(Chang v Su [2002] FamCA 156)와 2025년 성문화된 s 71B·s 90RI 공개 의무가 결합 적용됩니다.",
+      summary_en: "Where deliberate non-disclosure of assets is established, the Court should not be unduly cautious about making robust findings in favour of the innocent party (Weir & Weir (1993) FLC 92-338; Black & Kellner (1992) FLC 92-287), including awarding the entirety of known Australian property where substantial overseas assets were concealed (Chang v Su [2002] FamCA 156), reinforced by codified ss 71B / 90RI disclosure duties.",
       url: "https://www.legislation.gov.au/C2004A00275/latest/text"
     }
   ];
@@ -868,9 +871,10 @@
     optRoofNo: "별도 거주로 완전 분리 별거",
     optRoofYes: "같은 집에서 한집 별거 중 (독립 제3자 진술서 필수)",
     lblDivorceDate: "이혼 명령 확정일 (이미 이혼이 확정된 법률혼인 경우만 입력)",
+    hintDivorceS55: "※ FLA s 55(1): 이혼 심리·선고일이 아니라 선고 후 1개월 1일이 지나 실제 효력이 발생한 날짜(최소 별거일+12개월 이후)를 입력합니다.",
     m1ResultHeading: "이혼 신청 가능일 & 재산분할 법원 제소기한 판정",
-    m2Title: "2. 한·호 전 세계 자산 풀(s 79 · s 71B 공개 의무) & 법원 재산분할 판례 매칭",
-    m2Desc: "호주·한국 자산·부채를 실시간 환율로 합산해 s 71B 1페이지 재산공개 명세서를 생성하고 연방순회·가족법원(FCFCOA) 공개 판결 비율을 비교합니다.",
+    m2Title: "2. 한·호 전 세계 자산 풀(s 79 · s 71B / s 90RI 공개 의무) & 법원 재산분할 판례 매칭",
+    m2Desc: "호주·한국 자산·부채를 실시간 환율로 합산해 재산공개 명세서(s 71B · s 90RI · WA Part 5A)를 생성하고 연방순회·가족법원(FCFCOA) 공개 판결 비율을 비교합니다.",
     ethicsBannerBody: "<strong>법률·윤리 고지 (ASCR r 36.1 & FLA s 114Q(2)):</strong> 호주 가족법 재산분할은 정해진 수학 공식이 아니라 재판부의 종합 재량 판단(<code>Stanford (2012)</code>)에 따릅니다. 이 도구는 특정 비율을 보장하지 않으며 법원 승인 가명(<code>s 114Q(2)</code>)으로 공개된 실제 선고 판례만 비교 참고용으로 제시합니다.",
     ethicsCheckboxLabel: "위 고지사항(재산분할은 법원의 재량 판단이며 아래는 실제 선고된 유사 판례 샘플임)을 확인합니다.",
     m2FormHeading: "한·호 자산·부채 내역 · 환율 및 사건 조건 선택",
@@ -890,9 +894,12 @@
     optFacInitial: "일방의 초기 부동산·자금 투입 / 부모 자금 지원",
     optFacChildren: "미성년 자녀 주양육 & 장래 소득능력 격차 (s 75(2) / s 79(5))",
     optFacFv: "가정폭력 · 경제적 통제 · 별거 후 폭력 (s 79(4)(ca) & Kennon)",
-    optFacDisclosure: "한국 등 해외 자산 보유 · 재산 은닉/불성실 공개 (s 71B & Add-backs)",
+    optFacDisclosure: "한국 등 해외 자산 보유 · 재산 은닉/불성실 공개 (s 71B / s 90RI & Add-backs)",
     optFacSeparate: "각자 통장 관리 · 단독 명의 자산 보유 (s 79(2))",
-    m2ResultHeading: "한·호 통합 자산 풀(s 79 · s 71B 공개 의무) & 매칭된 실제 FCFCOA 판결 분포",
+    lblPppExclusionHead: "소액 우선 재산분할(PPP · FAM-PPP para 3.3) 일반 제외 사유 점검",
+    lblPppHasParenting: "양육명령(Parenting Orders)을 재산분할과 동시에 신청함 (FAM-PPP para 3.3 제외)",
+    lblPppHasEntity: "비상장 법인(Pty Ltd) · 가족신탁(Family Trust) · SMSF 지분 가치 다툼이 있음 (FAM-PPP para 3.3 제외)",
+    m2ResultHeading: "한·호 통합 자산 풀(s 71B · s 90RI · WA Part 5A) & 매칭된 실제 FCFCOA 판결 분포",
     matchedCasesHeading: "선택한 조건과 매칭된 연방순회·가족법원(FCFCOA) 공개 판결문 샘플",
     m3Title: "3. 양육권(아동 안전 최우선 s 60CC) & 자녀 귀국 · 워치리스트 진단",
     m3Desc: "2024년 공동친권 추정 폐지 이후의 양육권 기준과 상대 부모 동의 없는 자녀 출국 금지(s 65Y · 공항 워치리스트) 절차를 진단합니다.",
@@ -1017,9 +1024,10 @@
     optRoofNo: "Physical separation in separate residences",
     optRoofYes: "Separated under one roof (Independent third-party affidavit mandatory)",
     lblDivorceDate: "Divorce Order Effective Date (Optional · only if already divorced)",
+    hintDivorceS55: "* FLA s 55(1): Enter the date the Divorce Order took legal effect (1 month + 1 day after hearing/grant, at least 12 months after separation), not the hearing date.",
     m1ResultHeading: "Divorce Eligibility Date & Dual Statutory Limitation Deadlines",
-    m2Title: "2. AUS+KOR Asset Pool (s 71B) & FCFCOA Property Precedent Matcher",
-    m2Desc: "Convert South Korean and Australian assets/liabilities at a live KRW/AUD rate, generate a 1-page s 71B disclosure summary, and review published FCFCOA division splits.",
+    m2Title: "2. AUS+KOR Asset Pool (s 71B / s 90RI / WA s 205ZG) & FCFCOA Property Precedent Matcher",
+    m2Desc: "Convert South Korean and Australian assets/liabilities at a live KRW/AUD rate, generate a 1-page statutory disclosure summary, and review published FCFCOA division splits.",
     ethicsBannerBody: "<strong>Legal & Ethical Notice (ASCR r 36.1 & FLA s 114Q(2)):</strong> Australian property division is a holistic discretionary synthesis (<code>Stanford (2012)</code>), not a fixed formula. This tool does not predict or guarantee a specific split; it displays anonymized published Court judgments (<code>s 114Q(2)</code>) for reference only.",
     ethicsCheckboxLabel: "I acknowledge that property division is discretionary and the cases below are published precedent samples only.",
     m2FormHeading: "Enter AUS/KOR Assets, Liabilities, KRW Rate & Precedent Filters",
@@ -1039,9 +1047,12 @@
     optFacInitial: "Significant Initial Property / Capital / Parental Funds",
     optFacChildren: "Primary Care of Minor Children & Earning Capacity Gap (s 75(2) / s 79(5))",
     optFacFv: "Family Violence · Economic / Coercive Control (s 79(4)(ca) & Kennon)",
-    optFacDisclosure: "Overseas Assets · Non-Disclosure (s 71B) · Legal Fee Add-backs",
+    optFacDisclosure: "Overseas Assets · Non-Disclosure (s 71B / s 90RI) · Legal Fee Add-backs",
     optFacSeparate: "Separate Bank Accounts & Individual Asset Ownership (s 79(2))",
-    m2ResultHeading: "Worldwide Asset Pool (s 71B) & Matched FCFCOA Precedent Spectrum",
+    lblPppExclusionHead: "PPP Track Exclusion Check (FCFCOA Practice Direction FAM-PPP para 3.3)",
+    lblPppHasParenting: "Parenting Orders are sought together with property orders (Excluded under FAM-PPP para 3.3)",
+    lblPppHasEntity: "Contested private company (Pty Ltd), discretionary trust, or SMSF valuation in dispute (Excluded under FAM-PPP para 3.3)",
+    m2ResultHeading: "Worldwide Asset Pool (s 71B / s 90RI / WA Part 5A) & Matched FCFCOA Precedent Spectrum",
     matchedCasesHeading: "Published FCFCOA Property Settlement Judgments Matching Your Selection",
     m3Title: "3. Parenting (s 60CC Safety Paramount) & Child Relocation / Watchlist",
     m3Desc: "Review post-2024 parenting reforms (repeal of equal shared responsibility presumption) and unilateral removal / AFP Airport Watchlist rules (s 65Y).",
@@ -1135,20 +1146,59 @@
   /* ==========================================================================
      5. PURE CALCULATION & DYNAMIC MATCHING ENGINE (Testable in Node VM)
      ========================================================================== */
+  function getDisclosureProvisionLabels(stateCode, relType) {
+    var st = ParkCoDates.normalizeStateCode(stateCode || "QLD");
+    var rel = relType === "defacto" ? "defacto" : "married";
+    if (rel === "defacto" && st === "WA") {
+      return {
+        shortEn: "FCA 1997 (WA) Part 5A · s 205ZG",
+        shortKo: "FCA 1997 (WA) Part 5A · s 205ZG",
+        relDisplayEn: "WA De Facto Couple (Family Court Act 1997 (WA) Part 5A · s 205ZG)",
+        relDisplayKo: "서호주(WA) 사실혼 커플 (Family Court Act 1997 (WA) Part 5A · s 205ZG)",
+        headerEn: "1-PAGE KR–AU COMBINED FINANCIAL DISCLOSURE SUMMARY (FCA 1997 (WA) Part 5A · s 205ZG)",
+        headerKo: "[한·호 통합 자산·부채 1페이지 공개 명세서 (Family Court Act 1997 (WA) Part 5A · s 205ZG)]",
+        statNoteEn: "Statutory Note: In Western Australia, de facto property adjustment and financial disclosure are governed by Part 5A (s 205ZG) of the Family Court Act 1997 (WA) and the Family Court Rules 2021 (WA) in the Family Court of WA (distinct from federal FLA s 71B for marriages and FLA s 90RI / s 90SM for non-WA de facto couples; WA de facto superannuation splitting is governed by FLA Part VIIIC). Both parties owe a strict duty of full and frank disclosure of all direct/indirect worldwide property, Jeonse deposits, bank accounts, pensions, and liabilities.",
+        statNoteKo: "법정 고지: 서호주(WA) 사실혼 재산분할 및 재정공개 의무는 연방 FLA s 90SM / s 90RI(및 법률혼 s 71B)가 아니라 서호주 가족법(Family Court Act 1997 (WA)) Part 5A(제205ZG조 재산분할) 및 서호주 가족법원 규칙(Family Court Rules 2021 (WA))에 따라 규율되며(연금 분할은 연방 FLA Part VIIIC 적용) 호주와 한국에 보유한 모든 부동산·전세보증금·예금·퇴직연금·부채를 성실히 공개해야 합니다."
+      };
+    }
+    if (rel === "defacto") {
+      return {
+        shortEn: "FLA s 90RI",
+        shortKo: "FLA s 90RI",
+        relDisplayEn: "De Facto Couple (FLA s 90SM · Disclosure s 90RI)",
+        relDisplayKo: "사실혼 커플 (FLA s 90SM · 재정공개 s 90RI)",
+        headerEn: "1-PAGE KR–AU COMBINED FINANCIAL DISCLOSURE SUMMARY (FLA s 90RI)",
+        headerKo: "[한·호 통합 자산·부채 1페이지 공개 명세서 (Family Law Act s 90RI)]",
+        statNoteEn: "Statutory Note: Under s 90RI of the Family Law Act 1975 (Cth) (effective 10 June 2025; mirroring s 71B for marriages) and FCFCOA (Family Law) Rules 2021, de facto parties outside WA owe a strict statutory duty of full and frank disclosure of all direct/indirect worldwide property, Jeonse deposits, bank accounts, pensions, and liabilities.",
+        statNoteKo: "법정 고지: 호주 가족법(Family Law Act 1975) 제90RI조(서호주 외 사실혼 성문 재정공개 의무 · 2025.6.10 시행 / 법률혼 제71B조 대응) 및 연방순회·가족법원(FCFCOA) 규칙에 따라 호주와 한국에 보유한 모든 부동산·전세보증금·예금·퇴직연금·부채를 성실히 공개해야 합니다."
+      };
+    }
+    return {
+      shortEn: "FLA s 71B",
+      shortKo: "FLA s 71B",
+      relDisplayEn: REL_LABELS.married.en + " · Disclosure s 71B",
+      relDisplayKo: REL_LABELS.married.ko + " · 재정공개 s 71B",
+      headerEn: "1-PAGE KR–AU COMBINED FINANCIAL DISCLOSURE SUMMARY (FLA s 71B)",
+      headerKo: "[한·호 통합 자산·부채 1페이지 공개 명세서 (Family Law Act s 71B)]",
+      statNoteEn: "Statutory Note: Under s 71B of the Family Law Act 1975 (Cth) (effective 10 June 2025) and FCFCOA (Family Law) Rules 2021, married parties owe a strict duty of full and frank disclosure of all direct/indirect worldwide property, Jeonse deposits, bank accounts, pensions, and liabilities.",
+      statNoteKo: "법정 고지: 호주 가족법 제71B조(2025.6.10 시행) 및 연방순회·가족법원(FCFCOA) 규칙에 따라 호주와 한국에 보유한 모든 부동산·전세보증금·예금·퇴직연금·부채를 성실히 공개해야 합니다."
+    };
+  }
+
   function buildWaDefactoAlertHtml(lang) {
     if (lang === "en") {
       return (
         '<div class="wa-jurisdiction-alert" data-wa-defacto-notice="true">' +
-          '<strong>Western Australia De Facto Jurisdiction Notice (Family Court of WA · Part VIIIC):</strong><br/>' +
-          '• <strong>Separate State Court Jurisdiction:</strong> Western Australia did not refer de facto financial matters to the Commonwealth. Proceedings are governed by the <strong>Family Court of Western Australia (<code>Family Court Act 1997 (WA)</code>, Part 5A · s 205ZB 2-year limitation)</strong> rather than FCFCOA (<code>s 90SM</code>).<br/>' +
+          '<strong>Western Australia De Facto Jurisdiction Notice (Family Court of WA · Part 5A s 205ZG &amp; Part VIIIC):</strong><br/>' +
+          '• <strong>Separate State Court Jurisdiction:</strong> Western Australia did not refer de facto financial matters to the Commonwealth. Proceedings and financial disclosure are governed by the <strong>Family Court of Western Australia (<code>Family Court Act 1997 (WA)</code>, Part 5A · s 205ZG property adjustment · s 205ZB 2-year limitation &amp; FCWA Rules)</strong> rather than FCFCOA (<code>FLA s 90SM / s 90RI</code>).<br/>' +
           '• <strong>WA De Facto Superannuation Splitting (Part VIIIC):</strong> Historically WA de facto couples faced strict superannuation splitting bars. Following the <code>Family Law Amendment (Western Australia De Facto Superannuation Splitting and Other Measures) Act 2020 (Cth)</code>, superannuation splitting is governed by <strong><code>Part VIIIC</code> of the <code>Family Law Act 1975 (Cth)</code></strong> and requires dedicated FCWA / Part VIIIC procedural forms (not standard FCFCOA Application for Consent Orders).' +
         '</div>'
       );
     }
     return (
       '<div class="wa-jurisdiction-alert" data-wa-defacto-notice="true">' +
-        '<strong>서호주(WA) 사실혼(De Facto) 특별 관할 주의 (Family Court of WA · Part VIIIC):</strong><br/>' +
-        '• <strong>서호주 독자 법원 관할:</strong> 서호주(WA)는 사실혼 재산분할 입법 권한을 연방에 위임하지 않았으므로 연방순회·가족법원(FCFCOA · <code>s 90SM</code>)이 아닌 <strong>서호주 가족법원(Family Court of Western Australia · <code>Family Court Act 1997 (WA)</code> Part 5A · 제205ZB조 별거 후 2년 제척기간)</strong>이 전속 관할합니다.<br/>' +
+        '<strong>서호주(WA) 사실혼(De Facto) 특별 관할 주의 (Family Court of WA · Part 5A s 205ZG &amp; Part VIIIC):</strong><br/>' +
+        '• <strong>서호주 독자 법원 관할:</strong> 서호주(WA)는 사실혼 재산분할 입법 권한을 연방에 위임하지 않았으므로 연방순회·가족법원(FCFCOA · <code>FLA s 90SM / s 90RI</code>)이 아닌 <strong>서호주 가족법원(Family Court of Western Australia · <code>Family Court Act 1997 (WA)</code> Part 5A · 제205ZG조 재산분할 · 제205ZB조 별거 후 2년 제척기간 및 FCWA 재정공개 규칙)</strong>이 전속 관할합니다.<br/>' +
         '• <strong>서호주 사실혼 슈퍼애뉴에이션 분할 (Part VIIIC):</strong> 과거 서호주 사실혼 커플은 퇴직연금(Superannuation) 분할이 제한되었으나 <code>Family Law Amendment (Western Australia De Facto Superannuation Splitting and Other Measures) Act 2020 (Cth)</code> 시행으로 연방 <code>Family Law Act 1975 (Cth)</code> <strong><code>Part VIIIC</code></strong>에 따라 연금 분할이 가능해졌습니다. 반드시 FCFCOA 일반 서식이 아닌 <strong>FCWA · Part VIIIC 전용 절차 서식</strong>을 사용해야 합니다.' +
       '</div>'
     );
@@ -1160,6 +1210,7 @@
     var stateCode = ParkCoDates.normalizeStateCode(p.stateCode || "QLD");
     var relType = p.relType === "defacto" ? "defacto" : "married";
     var isWaDefacto = stateCode === "WA" && relType === "defacto";
+    var disc = getDisclosureProvisionLabels(stateCode, relType);
     var ausAssets = Math.max(0, Number(p.ausAssets) || 0);
     var ausDebt = Math.max(0, Number(p.ausDebt) || 0);
     var ausNet = Math.max(0, ausAssets - ausDebt);
@@ -1184,10 +1235,10 @@
     if (isEn) {
       var linesEn = [
         "====================================================================",
-        "1-PAGE KR–AU COMBINED FINANCIAL DISCLOSURE SUMMARY (FLA s 71B)",
-        "Park & Co Lawyers · FCFCOA / Family Law Duty of Full & Frank Disclosure",
+        disc.headerEn,
+        "Park & Co Lawyers · Family Law Duty of Full & Frank Disclosure",
         "====================================================================",
-        "• Date Prepared: " + dateIso + " | Registry / State: " + stateCode + " (" + REL_LABELS[relType].en + ")",
+        "• Date Prepared: " + dateIso + " | Registry / State: " + stateCode + " (" + disc.relDisplayEn + ")",
         "• Applied Exchange Rate: 1 AUD = ₩" + krwRate.toLocaleString("en-AU") + " KRW (User-editable real-time rate)",
         "--------------------------------------------------------------------",
         "[A] AUSTRALIAN ASSETS, SUPERANNUATION & LIABILITIES (AUD $)",
@@ -1196,7 +1247,7 @@
         "  3. Australian Net Non-Super Pool:                               $" + Math.round(ausNet).toLocaleString("en-AU") + " AUD",
         "  4. Combined Australian Superannuation Pool:                     $" + Math.round(ausSuper).toLocaleString("en-AU") + " AUD",
         "--------------------------------------------------------------------",
-        "[B] SOUTH KOREAN ASSETS & LIABILITIES (Mandatory Worldwide Pool · s 71B)",
+        "[B] SOUTH KOREAN ASSETS & LIABILITIES (Mandatory Worldwide Pool · " + disc.shortEn + ")",
         "  5. Korean Gross Assets (Real Estate, Jeonse, Deposits, Pension): ₩" + korAssetsKrw.toLocaleString("en-AU") + " (≈ $" + korAssetsAud.toLocaleString("en-AU") + " AUD)",
         "  6. Less Korean Liabilities (Mortgage, Jeonse Return, Loans):    -₩" + korDebtKrw.toLocaleString("en-AU") + " (≈ -$" + korDebtAud.toLocaleString("en-AU") + " AUD)",
         "  7. South Korean Net Asset Pool (Converted):                      ₩" + korNetKrw.toLocaleString("en-AU") + " (≈ $" + korNetAud.toLocaleString("en-AU") + " AUD)",
@@ -1207,11 +1258,11 @@
         "  • NET WORLDWIDE DIVISIBLE POOL:  $" + totalPoolAud.toLocaleString("en-AU") + " AUD"
       ];
       if (isWaDefacto) {
-        linesEn.push("  • WA De Facto Note: Proceedings run in Family Court of WA (Family Court Act 1997 (WA) Part 5A; Super splitting under FLA Part VIIIC).");
+        linesEn.push("  • WA De Facto Note: Proceedings run in Family Court of WA (Family Court Act 1997 (WA) Part 5A · s 205ZG; Super splitting under FLA Part VIIIC).");
       }
       linesEn.push(
         "--------------------------------------------------------------------",
-        "Statutory Note: Under s 71B of the Family Law Act 1975 (Cth) (effective 10 June 2025) and FCFCOA (Family Law) Rules 2021, both parties owe a strict duty of full and frank disclosure of all direct/indirect worldwide property, Jeonse deposits, bank accounts, pensions, and liabilities.",
+        disc.statNoteEn,
         "Official Consultation: Park & Co Lawyers | enquiry@parkcolawyers.com | https://parklawyers.com.au/links/?lang=en"
       );
       return linesEn.join("\n");
@@ -1219,10 +1270,10 @@
 
     var linesKo = [
       "====================================================================",
-      "[한·호 통합 자산·부채 1페이지 공개 명세서 (Family Law Act s 71B)]",
-      "법무법인 박앤코 (Park & Co Lawyers) · 연방순회·가족법원(FCFCOA) 성실 공개 의무",
+      disc.headerKo,
+      "법무법인 박앤코 (Park & Co Lawyers) · 성실 재정공개 의무 명세서",
       "====================================================================",
-      "• 작성 기준일: " + dateIso + " | 관할 주/준주: " + stateCode + " (" + REL_LABELS[relType].ko + ")",
+      "• 작성 기준일: " + dateIso + " | 관할 주/준주: " + stateCode + " (" + disc.relDisplayKo + ")",
       "• 적용 환율: 1 AUD = ₩" + krwRate.toLocaleString("en-AU") + " 원 (실시간 지정 환율)",
       "--------------------------------------------------------------------",
       "[A] 호주 내 자산 · 슈퍼애뉴에이션 · 부채 내역 (AUD $)",
@@ -1231,7 +1282,7 @@
       "  3. 호주 비연금 순자산 소계:                     $" + Math.round(ausNet).toLocaleString("en-AU") + " AUD",
       "  4. 호주 부부 합산 슈퍼애뉴에이션 (Super):       $" + Math.round(ausSuper).toLocaleString("en-AU") + " AUD",
       "--------------------------------------------------------------------",
-      "[B] 한국 내 자산 · 부채 내역 (s 71B 전 세계 의무 공개 대상)",
+      "[B] 한국 내 자산 · 부채 내역 (" + disc.shortKo + " 전 세계 의무 공개 대상)",
       "  5. 한국 총자산 (아파트·전세보증금·예금·연금):   ₩" + korAssetsKrw.toLocaleString("en-AU") + "원 (" + korAssetsManwon.toLocaleString("en-AU") + "만원 · 약 $" + korAssetsAud.toLocaleString("en-AU") + " AUD)",
       "  6. 한국 부채 공제 (주담대·전세반환·신용대출):  -₩" + korDebtKrw.toLocaleString("en-AU") + "원 (" + korDebtManwon.toLocaleString("en-AU") + "만원 · 약 -$" + korDebtAud.toLocaleString("en-AU") + " AUD)",
       "  7. 한국 순자산 소계 (호주달러 환산):            ₩" + korNetKrw.toLocaleString("en-AU") + "원 (약 $" + korNetAud.toLocaleString("en-AU") + " AUD)",
@@ -1242,14 +1293,30 @@
       "  • 최종 통합 순자산 풀(Net):  $" + totalPoolAud.toLocaleString("en-AU") + " AUD"
     ];
     if (isWaDefacto) {
-      linesKo.push("  • 서호주(WA) 사실혼 관할 고지: Family Court of WA (Family Court Act 1997 (WA) Part 5A) 및 연금 분할 FLA Part VIIIC 전용 서식 적용.");
+      linesKo.push("  • 서호주(WA) 사실혼 관할 고지: Family Court of WA (Family Court Act 1997 (WA) Part 5A · 제205ZG조) 및 연금 분할 FLA Part VIIIC 전용 서식 적용.");
     }
     linesKo.push(
       "--------------------------------------------------------------------",
-      "법정 고지: 호주 가족법 제71B조(2025.6.10 시행) 및 연방순회·가족법원(FCFCOA) 규칙에 따라 호주와 한국에 보유한 모든 부동산·전세보증금·예금·퇴직연금·부채를 성실히 공개해야 합니다.",
+      disc.statNoteKo,
       "공식 상담 문의: 법무법인 박앤코 | enquiry@parkcolawyers.com | https://parklawyers.com.au/links/?lang=ko"
     );
     return linesKo.join("\n");
+  }
+
+  function computeDivorceEffectDateS55(orderDateIso, sepStr) {
+    if (!orderDateIso || !ParkCoDates.parseIsoLocal(orderDateIso)) return null;
+    var effObj = ParkCoDates.addYearsMonthsClamped(orderDateIso, 0, 1, 1);
+    var effIso = ParkCoDates.formatIsoLocal(effObj);
+    var minSep12mIso = (sepStr && ParkCoDates.parseIsoLocal(sepStr))
+      ? ParkCoDates.formatIsoLocal(ParkCoDates.addYearsMonthsClamped(sepStr, 1, 0, 0))
+      : null;
+    return {
+      orderDateIso: orderDateIso,
+      divorceEffectIso: effIso,
+      minDivorceEffectIso: minSep12mIso,
+      meets12mSeparation: minSep12mIso ? (effIso >= minSep12mIso) : true,
+      statutoryBasis: "Family Law Act 1975 (Cth) s 55(1) (1 month + 1 day after divorce order made)"
+    };
   }
 
   var TOOL_DEEPLINK_MAP = {
@@ -1304,6 +1371,23 @@
       };
     }
 
+    var minDivorceEffectIso = null;
+    if (relType === "married" && sepStr) {
+      minDivorceEffectIso = ParkCoDates.formatIsoLocal(ParkCoDates.addYearsMonthsClamped(sepStr, 1, 0, 0));
+      if (divStr && divStr < minDivorceEffectIso) {
+        return {
+          status: "error",
+          code: "divorce_before_12m_separation",
+          sepStr: sepStr,
+          divStr: divStr,
+          minDivorceEffectIso: minDivorceEffectIso,
+          relType: relType,
+          stateCode: stateCode,
+          isWaDefacto: isWaDefacto
+        };
+      }
+    }
+
     var eligibleDivorceIso = null;
     if (relType === "married" && sepStr) {
       var eligObj = ParkCoDates.addYearsMonthsClamped(sepStr, 1, 0, 1);
@@ -1316,6 +1400,7 @@
     var propSafe1dIso = null;
     var propRolledReason = null;
     var propDaysLeft = null;
+    var lgaShowDayWarning = null;
     var limitationSection = relType === "married"
       ? "s 44(3)"
       : (isWaDefacto ? "s 205ZB(1) (FCA 1997 WA) / s 44(5)" : "s 44(5)");
@@ -1343,6 +1428,10 @@
       propDaysLeft = ParkCoDates.diffDaysBetweenIso(refToday, propDeadlineIso);
     }
 
+    if (propDeadlineIso && ParkCoDates.getLgaShowDayName(propDeadlineIso, stateCode)) {
+      lgaShowDayWarning = ParkCoDates.getLgaShowDayName(propDeadlineIso, stateCode);
+    }
+
     return {
       status: "ok",
       relType: relType,
@@ -1351,11 +1440,13 @@
       relLabel: REL_LABELS[relType],
       sepStr: sepStr || null,
       divStr: divStr || null,
+      minDivorceEffectIso: minDivorceEffectIso,
       oneRoof: oneRoof,
       eligibleDivorceIso: eligibleDivorceIso,
       rawPropDeadlineIso: rawPropDeadlineIso,
       propDeadlineIso: propDeadlineIso,
       propRolledReason: propRolledReason,
+      lgaShowDayWarning: lgaShowDayWarning,
       propSafeIso: propSafeIso,
       propSafe1dIso: propSafe1dIso,
       safeDate: propSafe1dIso,
@@ -1554,6 +1645,8 @@
     ParkCoDates: ParkCoDates,
     FCFCOA_PRECEDENT_CASES: FCFCOA_PRECEDENT_CASES,
     evaluateSeparationDeadlinesPure: evaluateSeparationDeadlinesPure,
+    computeDivorceEffectDateS55: computeDivorceEffectDateS55,
+    getDisclosureProvisionLabels: getDisclosureProvisionLabels,
     matchPropertyPrecedentsPure: matchPropertyPrecedentsPure,
     evaluateVisaBreakdownPure: evaluateVisaBreakdownPure,
     evaluatePppEligibilityPure: evaluatePppEligibilityPure,
@@ -1629,9 +1722,13 @@
           ? (currentLang === "ko"
               ? "<strong>입력 오류:</strong> 이혼 명령 확정일(<code>" + res.divStr + "</code>)이 최종 별거 시작일(<code>" + res.sepStr + "</code>)보다 앞설 수 없습니다. 날짜를 다시 확인해 주십시오."
               : "<strong>Input Error:</strong> Divorce Order effective date (<code>" + res.divStr + "</code>) cannot be earlier than the final separation date (<code>" + res.sepStr + "</code>).")
-          : (currentLang === "ko"
-              ? "<strong>입력 오류:</strong> 올바른 날짜 형식(YYYY-MM-DD)을 입력해 주십시오."
-              : "<strong>Input Error:</strong> Please enter a valid date (YYYY-MM-DD).");
+          : (res.code === "divorce_before_12m_separation"
+              ? (currentLang === "ko"
+                  ? "<strong>법정 요건 불일치 (<code>FLA s 48(2) &amp; s 55(1)</code>):</strong> 호주 이혼 신청은 최소 12개월 별거 후 가능하며(<code>s 48(2)</code>) 이혼 명령은 선고 후 1개월 1일이 지나야 효력이 발생합니다(<code>s 55(1)</code>). 따라서 이혼 명령 확정일(<code>" + res.divStr + "</code>)은 별거 시작일로부터 최소 12개월 이후(<code>" + res.minDivorceEffectIso + "</code> 이후)여야 합니다."
+                  : "<strong>Statutory Date Error (<code>FLA s 48(2) &amp; s 55(1)</code>):</strong> An Australian divorce application requires at least 12 months separation (<code>s 48(2)</code>) and a Divorce Order takes effect 1 month + 1 day after grant (<code>s 55(1)</code>). Divorce effective date (<code>" + res.divStr + "</code>) cannot precede <code>" + res.minDivorceEffectIso + "</code>.")
+              : (currentLang === "ko"
+                  ? "<strong>입력 오류:</strong> 올바른 날짜 형식(YYYY-MM-DD)을 입력해 주십시오."
+                  : "<strong>Input Error:</strong> Please enter a valid date (YYYY-MM-DD)."));
         out.innerHTML = waAlert + '<div class="alert-box alert-box--danger">' + errMsg + '</div>';
         return res;
       }
@@ -1675,6 +1772,12 @@
           if (res.propRolledReason) {
             html += '<div class="alert-box alert-box--info">' +
               '<strong>주말·공휴일 익영업일 연장 적용 (<code>Acts Interpretation Act 1901 (Cth) s 36(2)</code>):</strong> 원래 만료일(<code>' + res.rawPropDeadlineIso + '</code>)이 ' + res.stateCode + ' 기준 비영업일(<strong>' + escapeHtml(res.propRolledReason) + '</strong>)에 해당하여 다음 영업일인 <strong>' + res.propDeadlineIso + '</strong>로 법정 마감일이 연장되었습니다 (직전 안전 영업일: <code>' + res.propSafe1dIso + '</code>).' +
+              '</div>';
+          }
+
+          if (res.lgaShowDayWarning) {
+            html += '<div class="alert-box alert-box--warn">' +
+              '<strong>브리즈번 시(Brisbane LGA) 한정 Ekka 공휴일 주의:</strong> <code>' + res.propDeadlineIso + '</code>(' + escapeHtml(res.lgaShowDayWarning) + ')은 브리즈번 시청 관할 구역 한정 공휴일이므로 로건(Underwood)·골드코스트 등 타 퀸즐랜드 지역 사건의 법정 기한을 임의로 연장하지 않았습니다. 기한 도과 방지를 위해 반드시 직전 안전 영업일(<code>' + res.propSafe1dIso + '</code>) 이전에 접수하시기 바랍니다.' +
               '</div>';
           }
 
@@ -1735,6 +1838,12 @@
               '</div>';
           }
 
+          if (res.lgaShowDayWarning) {
+            html += '<div class="alert-box alert-box--warn">' +
+              '<strong>Brisbane LGA Regional Show Holiday Warning:</strong> <code>' + res.propDeadlineIso + '</code> (' + escapeHtml(res.lgaShowDayWarning) + ') applies only within the Brisbane City Council LGA (not Logan/Underwood, Gold Coast, or regional QLD) and therefore does NOT automatically extend statewide QLD statutory deadlines. File on or before <code>' + res.propSafe1dIso + '</code>.' +
+              '</div>';
+          }
+
           if (res.isOverdue) {
             html += '<div class="alert-box alert-box--danger">' +
               '<strong>Statutory deadline expired by ' + res.overdueDays + ' days (Court leave under ' + res.leaveSection + ' mandatory):</strong> You must establish hardship and an adequate explanation for delay to seek leave of the Court out of time.' +
@@ -1757,12 +1866,13 @@
     return res;
   }
 
-  function renderS71bCardHtml(summaryText) {
+  function renderS71bCardHtml(summaryText, stateCode, relType) {
+    var disc = getDisclosureProvisionLabels(stateCode, relType);
     var titleTxt = currentLang === "ko"
-      ? "한·호 통합 자산·부채 1페이지 공개 명세서 (FCFCOA / FLA s 71B Duty of Disclosure)"
-      : "1-Page KR–AU Combined Asset/Liability Disclosure Worksheet (FCFCOA / FLA s 71B)";
-    var copyLbl = currentLang === "ko" ? "1페이지 s 71B 요약 복사" : "Copy 1-Page s 71B Summary";
-    var printLbl = currentLang === "ko" ? "1페이지 s 71B 명세서 인쇄" : "Print 1-Page s 71B Worksheet";
+      ? "한·호 통합 자산·부채 1페이지 공개 명세서 (" + disc.shortKo + " Duty of Disclosure)"
+      : "1-Page KR–AU Combined Asset/Liability Disclosure Worksheet (" + disc.shortEn + ")";
+    var copyLbl = currentLang === "ko" ? "1페이지 재산공개 요약 복사" : "Copy 1-Page Disclosure Summary";
+    var printLbl = currentLang === "ko" ? "1페이지 명세서 인쇄" : "Print 1-Page Worksheet";
     return (
       '<div id="fam-s71b-worksheet" class="s71b-disclosure-card">' +
         '<div class="s71b-disclosure-head">' +
@@ -1781,6 +1891,7 @@
     var stateCode = ParkCoDates.normalizeStateCode((document.getElementById("fam-state") || {}).value || "QLD");
     var relType = (document.getElementById("fam-rel-type") || {}).value || "married";
     var isWaDefacto = stateCode === "WA" && relType === "defacto";
+    var disc = getDisclosureProvisionLabels(stateCode, relType);
 
     var ausRaw = (document.getElementById("pool-aus-net") || {}).value || "";
     var ausDebtRaw = (document.getElementById("pool-aus-debt") || {}).value || "";
@@ -1791,6 +1902,8 @@
 
     var durFilter = (document.getElementById("match-duration") || {}).value || "all";
     var facFilter = (document.getElementById("match-factor") || {}).value || "all";
+    var hasParentingOrders = !!(document.getElementById("hasParentingOrders") || {}).checked;
+    var hasContestedEntityTrustSmsf = !!(document.getElementById("hasContestedEntityTrustSmsf") || {}).checked;
     var ackChecked = (document.getElementById("ack-ethical-disclaimer") || {}).checked !== false;
 
     var poolOut = document.getElementById("fam-pool-summary-output");
@@ -1828,16 +1941,18 @@
       ausDebtRaw.trim() !== "" ||
       supRaw.trim() !== "" ||
       korRaw.trim() !== "" ||
-      korDebtRaw.trim() !== ""
+      korDebtRaw.trim() !== "" ||
+      hasParentingOrders ||
+      hasContestedEntityTrustSmsf
     );
 
     if (!toolActive.m2 && !hasAnyAssetInput && durFilter === "all" && facFilter === "all") {
       if (poolOut) {
         poolOut.innerHTML = waAlert + renderNeutralPrompt(
           "btn-sample-m2",
-          "호주·한국 자산 및 부채와 실시간 환율(기본 ₩900/AUD)을 입력하거나 쟁점 필터를 선택하면 전 세계 통합 자산 풀(s 71B)과 실제 FCFCOA 판결 비율 분포 및 1페이지 공개 명세서를 즉시 생성합니다.",
-          "Enter your Australian/Korean assets, liabilities, and real-time KRW/AUD rate (default ₩900) to calculate your s 71B global pool, matched FCFCOA court splits, and 1-page disclosure worksheet."
-        ) + renderS71bCardHtml(s71bText);
+          "호주·한국 자산 및 부채와 실시간 환율(기본 ₩900/AUD)을 입력하거나 쟁점 필터를 선택하면 전 세계 통합 자산 풀(" + disc.shortKo + ")과 실제 FCFCOA 판결 비율 분포 및 1페이지 공개 명세서를 즉시 생성합니다.",
+          "Enter your Australian/Korean assets, liabilities, and real-time KRW/AUD rate (default ₩900) to calculate your global pool (" + disc.shortEn + "), matched FCFCOA court splits, and 1-page disclosure worksheet."
+        ) + renderS71bCardHtml(s71bText, stateCode, relType);
       }
       if (cardsWrap) cardsWrap.hidden = true;
       return { active: false, totalPoolAud: 0, korAud: 0, krwRate: krwRate, matchedCount: 0, topCitation: "-" };
@@ -1857,9 +1972,13 @@
 
       var pppEval = evaluatePppEligibilityPure({
         netNonSuperAud: Math.round(ausNet + korAud),
-        superAud: Math.round(ausSuper)
+        superAud: Math.round(ausSuper),
+        hasParentingOrders: hasParentingOrders,
+        hasContestedEntityTrustSmsf: hasContestedEntityTrustSmsf
       });
-      var pppBoxCls = pppEval.para31aEligible ? "alert-box alert-box--info" : "alert-box";
+      var pppBoxCls = pppEval.para31aEligible
+        ? "alert-box alert-box--info"
+        : (pppEval.excludedPara33 ? "alert-box alert-box--warn" : "alert-box");
       var pppHtml =
         '<div id="fam-ppp-track-box" class="' + pppBoxCls + '" style="margin-bottom:10px;">' +
           '<strong>' + escapeHtml(currentLang === "ko" ? pppEval.headline_ko : pppEval.headline_en) + '</strong><br/>' +
@@ -1877,14 +1996,14 @@
               : (currentLang === "ko" ? "Super $" + ausSuper.toLocaleString("en-AU") + " 포함" : "Incl. $" + ausSuper.toLocaleString("en-AU") + " Super")) + '</small>' +
           '</div>' +
           '<div class="mini-kpi">' +
-            '<span>' + (currentLang === "ko" ? "한국 순자산 (s 71B 환산)" : "KOR Net Assets (s 71B)") + '</span>' +
+            '<span>' + (currentLang === "ko" ? "한국 순자산 (" + disc.shortKo + ")" : "KOR Net Assets (" + disc.shortEn + ")") + '</span>' +
             '<strong>$' + korAud.toLocaleString("en-AU") + ' AUD</strong>' +
             '<small>1 AUD = ₩' + krwRate.toLocaleString("en-AU") + '</small>' +
           '</div>' +
           '<div class="mini-kpi">' +
             '<span>' + (currentLang === "ko" ? "전 세계 통합 순자산 풀" : "Worldwide Net Pool") + '</span>' +
             '<strong>$' + totalPoolAud.toLocaleString("en-AU") + ' AUD</strong>' +
-            '<small>FLA s 71B Global Pool</small>' +
+            '<small>' + disc.shortEn + ' Global Pool</small>' +
           '</div>' +
         '</div>' +
         pppHtml +
@@ -1896,7 +2015,7 @@
           '• ' + (currentLang === "ko" ? spec.rangeHeaderKo : spec.rangeHeaderEn) + '<br/>' +
           '• ' + (currentLang === "ko" ? spec.koListHtml : spec.enListHtml) +
         '</div>' +
-        renderS71bCardHtml(s71bText);
+        renderS71bCardHtml(s71bText, stateCode, relType);
     }
 
     if (cardsWrap) cardsWrap.hidden = false;
@@ -2165,11 +2284,15 @@
     var rateEl = document.getElementById("pool-krw-rate");
     var durEl = document.getElementById("match-duration");
     var facEl = document.getElementById("match-factor");
+    var pppParEl = document.getElementById("hasParentingOrders");
+    var pppEntEl = document.getElementById("hasContestedEntityTrustSmsf");
     if (stateEl) stateEl.value = "QLD";
     if (relEl) relEl.value = "married";
     if (rateEl) rateEl.value = String(DEFAULT_KRW_PER_AUD);
     if (durEl) durEl.value = "all";
     if (facEl) facEl.value = "all";
+    if (pppParEl) pppParEl.checked = false;
+    if (pppEntEl) pppEntEl.checked = false;
 
     toolActive.m1 = false;
     toolActive.m2 = false;
@@ -2498,6 +2621,8 @@
         "pool-krw-rate",
         "match-duration",
         "match-factor",
+        "hasParentingOrders",
+        "hasContestedEntityTrustSmsf",
         "ack-ethical-disclaimer"
       ];
       m2Ids.forEach(function (id) {
@@ -2543,7 +2668,7 @@
         if (s71bCopyBtn) {
           var s71bPre = document.getElementById("fam-s71b-summary-text");
           var txt = s71bPre ? (s71bPre.textContent || "") : "";
-          var origLabel = currentLang === "ko" ? "1페이지 s 71B 요약 복사" : "Copy 1-Page s 71B Summary";
+          var origLabel = currentLang === "ko" ? "1페이지 재산공개 요약 복사" : "Copy 1-Page Disclosure Summary";
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(txt).catch(function () {});
           }
